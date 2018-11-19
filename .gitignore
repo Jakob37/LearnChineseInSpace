@@ -1,0 +1,7 @@
+.vs/
+Assembly-CSharp.csproj
+Temp/
+UnityPackageManager/
+obj/
+ProjectSettings/
+Library/
