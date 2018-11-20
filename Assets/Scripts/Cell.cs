@@ -7,16 +7,19 @@ public class Cell : MonoBehaviour {
 
     public Image mOutlineImage;
 
-    [HideInInspector]
     public Vector2Int mBoardPosition = Vector2Int.zero;
-    [HideInInspector]
     public Board mBoard = null;
-    [HideInInspector]
     public RectTransform mRectTransform = null;
 
-    public void Setup(Vector2Int newBoardPosition, Board newBoard) {
+    public Text mLabel;
+    public Button mButton;
+
+    public void Setup(Vector2Int newBoardPosition, Board newBoard, string button_text) {
         mBoardPosition = newBoardPosition;
         mBoard = newBoard;
         mRectTransform = GetComponent<RectTransform>();
+
+        mLabel.text = button_text;
+        // mLabel = new Text("test");
     }
 }
