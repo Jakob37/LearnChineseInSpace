@@ -9,53 +9,48 @@ using UnityEngine.UI;
 
 public class AnkiParser : MonoBehaviour {
 
-    void Start() {
 
-        print("I am testing");
-        ParseStoryEntities("glossary");
+    private List<String[]> word_entries;
+    private List<String> chinese_characters;
+
+    void Awake() {
+        word_entries = new List<String[]>();
+        word_entries = ParseStoryEntities("glossary");
+
+        chinese_characters = new List<String>();
+        foreach(String[] word_entry in word_entries) {
+            String raw_chinese_char = word_entry[0];
+            String parsed_chinese_char = Regex.Replace(raw_chinese_char, "<.*?>", "");
+            chinese_characters.Add(parsed_chinese_char);
+        }
     }
 
-    private void ParseStoryEntities(string resource_name, string splitter = "\t") {
-    //private Dictionary<StoryBoardEntity, List<string>> ParseStoryEntities(string resource_name, string splitter = "\\|") {
+    void Start() {
 
-        //Dictionary<StoryBoardEntity, List<string>> board_entities_tmp = new Dictionary<StoryBoardEntity, List<string>>();
+    }
+
+    public string GetWord(int number=0) {
+
+        if (number < chinese_characters.Count) {
+            return chinese_characters[number];
+        }
+        else {
+            return "-";
+        }
+    }
+
+    private List<String[]> ParseStoryEntities(string resource_name, string splitter = "\t") {
 
         List<string[]> results = Utils.ParseTextToSplitList(resource_name, splitter);
-        print(results);
-
-        //for (int pos = 0; pos < results[0].Length; pos++) {
-        //    print(results[0][pos]);
-        //}
-
         string characters = results[0][0];
-
         characters = Regex.Replace(characters, "<.*?>", "");
 
+        // test print
         string pinjing = results[0][2];
         string meaning = results[0][3];
-
         print(characters + ", " + pinjing + ", " + meaning);
 
-        //print(results[0][0]);
-        //foreach (string[] board_entry in board_entries) {
-
-        //    if (board_entry[0] == "" || board_entry[0].Substring(0, 1) == "#") {
-        //        continue;
-        //    }
-
-        //    if (board_entry[1] == "name") {
-        //        continue;
-        //    }
-
-        //    string board_text = board_entry[1];
-        //    if (!board_entities_tmp.ContainsKey(board_name)) {
-        //        board_entities_tmp[board_name] = new List<String>();
-        //    }
-
-        //    board_entities_tmp[board_name].Add(board_text);
-        //}
-
-        //return board_entities_tmp;
+        return results;
     }
 
 

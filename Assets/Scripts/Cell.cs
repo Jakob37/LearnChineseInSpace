@@ -14,12 +14,20 @@ public class Cell : MonoBehaviour {
     public Text mLabel;
     public Button mButton;
 
-    public void Setup(Vector2Int newBoardPosition, Board newBoard, string button_text) {
-        mBoardPosition = newBoardPosition;
-        mBoard = newBoard;
-        mRectTransform = GetComponent<RectTransform>();
-
-        mLabel.text = button_text;
-        // mLabel = new Text("test");
+    void Start() {
     }
+
+    public void Setup(string text) {
+        mLabel.text = text;
+    }
+
+    //    public void Setup(Vector2Int newBoardPosition, Board newBoard, string button_text) {
+    //        mBoardPosition = newBoardPosition;
+    //        mBoard = newBoard;
+    //        mRectTransform = GetComponent<RectTransform>();
+    //        print("Setup called for cell");
+    //
+    //        //mLabel.text = button_text;
+    //        mLabel.text = "new text";
+    //    }
 }
