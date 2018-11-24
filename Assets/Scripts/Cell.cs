@@ -17,8 +17,9 @@ public class Cell : MonoBehaviour {
     void Start() {
     }
 
-    public void Setup(string text) {
+    public void Setup(string text, int font_size) {
         mLabel.text = text;
+        mLabel.fontSize = font_size;
     }
 
     //    public void Setup(Vector2Int newBoardPosition, Board newBoard, string button_text) {
