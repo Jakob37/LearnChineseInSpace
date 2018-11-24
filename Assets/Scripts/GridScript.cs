@@ -47,11 +47,12 @@ public class GridScript : MonoBehaviour {
                 print("Unknown type");
             }
 
+            float font_scale = 1;
             if (new_word.Length > 30) {
-                font_size = (int)(font_size * 0.7);
+                font_scale = 0.7f;
             }
 
-            mCells[i].Setup(new_word, font_size);
+            mCells[i].Setup(new_word, (int)(font_size * font_scale));
         }
     }
 }
