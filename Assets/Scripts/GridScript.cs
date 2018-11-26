@@ -20,12 +20,21 @@ public class GridScript : MonoBehaviour {
 
     public int font_size;
 
+    public bool HasActiveCell { get { return active_cell != null; } }
+
+    private Cell active_cell;
+    public Cell ActiveCell { get { return active_cell; } }
+
     void Awake() {
         anki_parser = GameObject.FindObjectOfType<AnkiParser>();
     }
 
     void Start() {
         Build();
+    }
+
+    public void ChildActivated(Cell cell) {
+        active_cell = cell;
     }
 
     public void Build() {
@@ -52,7 +61,7 @@ public class GridScript : MonoBehaviour {
                 font_scale = 0.7f;
             }
 
-            mCells[i].Setup(new_word, (int)(font_size * font_scale));
+            mCells[i].Setup(this, new_word, (int)(font_size * font_scale));
         }
     }
 }

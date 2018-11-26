@@ -456,9 +456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76db54d0bf56504ca3522bb501748f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character_grid: {fileID: 0}
-  pinying_grid: {fileID: 0}
-  english_grid: {fileID: 0}
+  character_grid: {fileID: 229207127}
+  pinying_grid: {fileID: 1135827158}
+  english_grid: {fileID: 1640197218}
 --- !u!1 &894969348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1120,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224412289433404974, guid: c3e4b3925e4fbdb4ea419782d6dabec0,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3e4b3925e4fbdb4ea419782d6dabec0, type: 2}

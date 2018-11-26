@@ -8,27 +8,54 @@ public class Cell : MonoBehaviour {
     public Image mOutlineImage;
 
     public Vector2Int mBoardPosition = Vector2Int.zero;
-    public Board mBoard = null;
     public RectTransform mRectTransform = null;
 
-    public Text mLabel;
-    public Button mButton;
+    private GridScript parent_grid;
+    public Text label;
+    public Button button;
+    public Image background;
+
+    private ColorBlock theColor;
+
+    private void SetBackgroundActive(bool active) {
+        if (active) {
+            background.color = new Color(background.color.r, background.color.g, background.color.b, 1);
+        }
+        else {
+            background.color = new Color(background.color.r, background.color.g, background.color.b, 0);
+        }
+    }
+
+    void Awake() {
+
+        theColor.highlightedColor = Color.blue;
+        theColor.normalColor = Color.cyan;
+        theColor.pressedColor = Color.green;
+
+        background.color = new Color(background.color.r, background.color.g, background.color.b, 0);
+        // button.colors = theColor;
+//        print("Cliked");
+    }
 
     void Start() {
+
+        SetBackgroundActive(false);
     }
 
-    public void Setup(string text, int font_size) {
-        mLabel.text = text;
-        mLabel.fontSize = font_size;
+    private void ColorButtonGreen() {
+
+        button.colors = new ColorBlock();
     }
 
-    //    public void Setup(Vector2Int newBoardPosition, Board newBoard, string button_text) {
-    //        mBoardPosition = newBoardPosition;
-    //        mBoard = newBoard;
-    //        mRectTransform = GetComponent<RectTransform>();
-    //        print("Setup called for cell");
-    //
-    //        //mLabel.text = button_text;
-    //        mLabel.text = "new text";
-    //    }
+    public void Setup(GridScript parent_grid, string text, int font_size) {
+        this.parent_grid = parent_grid;
+        this.label.text = text;
+        this.label.fontSize = font_size;
+    }
+
+    public void ButtonActivated() {
+        parent_grid.ChildActivated(this);
+        print("Clicked: " + this.label.text);
+        SetBackgroundActive(true);
+    }
 }

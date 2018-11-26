@@ -11,4 +11,12 @@ public class Grids : MonoBehaviour {
     void Start() {
 
     }
+
+    void Update() {
+
+        if (character_grid.HasActiveCell) {
+            // print(character_grid.ActiveCell);
+        }
+
+    }
 }
