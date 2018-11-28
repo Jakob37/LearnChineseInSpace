@@ -7,73 +7,63 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class AnkiParser : MonoBehaviour {
+public static class AnkiParser {
 
 
-    private List<String[]> word_entries;
-    private List<String> chinese_characters;
-    private List<String> pinying;
-    private List<String> english;
+    private static List<String[]> word_entries;
+    private static List<ChineseEntry> chinese_entries;
 
-    void Awake() {
+    public static List<ChineseEntry> ParseChineseEntries() {
         word_entries = new List<String[]>();
         word_entries = ParseStoryEntities("glossary");
 
-        chinese_characters = new List<String>();
-        pinying = new List<String>();
-        english = new List<String>();
+        chinese_entries = new List<ChineseEntry>();
         foreach (String[] word_entry in word_entries) {
 
-            String raw_chinese_char = word_entry[0];
+            String raw_chinese_char = word_entry[1];
             String raw_pinying = word_entry[2];
             String raw_english = word_entry[3];
 
             String parsed_chinese_char = Regex.Replace(raw_chinese_char, "<.*?>", "");
-            chinese_characters.Add(parsed_chinese_char);
-
             String parsed_english = Regex.Replace(raw_english, "•.*", "");
-            parsed_english = Regex.Replace(parsed_english, "<CC>", "");
+            ChineseEntry entry = new ChineseEntry(parsed_chinese_char, raw_pinying, parsed_english);
+            chinese_entries.Add(entry);
 
-            pinying.Add(raw_pinying);
-            english.Add(parsed_english);
         }
+        return chinese_entries;
     }
 
-    void Start() {
+    // public static string GetChineseWord(int number=0) {
+    // 
+    //     if (number < chinese_characters.Count) {
+    //         return chinese_characters[number];
+    //     }
+    //     else {
+    //         return "-";
+    //     }
+    // }
+    // 
+    // public static string GetPingyingWord(int number = 0) {
+    // 
+    //     if (number < pinying.Count) {
+    //         return pinying[number];
+    //     }
+    //     else {
+    //         return "-";
+    //     }
+    // }
+    // 
+    // public static string GetEnglishWord(int number = 0) {
+    // 
+    //     if (number < english.Count) {
+    //         return english[number];
+    //     }
+    //     else {
+    //         return "-";
+    //     }
+    // }
 
-    }
-
-    public string GetChineseWord(int number=0) {
-
-        if (number < chinese_characters.Count) {
-            return chinese_characters[number];
-        }
-        else {
-            return "-";
-        }
-    }
-
-    public string GetPingyingWord(int number = 0) {
-
-        if (number < pinying.Count) {
-            return pinying[number];
-        }
-        else {
-            return "-";
-        }
-    }
-
-    public string GetEnglishWord(int number = 0) {
-
-        if (number < english.Count) {
-            return english[number];
-        }
-        else {
-            return "-";
-        }
-    }
-
-    private List<String[]> ParseStoryEntities(string resource_name, string splitter = "\t") {
+    private static List<String[]> ParseStoryEntities(string resource_name, string splitter = "\t") {
 
         List<string[]> results = Utils.ParseTextToSplitList(resource_name, splitter);
         string characters = results[0][0];
@@ -82,10 +72,8 @@ public class AnkiParser : MonoBehaviour {
         // test print
         string pinjing = results[0][2];
         string meaning = results[0][3];
-        print(characters + ", " + pinjing + ", " + meaning);
+        Debug.Log(characters + ", " + pinjing + ", " + meaning);
 
         return results;
     }
-
-
 }

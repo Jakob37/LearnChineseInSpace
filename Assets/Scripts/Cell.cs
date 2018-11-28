@@ -15,6 +15,9 @@ public class Cell : MonoBehaviour {
     public Button button;
     public Image background;
 
+    private ChineseEntry chinese_entry;
+    public ChineseEntry ChineseEntry { get { return chinese_entry; } }
+
     private ColorBlock theColor;
 
     private void SetBackgroundActive(bool active) {
@@ -47,10 +50,43 @@ public class Cell : MonoBehaviour {
         button.colors = new ColorBlock();
     }
 
-    public void Setup(GridScript parent_grid, string text, int font_size) {
+    public void Setup(GridScript parent_grid, ChineseEntry entry, GridLanguage cell_type, int font_size) {
+
         this.parent_grid = parent_grid;
-        this.label.text = text;
-        this.label.fontSize = font_size;
+        this.chinese_entry = entry;
+        string new_word = "";
+
+        switch (cell_type) {
+            case GridLanguage.character:
+                new_word = entry.character;
+                break;
+            case GridLanguage.pinying:
+                new_word = entry.pinying;
+                break;
+            case GridLanguage.english:
+                new_word = entry.english;
+                break;
+            default:
+                throw new KeyNotFoundException("Unknown GridLanguage case encountered: " + cell_type);
+        }
+
+        float font_scale = 1;
+        if (new_word.Length > 30) {
+            font_scale = 0.7f;
+        }
+
+        print(new_word);
+        this.label.text = new_word;
+        this.label.fontSize = (int)(font_size * font_scale);
+    }
+
+    public void GridCellActivated(Cell cell) {
+        if (cell == this) {
+            return;
+        }
+        else {
+            SetBackgroundActive(false);
+        }
     }
 
     public void ButtonActivated() {

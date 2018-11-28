@@ -15,53 +15,39 @@ public class GridScript : MonoBehaviour {
 
     public GridLanguage cell_type;
 
-    private Cell[] mCells = new Cell[1000];
-    private AnkiParser anki_parser;
-
+    private List<Cell> mCells = new List<Cell>();
     public int font_size;
+    private Grids parent;
 
     public bool HasActiveCell { get { return active_cell != null; } }
 
     private Cell active_cell;
     public Cell ActiveCell { get { return active_cell; } }
 
-    void Awake() {
-        anki_parser = GameObject.FindObjectOfType<AnkiParser>();
-    }
-
-    void Start() {
-        Build();
-    }
-
     public void ChildActivated(Cell cell) {
         active_cell = cell;
+        foreach (Cell c in mCells) {
+            c.GridCellActivated(cell);
+        }
+        this.parent.CellActivated();
     }
 
-    public void Build() {
+    public void CorrectSelection() {
+        Destroy(active_cell.gameObject);
+        mCells.Remove(active_cell);
+        active_cell = null;
+    }
+
+    public void Build(Grids parent, List<ChineseEntry> chinese_entries, GridLanguage cell_type) {
+
+        this.parent = parent;
+
         for (int i = 0; i < cells; i++) {
+
             GameObject newCell = Instantiate(mCellPrefab, transform);
-            mCells[i] = newCell.GetComponent<Cell>();
-
-            string new_word = "";
-            if (cell_type == GridLanguage.character) {
-                new_word = anki_parser.GetChineseWord(i);
-            }
-            else if (cell_type == GridLanguage.pinying) {
-                new_word = anki_parser.GetPingyingWord(i);
-            }
-            else if (cell_type == GridLanguage.english) {
-                new_word = anki_parser.GetEnglishWord(i);
-            }
-            else {
-                print("Unknown type");
-            }
-
-            float font_scale = 1;
-            if (new_word.Length > 30) {
-                font_scale = 0.7f;
-            }
-
-            mCells[i].Setup(this, new_word, (int)(font_size * font_scale));
+            mCells.Add(newCell.GetComponent<Cell>());
+            ChineseEntry chinese_entry = chinese_entries[i];
+            mCells[i].Setup(this, chinese_entry,  cell_type, font_size);
         }
     }
 }

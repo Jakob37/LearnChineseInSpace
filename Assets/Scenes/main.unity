@@ -275,6 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa05ba0889bde14fb3068a6b6deb182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chinese_characters: []
+  pinying: []
+  english: []
 --- !u!4 &591054324
 Transform:
   m_ObjectHideFlags: 0
@@ -407,6 +410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa05ba0889bde14fb3068a6b6deb182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chinese_characters: []
+  pinying: []
+  english: []
 --- !u!1 &859493632
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76db54d0bf56504ca3522bb501748f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grid_sizes: 32
   character_grid: {fileID: 229207127}
   pinying_grid: {fileID: 1135827158}
   english_grid: {fileID: 1640197218}
