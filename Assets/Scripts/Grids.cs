@@ -6,9 +6,16 @@ public class Grids : MonoBehaviour {
 
     public int grid_sizes;
 
+    private float start_time;
+
+    public int total_count;
+
     public GridScript character_grid;
     public GridScript pinying_grid;
     public GridScript english_grid;
+
+    private ChineseEntry last_entry;
+    private int initial_count;
 
     private List<ChineseEntry> all_chinese_entries;
     private List<ChineseEntry> remaining_chinese_entries;
@@ -18,9 +25,13 @@ public class Grids : MonoBehaviour {
 
     void Start() {
 
+        start_time = Time.time;
+
         active_chinese_entries = new List<ChineseEntry>();
-        all_chinese_entries = Shuffle(AnkiParser.ParseChineseEntries());
+        all_chinese_entries = Shuffle(AnkiParser.ParseChineseEntries()).GetRange(0, total_count);
         remaining_chinese_entries = all_chinese_entries;
+
+        initial_count = all_chinese_entries.Count;
 
         FillGrids();
 
@@ -67,6 +78,42 @@ public class Grids : MonoBehaviour {
             character_grid.CorrectSelection();
             pinying_grid.CorrectSelection();
             english_grid.CorrectSelection();
+            last_entry = active_character;
+            active_chinese_entries.Remove(active_character);
         }
+    }
+
+    void Update() {
+
+        print(active_chinese_entries.Count);
+        if (active_chinese_entries.Count == 0) {
+            FillGrids();
+        }
+
+        UpdateStatusText();
+    }
+
+    private void UpdateStatusText() {
+
+        int remaining_entries = remaining_chinese_entries.Count;
+        int cleared_entries = initial_count - remaining_entries - active_chinese_entries.Count;
+
+        // float elapsed_time = Time.time - start_time;
+
+        float rate = (float)cleared_entries / Time.time;
+
+        string new_status_text = "Cleared: " + cleared_entries + " / " + initial_count + "\n" +
+                                 "Elapsed time: " + (int)Time.time + "\n" +
+                                 "Rate: " + System.Math.Round(rate, 2) + "\n\n" +
+                                 "Last word: \n";
+
+        string last_entry_text = "";
+        if (last_entry != null) {
+            last_entry_text = last_entry.character + "\n" + last_entry.pinying + "\n" + last_entry.english;
+        }
+
+        status_text.SetText(
+            new_status_text + last_entry_text
+        );
     }
 }

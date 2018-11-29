@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid_sizes: 8
+  total_count: 50
   character_grid: {fileID: 229207127}
   pinying_grid: {fileID: 1135827158}
   english_grid: {fileID: 1640197218}
@@ -717,7 +718,7 @@ GameObject:
   - component: {fileID: 1268407039}
   - component: {fileID: 1268407041}
   m_Layer: 5
-  m_Name: Counter
+  m_Name: StatusText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -730,7 +731,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268407037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -404, y: 52.7, z: 0}
+  m_LocalPosition: {x: -554.9, y: -49.700012, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 599592868}
@@ -738,8 +739,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -404, y: 52.7}
-  m_SizeDelta: {x: 670.6, y: 135.4}
+  m_AnchoredPosition: {x: -554.9, y: -49.7}
+  m_SizeDelta: {x: 423.5, y: 913.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268407039
 MonoBehaviour:
@@ -762,7 +763,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
