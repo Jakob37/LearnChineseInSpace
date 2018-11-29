@@ -22,10 +22,10 @@ public class Cell : MonoBehaviour {
 
     private void SetBackgroundActive(bool active) {
         if (active) {
-            background.color = new Color(background.color.r, background.color.g, background.color.b, 1);
+            background.color = Color.green;
         }
         else {
-            background.color = new Color(background.color.r, background.color.g, background.color.b, 0);
+            background.color = Color.white;
         }
     }
 
@@ -35,7 +35,7 @@ public class Cell : MonoBehaviour {
         theColor.normalColor = Color.cyan;
         theColor.pressedColor = Color.green;
 
-        background.color = new Color(background.color.r, background.color.g, background.color.b, 0);
+        background.color = Color.white;
         // button.colors = theColor;
 //        print("Cliked");
     }

@@ -25,7 +25,7 @@ public static class AnkiParser {
             String raw_english = word_entry[3];
 
             String parsed_chinese_char = Regex.Replace(raw_chinese_char, "<.*?>", "");
-            String parsed_english = Regex.Replace(raw_english, "•.*", "");
+            String parsed_english = Regex.Replace(Regex.Replace(raw_english, "•.*", ""), "<CC>", "");
             ChineseEntry entry = new ChineseEntry(parsed_chinese_char, raw_pinying, parsed_english);
             chinese_entries.Add(entry);
 
