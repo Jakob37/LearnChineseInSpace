@@ -36,7 +36,6 @@ public class Grids : MonoBehaviour {
         FillGrids();
 
         status_text = GameObject.FindObjectOfType<StatusText>();
-        status_text.SetText("Found!");
     }
 
     public void FillGrids() {

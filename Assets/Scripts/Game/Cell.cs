@@ -75,7 +75,6 @@ public class Cell : MonoBehaviour {
             font_scale = 0.7f;
         }
 
-        print(new_word);
         this.label.text = new_word;
         this.label.fontSize = (int)(font_size * font_scale);
     }
