@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,8 +42,9 @@ public class GridScript : MonoBehaviour {
     public void Build(Grids parent, List<ChineseEntry> chinese_entries, GridLanguage cell_type) {
 
         this.parent = parent;
+        int fill_count = Math.Min(cells, chinese_entries.Count);
 
-        for (int i = 0; i < cells; i++) {
+        for (int i = 0; i < fill_count; i++) {
 
             GameObject newCell = Instantiate(mCellPrefab, transform);
             mCells.Add(newCell.GetComponent<Cell>());

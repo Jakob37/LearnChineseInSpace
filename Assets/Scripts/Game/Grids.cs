@@ -8,38 +8,55 @@ public class Grids : MonoBehaviour {
 
     private float start_time;
 
-    public int total_count;
+    public int total_words;
 
     public GridScript character_grid;
     public GridScript pinying_grid;
     public GridScript english_grid;
 
+    public bool load_settings;
+
     private ChineseEntry last_entry;
     private int initial_count;
 
-    private List<ChineseEntry> all_chinese_entries;
+    // private List<ChineseEntry> all_chinese_entries;
     private List<ChineseEntry> remaining_chinese_entries;
     private List<ChineseEntry> active_chinese_entries;
+    private GameSettings game_settings;
 
     private StatusText status_text;
+
+    void Awake() {
+        active_chinese_entries = new List<ChineseEntry>();
+        status_text = GameObject.FindObjectOfType<StatusText>();
+
+        game_settings = GameObject.FindObjectOfType<GameSettings>();
+        if (game_settings != null) {
+            total_words = game_settings.TotalWords;
+            print("Found GameSettings, assigning total words: " + total_words);
+        }
+        else {
+            print("Didn't find GameSettings, using default words");
+        }
+    }
 
     void Start() {
 
         start_time = Time.time;
 
-        active_chinese_entries = new List<ChineseEntry>();
-        all_chinese_entries = Shuffle(AnkiParser.ParseChineseEntries()).GetRange(0, total_count);
-        remaining_chinese_entries = all_chinese_entries;
+        remaining_chinese_entries = Shuffle(AnkiParser.ParseChineseEntries()).GetRange(0, total_words);
+        // remaining_chinese_entries = all_chinese_entries;
 
-        initial_count = all_chinese_entries.Count;
+        initial_count = remaining_chinese_entries.Count;
 
         FillGrids();
-
-        status_text = GameObject.FindObjectOfType<StatusText>();
     }
 
     public void FillGrids() {
-        for (int i = 0; i < grid_sizes; i++) {
+
+        int fill_count = System.Math.Min(grid_sizes, remaining_chinese_entries.Count);
+
+        for (int i = 0; i < fill_count; i++) {
             active_chinese_entries.Add(remaining_chinese_entries[i]);
         }
 
@@ -84,7 +101,6 @@ public class Grids : MonoBehaviour {
 
     void Update() {
 
-        print(active_chinese_entries.Count);
         if (active_chinese_entries.Count == 0) {
             FillGrids();
         }
