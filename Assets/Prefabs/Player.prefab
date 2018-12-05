@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114153928655054134}
   - component: {fileID: 114234883008158490}
   - component: {fileID: 114690907301168922}
+  - component: {fileID: 61470260443942488}
+  - component: {fileID: 114872795467616580}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -30,6 +32,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!61 &61470260443942488
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699021830180176}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114153928655054134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,8 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130bbeae89390e440b10bf5523888cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  bullet: {fileID: 0}
+  bullet: {fileID: 1793718839447538, guid: 4d94023b0caafeb48849a127afa2310f, type: 2}
 --- !u!114 &114690907301168922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,7 +109,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
-  speed: 0
+  speed: 50
+--- !u!114 &114872795467616580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699021830180176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379544646a9c0d74c8edc624f909bf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_life: 1
 --- !u!222 &222106401179750618
 CanvasRenderer:
   m_ObjectHideFlags: 1

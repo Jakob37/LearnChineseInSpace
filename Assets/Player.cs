@@ -8,11 +8,17 @@ public class Player : MonoBehaviour {
     public GameObject bullet;
     private GameObjects gos;
 
+    private int currency;
+    public int Currency { get { return currency; } }
+
     void Awake() {
         movement = GetComponent<Movement>();
         gos = FindObjectOfType<GameObjects>();
     }
 
+    void Start() {
+        currency = 0;
+    }
 
     void Update() {
 
@@ -23,6 +29,7 @@ public class Player : MonoBehaviour {
     }
 
     private void UpdateMovement() {
+
         movement.ResetMovement();
         if (Input.GetKey(KeyCode.LeftArrow)) {
             movement.MoveLeft();
@@ -39,9 +46,14 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void Fire() {
+    public void AddCurrency(int count) {
+        currency += count;
+    }
+
+    public void Fire() {
         GameObject b = Instantiate(bullet, gos.gameObject.transform);
         b.transform.position = gameObject.transform.position;
     }
+
 
 }

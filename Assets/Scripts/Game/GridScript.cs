@@ -41,6 +41,11 @@ public class GridScript : MonoBehaviour {
 
     public void Build(Grids parent, List<ChineseEntry> chinese_entries, GridLanguage cell_type) {
 
+        foreach (Cell cell in mCells) {
+            Destroy(cell.gameObject);
+        }
+        mCells.Clear();
+
         this.parent = parent;
         int fill_count = Math.Min(cells, chinese_entries.Count);
 
