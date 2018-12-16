@@ -7,8 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public static class AnkiParser {
-
+public class AnkiParser : MonoBehaviour {
 
     private static List<String[]> word_entries;
     private static List<ChineseEntry> chinese_entries;

@@ -5,3 +5,5 @@ UnityPackageManager/
 obj/
 ProjectSettings/
 Library/
+Logs/
+Packages/
