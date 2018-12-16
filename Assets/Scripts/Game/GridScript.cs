@@ -25,6 +25,8 @@ public class GridScript : MonoBehaviour {
     private Cell active_cell;
     public Cell ActiveCell { get { return active_cell; } }
 
+    public float cellHeight;
+
     public void ChildActivated(Cell cell) {
         active_cell = cell;
         foreach (Cell c in mCells) {
