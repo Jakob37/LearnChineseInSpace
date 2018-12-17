@@ -10,7 +10,6 @@ public class Life : MonoBehaviour {
 
     public void Damage(int damage) {
         current_life -= damage;
-        print("Current life: " + current_life);
         if (current_life <= 0) {
             Destroy(gameObject);
         }

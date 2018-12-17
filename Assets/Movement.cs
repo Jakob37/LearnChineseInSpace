@@ -27,6 +27,15 @@ public class Movement : MonoBehaviour {
     public YDir y;
     public Speed speed;
 
+    public bool is_step;
+
+    public void Step() {
+        float delta_x = (int)x * (int)speed;
+        float delta_y = (int)y * (int)speed;
+        Vector3 pos = gameObject.transform.position;
+        gameObject.transform.position = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
+    }
+
     public void ResetMovement() {
         x = 0;
         y = 0;
@@ -50,10 +59,11 @@ public class Movement : MonoBehaviour {
 
     void Update() {
 
-        float delta_x = (int)x * (int)speed * Time.deltaTime;
-        float delta_y = (int)y * (int)speed * Time.deltaTime;
-
-        Vector3 pos = gameObject.transform.position;
-        gameObject.transform.position = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
+        if (!is_step) {
+            float delta_x = (int)x * (int)speed * Time.deltaTime;
+            float delta_y = (int)y * (int)speed * Time.deltaTime;
+            Vector3 pos = gameObject.transform.position;
+            gameObject.transform.position = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
+        }
     }
 }

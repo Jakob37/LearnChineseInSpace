@@ -29,6 +29,7 @@ public class Grids : MonoBehaviour {
     private GameSettings game_settings;
 
     private StatusText status_text;
+    private EventManager event_manager;
 
     private int available_currency;
 
@@ -37,6 +38,7 @@ public class Grids : MonoBehaviour {
         active_chinese_entries = new List<ChineseEntry>();
         status_text = GameObject.FindObjectOfType<StatusText>();
         player = FindObjectOfType<Player>();
+        event_manager = FindObjectOfType<EventManager>();
 
         game_settings = GameObject.FindObjectOfType<GameSettings>();
         if (game_settings != null) {
@@ -125,6 +127,8 @@ public class Grids : MonoBehaviour {
             available_currency -= 1;
             available_currency = Math.Max(available_currency, 0);
         }
+
+        event_manager.TrigStep();
     }
 
     void Update() {

@@ -16,7 +16,7 @@ public class GridScript : MonoBehaviour {
 
     public GridLanguage cell_type;
 
-    private List<Cell> mCells = new List<Cell>();
+    private List<Cell> mCells;
     public int font_size;
     private Grids parent;
 
@@ -26,6 +26,10 @@ public class GridScript : MonoBehaviour {
     public Cell ActiveCell { get { return active_cell; } }
 
     public float cellHeight;
+
+    void Awake() {
+        mCells = new List<Cell>();
+    }
 
     public void ChildActivated(Cell cell) {
         active_cell = cell;

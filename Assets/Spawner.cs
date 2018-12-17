@@ -9,15 +9,27 @@ public class Spawner : EnemyParent {
     public float spawn_interval;
     private float current_spawn_time;
 
+    public bool is_step;
+
+    public void TrigStep() {
+        current_spawn_time += 2;
+        if (current_spawn_time > spawn_interval) {
+            Spawn();
+            current_spawn_time = 0;
+        }
+    }
+
     void Awake() {
         gos = FindObjectOfType<GameObjects>();
     }
 
     void Update() {
-        current_spawn_time += Time.deltaTime;
-        if (current_spawn_time > spawn_interval) {
-            Spawn();
-            current_spawn_time = 0;
+        if (!is_step) {
+            current_spawn_time += Time.deltaTime;
+            if (current_spawn_time > spawn_interval) {
+                Spawn();
+                current_spawn_time = 0;
+            }
         }
     }
 
