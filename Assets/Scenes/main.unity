@@ -273,12 +273,12 @@ PrefabInstance:
     - target: {fileID: 224614581630667666, guid: e3c9c925c1a4f554cb1daec56f1664df,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -297
+      value: -102
       objectReference: {fileID: 0}
     - target: {fileID: 224614581630667666, guid: e3c9c925c1a4f554cb1daec56f1664df,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 519
+      value: 680
       objectReference: {fileID: 0}
     - target: {fileID: 224614581630667666, guid: e3c9c925c1a4f554cb1daec56f1664df,
         type: 3}
@@ -834,7 +834,7 @@ PrefabInstance:
     - target: {fileID: 224774545539983144, guid: 0561b43b2e6858c44a56a53fdbde6b21,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -344.00003
+      value: -719
       objectReference: {fileID: 0}
     - target: {fileID: 224774545539983144, guid: 0561b43b2e6858c44a56a53fdbde6b21,
         type: 3}
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76db54d0bf56504ca3522bb501748f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid_sizes: 8
+  grid_sizes: 6
   total_words: 1
   character_grid: {fileID: 229207127}
   pinying_grid: {fileID: 1135827158}
@@ -1351,7 +1351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -554.9, y: 175}
+  m_AnchoredPosition: {x: -207, y: 526}
   m_SizeDelta: {x: 423.5, y: 496.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268407039

@@ -10,8 +10,10 @@ public class Spawner : EnemyParent {
     private float current_spawn_time;
 
     public bool is_step;
+    public bool is_disabled;
 
     public void TrigStep() {
+
         current_spawn_time += 2;
         if (current_spawn_time > spawn_interval) {
             Spawn();
