@@ -1,120 +1,244 @@
-一	Yī 	One
-一些	Yīxiē 	Some
-一定要	Yīdìng yào 	Must
-所比	Suǒ bǐ 	Compared
-三	Sān 	Three
-下	Xià 	Under
-不停	Bù tíng 	Nonstop
-为	Wèi 	For
-于是	Yúshì 	Then
-些	Xiē 	Some
-砖头	Zhuāntóu 	Brick
-稻	Dào 	Rice
-从前	Cóngqián 	Once upon a time
-从这	Cóng zhè 	From this
-会	Huì 	Meeting
-但是	Dànshì 	But
-住	Zhù 	Live
-停地	Tíng de 	Stop
-关上门	Guān shàngmén 	Close the door
-再也	Zài yě 	Again
-出发	Chūfā 	Set off
-别	Bié 	Do not
-前	Qián 	Before
-办法	Bànfǎ 	Method
-去	Qù 	Go with
-只	Zhǐ 	Only
-可以	Kěyǐ 	Can
-吃掉	Chī diào 	Eat
-吹	Chuī 	Blow
-吹倒	Chuī dào 	Blow down
-吹呀	Chuī ya 	Blow it
-吹气	Chuī qì 	Blowing
-和	Hé 	With
-因为它是	Yīnwèi tā shì 	Because it is
-在	Zài 	In
-地	De 	Ground
-多了	Duōle 	Too much
-大	Dà 	Big
-大灰狼	Dà huī láng 	Big bad wolf
-子前	Zi qián 	Before
-对	Duì 	Correct
-将盖	Jiāng gài 	Cover (2)
-小心	Xiǎoxīn 	Be careful
-就	Jiù 	On
-就用	Jiù yòng 	Then apply
-属于	Shǔyú 	Belong
-已经	Yǐjīng 	Already
-建造	Jiànzào 	Put up
-开始	Kāishǐ 	Start
-往	Wǎng 	To
-往前走	Wǎng qián zǒu 	Go forward
-很快	Hěn kuài 	Quickly
-很长	Hěn zhǎng 	Very long
-必须	Bìxū 	Have to
-想	Xiǎng 	Think
-感到	Gǎndào 	Feel
-房子	Fángzi 	House
-所	Suǒ 	Place
-所比	Suǒ bǐ 	Compared
-所砖	Suǒ zhuān 	Brick
-所草	Suǒ cǎo 	Grass
-扛	Káng 	Carry
-把	Bǎ 	Hold
-抓住	Zhuā zhù 	Grab
-拉着	Lāzhe 	Pull
-敲着门	Qiāozhe mén 	Knocking on the door
-时	Shí 	Time
-时候	Shíhòu 	Time
-木	Mù 	Wood
-木房	Mù fáng 	Wooden house
-木材	Mùcái 	Timber
-条路	Tiáo lù 	Road
-来	Lái 	Come
-来到	Lái dào 	Come
-没办法	Méi bànfǎ 	No way
-沿着	Yánzhe 	Along
-满意	Mǎnyì 	Satisfaction
-然后	Ránhòu 	Then
-独自	Dúzì 	Alone
-猪	Zhū 	Pig
-现在	Xiànzài 	Just now
-生活	Shēnghuó 	Life
-用	Yòng 	Use
-盖	Gài 	Cover
-盖了	Gàile 	Covered
-看到	Kàn dào 	See
-砖头	Zhuāntóu 	Brick
-稀烂	Xīlàn 	Completely mashed
-稻草	Dàocǎo 	Straw
-第二天	Dì èr tiān 	The next day
-结实	Jiēshi 	Solid
-给	Gěi 	Give
-继续	Jìxù 	Carry on
-背着	Bèizhe 	Carrying
-能	Néng 	Can
-自己	Zìjǐ 	Own
-草	Cǎo 	Grass
-让我进来	Ràng wǒ jìnlái 	Let me in
-说	Shuō 	Say
-请问	Qǐngwèn 	Excuse me
-走	Zǒu 	Go
-赶忙	Gǎnmáng 	Quickly
-跑进	Pǎo jìn 	Run into
-路	Lù 	Road
-迅速	Xùnsù 	Rapid
-这些	Zhèxiē 	These ones
-这所	Zhè suǒ 	This
-条	Tiáo 	Strip
-这里	Zhèlǐ 	Here
-进来	Jìnlái 	Come in
-遇到	Yù dào 	Encounter
-道路	Dàolù 	The way
-遥远	Yáoyuǎn 	Distant
-那	Nà 	That
-都结实	Dōu jiēshi 	Strong
-长到	Zhǎng dào 	Long
-长大	Zhǎng dà 	Grow up
-问道	Wèn dào 	Ask
-间才	Jiān cái 	Only
-非常	Fēicháng 	Very much
+一	yī 	one
+一些	yīxiē 	some
+一定要	yīdìng yào 	must
+一路	yīlù 	all the way
+顿	dùn 	pause
+三	sān 	three
+上玩	shàng wán 	game on
+下	xià 	under
+不停	bù tíng 	nonstop
+东西	dōngxī 	thing
+为	wèi 	for
+也不	yě bù 	nor
+也没说	yě méi shuō 	did not say
+买	mǎi 	buy
+于是	yúshì 	then
+些	xiē 	some
+仍然	réngrán 	still
+从	cóng 	from
+从前	cóngqián 	unce upon a time
+从此过	cóngcǐguò 	since then
+从这	cóng zhè 	from this
+会	huì 	meeting
+但是	dànshì 	but
+住	zhù 	live
+候敲	hòu qiāo 	knock
+候赶	hòu gǎn 	waiting
+假装	jiǎzhuāng 	pretend
+假装不	jiǎzhuāng bù 	pretending not to
+做	zuò 	do
+做好	zuò hǎo 	do well
+停地	tíng de 	stop
+先生	xiānshēng 	mr
+关上门	guān shàngmén 	close the door
+再也	zài yě 	again
+准备	zhǔnbèi 	ready
+出发	chūfā 	set off
+别	bié 	do not
+到房	dào fáng 	to the house
+前	qián 	before
+办法	bànfǎ 	method
+去	qù 	go with
+只	zhǐ	only
+只是	zhǐshì	just
+可以	kěyǐ	can
+史密	shǐ mì	smith
+吃掉	chī diào	eat
+听到	tīng dào	hear
+吹	chuī	blow
+吹倒	chuī dào	blow down
+吹呀	chuī ya	blow it
+吹气	chuī qì	blowing
+和	hé	with
+哈哈	hāhā	haha
+响门	xiǎng mén	ring
+器	qì	device
+器撞倒	qì zhuàng dǎo	knocked down
+回家	huí jiā	come back home
+因为它是	yīnwèi tā shì	because it is
+在	zài	in
+地	de	ground
+多了	duōle	too much
+大	dà	big
+大灰狼	dà huī láng	big wolf
+太好了	tài hǎole	great
+太美味	tài měiwèi	too delicious
+头	tóu	head
+奶油	nǎiyóu	cream
+好吃	hào chī	good to eat
+如果	rúguǒ	in case
+子前	zi qián	before
+它	tā	it
+害怕	hàipà	scared
+家赶	jiā gǎn	home
+家里	jiālǐ	home
+对	duì	correct
+将	jiāng	will
+将带	jiāng dài	will bring
+将盖	jiāng gài	cover
+小心	xiǎoxīn	be careful
+尝尝	cháng cháng	taste
+就	jiù	on
+就出发	jiù chūfā	just set off
+就带	jiù dài	take
+就拔	jiù bá	pull out
+就用	jiù yòng	then apply
+屋顶	wūdǐng	roof
+属于	shǔyú	belong
+山	shān	mountain
+巨大	jùdà	huge
+已经	yǐjīng	already
+已经过了	yǐjīngguòle	already passed
+布朗	bùlǎng	brown
+带着	dàizhe	with
+并	bìng	and
+幸福	xìngfú	happy
+建造	jiànzào	put up
+开始	kāishǐ	start
+开心	kāixīn	happy
+当	dāng	when
+往	wǎng	to
+往前走	wǎng qián zǒu	go forward
+很快	hěn kuài	quickly
+很长	hěn zhǎng	very long
+必须	bìxū	have to
+快	kuài	fast
+想	xiǎng	miss you
+感到	gǎndào	feel
+成为	chéngwéi	become
+战胜	zhànshèng	victory
+房子	fángzi	house
+房门	fáng mén	door
+所	suǒ	place
+所比	suǒ bǐ	compared
+所砖	suǒ zhuān	brick
+所草	suǒ cǎo	grass
+才智	cáizhì	talent
+扔	rēng	throw
+扛	káng	carry
+找到了	zhǎodàole	found it
+把	bǎ	put
+抓住	zhuā zhù	grab
+拉着	lāzhe	pull
+拔	bá	pull
+拔了	bále	pulled out
+捉住	zhuō zhù	catch
+掀起	xiānqǐ	set off
+搅拌器	jiǎobàn qì	blender
+摘	zhāi	pick
+撞倒	zhuàng dǎo	run down
+敲响	qiāo xiǎng	ringing
+敲着门	qiāozhe mén	knocking on the door
+斯	sī	s
+旋转木马	xuánzhuǎn mùmǎ	carousel
+早上	zǎoshang	morning
+时	shí	time
+时候	shíhòu	time
+昨天	zuótiān	yesterday
+朋友	péngyǒu	friend
+朝山	cháoshān	mountain
+木	mù	wood
+木房	mù fáng	wooden house
+木材	mùcái	wood
+木桶	mù tǒng	wooden barrel
+条	tiáo	article
+条路	tiáo lù	road
+来	lái	come
+来到	lái dào	come
+来将	lái jiāng	come
+来敲	lái qiāo	come knock
+来时候	lái shíhòu	when
+极	jí	pole
+样死	yàng sǐ	dead
+栽进	zāi jìn	planting
+棵	kē	tree
+正在树上	zhèngzài shù shàng	on the tree
+水花	shuǐhuā	water flower
+没办法	méi bànfǎ	no way
+沿着	yánzhe	along
+溅起	jiàn qǐ	splash
+滚	gǔn	roll
+滚到	gǔn dào	roll to
+滚啊滚	gǔn a gǔn	rolling
+满意	mǎnyì	satisfaction
+满满	mǎn mǎn	full
+炉子	lúzǐ	stove
+烟囱	yāncōng	chimney
+烧开	shāo kāi	boil
+然后	ránhòu	then
+爬	pá	climb
+独自	dúzì	alone
+猪	zhū	pig
+现在	xiànzài	just now
+生气	shēngqì	pissed off
+生活	shēnghuó	life
+用	yòng	use
+痛	tòng	pain
+盖	gài	cover
+盖了	gàile	covered
+看到	kàn dào	see
+着追	zhe zhuī	chasing
+知道	zhīdào	know
+砖头	zhuāntóu	brick
+秋千	qiūqiān	swing
+稀烂	xīlàn	pulpy
+稻	dào	rice
+稻草	dàocǎo	straw
+第二天	dì èr tiān	the next day
+篮子	lánzi	basket
+紧	jǐn	tight
+红苹果	hóng píngguǒ	red apple
+结实	jiēshi	solid
+给	gěi	give
+继续	jìxù	carry on
+美味	měiwèi	delicious
+美餐	měicān	meal
+聪明	cōngmíng	clever
+背着	bèizhe	carrying
+能	néng	can
+自己	zìjǐ	own
+苹果	píngguǒ	apple
+苹果树	píngguǒ shù	apple tree
+草	cǎo	grass
+荡	dàng	swing
+菜地	cài dì	vegetable field
+萝卜	luóbo	radish
+让我进来	ràng wǒ jìnlái	let me in
+说	shuō	say
+请问	qǐngwèn	excuse me
+走	zǒu	go
+走来	zǒu lái	come
+赶回	gǎn huí	rush back
+赶忙	gǎnmáng	quickly
+越	yuè	more
+跑	pǎo	run
+跑回	pǎo huí	run back
+跑进	pǎo jìn	run into
+路	lù	road
+跳出来	tiào chūlái	jump out
+跳进	tiào jìn	jump into
+迅速	xùnsù	rapid
+还	hái	also
+这些	zhèxiē	these ones
+这所	zhè suǒ	this
+这是	zhè shì	this is
+这里	zhèlǐ	here
+进来	jìnlái	come in
+远地方忙	yuǎn dìfāng máng	far away
+遇到	yù dào	encounter
+道路	dàolù	the way
+遥远	yáoyuǎn	distant
+那	nà	that
+那么	nàme	then
+那是	nà shì	that is
+那里	nàlǐ	there
+都结实	dōu jiēshi	strong
+钟时	zhōng shí	clock time
+锅	guō	pot
+锅盖	guō gài	pot lid
+长到	zhǎng dào	long
+长大	zhǎng dà	grow up
+问道	wèn dào	ask
+间才	jiān cái	only
+集市	jí shì	market
+非常	fēicháng	very much
