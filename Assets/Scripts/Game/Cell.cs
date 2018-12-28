@@ -90,7 +90,7 @@ public class Cell : MonoBehaviour {
 
     public void ButtonActivated() {
         parent_grid.ChildActivated(this);
-        print("Clicked: " + this.label.text);
+        // print("Clicked: " + this.label.text);
         SetBackgroundActive(true);
     }
 }
