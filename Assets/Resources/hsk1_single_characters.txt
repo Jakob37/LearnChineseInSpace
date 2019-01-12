@@ -1,0 +1,83 @@
+我	wǒ	I, me
+你	nǐ	you
+他	tā	he, him
+她	tā	she, her
+这	zhè ( zhèr)	here, this
+那	nà (nàr)	there, that
+哪	nǎ (nǎr)	where
+谁	shuí	who
+几	jǐ	a few, how many
+一	yī	one
+二	èr	two
+三	sān	three
+四	sì	four
+五	wǔ	five
+六	liù	six
+七	qī	seven
+八	bā	eight
+九	jiǔ	nine
+十	shí	ten
+零	líng	zero
+个	gè	one, a, an
+岁	suì	year
+本	běn	volume
+些	xiē	some
+块	kuài	piece
+不	bù	no
+没	méi	no
+很	hěn	quite, very
+太	tài	too
+都	dōu	all
+和	hé	and
+在	zài	in, at
+的	de	possessive particle
+了	le	Progression / past particle
+吗	ma	question particle
+呢	ne	question particle
+喂	wèi	hello
+家	jiā	home
+上	shàng	up
+下	xià	down
+里	lǐmiàn	inside
+年	nián	year
+月	yuè	month
+日	rì	day
+点	diǎn	dot, spot
+水	shuǐ	water
+菜	cài	vegetable
+茶	chá	tea
+钱	qián	money
+猫	māo	cat
+狗	gǒu	dog
+人	rén	person
+书	shū	book
+字	zì	character
+请	qǐng	please
+是	shì	be (am, is, are)
+有	yǒu	have
+看	kàn	look
+听	tīng	listen
+读	dú	read
+写	xiě	write
+叫	jiào	call
+来	lái	come
+回	huí	return
+去	qù	go
+吃	chī	eat
+喝	hē	drink
+做	zuò	do
+买	mǎi	buy
+开	kāi	open
+坐	zuò	sit
+住	zhù	live
+爱	ài	love
+想	xiǎng	want
+会	huì	can
+能	néng	can, be able to
+好	hǎo	good
+大	dà	big
+小	xiǎo	small
+多	duō	many, much
+少	shǎo	few, little
+冷	lěng	cold
+热	rè	hot

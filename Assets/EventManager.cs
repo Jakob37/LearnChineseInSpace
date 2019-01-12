@@ -2,7 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour {
+public class EventController : MonoBehaviour {
+
+    public int total_words;
+    private List<ChineseEntry> entries;
+
+    void Awake() {
+        entries = new List<ChineseEntry>();
+    }
+
+    void Start() {
+
+    }
+
+    private void SetupGame() {
+
+    }
 
     public void TrigStep() {
 

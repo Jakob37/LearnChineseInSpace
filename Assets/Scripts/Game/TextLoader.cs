@@ -11,20 +11,22 @@ public enum TextSource {
     HalfThreePigs
 }
 
-public class AnkiParser : MonoBehaviour {
+public class TextLoader : MonoBehaviour {
 
-    private static List<String[]> word_entries;
-    private static List<ChineseEntry> chinese_entries;
+    private List<String[]> word_entries;
+    private List<ChineseEntry> chinese_entries;
 
-    public static TextSource text_source = TextSource.HalfThreePigs;
+    public Boolean use_anki_format;
 
-    public static List<ChineseEntry> ParseChineseEntries() {
+    // public static TextSource text_source = TextSource.HalfThreePigs;
+
+    public List<ChineseEntry> ParseChineseEntries(string text_source) {
 
         word_entries = new List<String[]>();
         chinese_entries = new List<ChineseEntry>();
 
-        if (text_source == TextSource.OldAnki) {
-            word_entries = ParseStoryEntities("glossary");
+        if (use_anki_format) {
+            word_entries = ParseStoryEntities(text_source);
 
             foreach (String[] word_entry in word_entries) {
 
@@ -39,8 +41,8 @@ public class AnkiParser : MonoBehaviour {
 
             }
         }
-        else if (text_source == TextSource.HalfThreePigs) {
-            word_entries = Utils.ParseTextToSplitList("threepigs", "\t", expected_length : 3, enforce_expected_length : true);
+        else {
+            word_entries = Utils.ParseTextToSplitList(text_source, "\t", expected_length : 3, enforce_expected_length : true);
             foreach (String[] word_entry in word_entries) {
                 String raw_chinese_char = word_entry[0];
                 String raw_pinying = word_entry[1];
@@ -51,13 +53,10 @@ public class AnkiParser : MonoBehaviour {
                 chinese_entries.Add(entry);
             }
         }
-        else {
-            throw new Exception("Unknown text source: " + text_source);
-        }
         return chinese_entries;
     }
 
-    private static List<String[]> ParseStoryEntities(string resource_name, string splitter = "\t") {
+    private List<String[]> ParseStoryEntities(string resource_name, string splitter = "\t") {
 
         List<string[]> results = Utils.ParseTextToSplitList(resource_name, splitter);
         string characters = results[0][0];

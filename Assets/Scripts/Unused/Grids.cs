@@ -14,6 +14,7 @@ public class Grids : MonoBehaviour {
     public GridScript character_grid;
     public GridScript pinying_grid;
     public GridScript english_grid;
+    public string text_source;
 
     public bool load_settings;
 
@@ -29,16 +30,19 @@ public class Grids : MonoBehaviour {
     private GameSettings game_settings;
 
     private StatusText status_text;
-    private EventManager event_manager;
+    private EventController event_manager;
 
     private int available_currency;
+
+    private TextLoader text_loader;
 
     void Awake() {
 
         active_chinese_entries = new List<ChineseEntry>();
         status_text = GameObject.FindObjectOfType<StatusText>();
         player = FindObjectOfType<Player>();
-        event_manager = FindObjectOfType<EventManager>();
+        event_manager = FindObjectOfType<EventController>();
+        text_loader = FindObjectOfType<TextLoader>();
 
         game_settings = GameObject.FindObjectOfType<GameSettings>();
         if (game_settings != null) {
@@ -53,7 +57,7 @@ public class Grids : MonoBehaviour {
     void Start() {
 
         start_time = Time.time;
-        all_words = Shuffle(AnkiParser.ParseChineseEntries());
+        all_words = Shuffle(text_loader.ParseChineseEntries(text_source));
         SetupWords();
     }
 
