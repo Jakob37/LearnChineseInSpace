@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CurrCharText : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    private Text my_text;
+
+    void Awake() {
+        my_text = GetComponent<Text>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void SetText(string new_text) {
+        my_text.text = new_text;
     }
 
 }

@@ -16,7 +16,8 @@ public class Character : MonoBehaviour
         print("Activated");
     }
 
-    void OnMouseOver() {
+    void OnMouseDown() {
         print("Object clicked: " + my_text);
+        curr_char_text.SetText("Assigned text: " + my_text);
     }
 }
