@@ -1,5 +1,4 @@
-﻿using Assets.Utils;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -42,7 +41,7 @@ public class TextLoader : MonoBehaviour {
             }
         }
         else {
-            word_entries = Utils.ParseTextToSplitList(text_source, "\t", expected_length : 3, enforce_expected_length : true);
+            word_entries = MyUtils.ParseTextToSplitList(text_source, "\t", expected_length : 3, enforce_expected_length : true);
             foreach (String[] word_entry in word_entries) {
                 String raw_chinese_char = word_entry[0];
                 String raw_pinying = word_entry[1];

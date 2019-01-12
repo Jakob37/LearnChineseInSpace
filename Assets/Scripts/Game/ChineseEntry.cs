@@ -17,5 +17,4 @@ public class ChineseEntry {
     void Start() {
 
     }
-
 }

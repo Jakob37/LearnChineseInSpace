@@ -8,6 +8,7 @@ public class EventControllerMain : MonoBehaviour {
     public string text_source;
 
     private List<ChineseEntry> entries;
+    private Dictionary<string, ChineseEntry> entry_map;
 
     private DecisionGrid decision_grid;
     private DecisionButton[] decision_buttons;
@@ -16,6 +17,7 @@ public class EventControllerMain : MonoBehaviour {
 
     void Awake() {
 
+        entry_map = new Dictionary<string, ChineseEntry>();
         text_loader = FindObjectOfType<TextLoader>();
         decision_grid = FindObjectOfType<DecisionGrid>();
         // decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
@@ -25,6 +27,8 @@ public class EventControllerMain : MonoBehaviour {
     void Start() {
         decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
         nbr_choices = decision_buttons.Length;
+
+        // Assets.Utils.Utils.Shuffle(entries);
 
         for (var i = 0; i < decision_buttons.Length; i++) {
             print("Content of button: " + decision_buttons[i].GetText());
