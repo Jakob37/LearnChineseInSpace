@@ -9,6 +9,7 @@ public class EventControllerMain : MonoBehaviour {
 
     private List<ChineseEntry> entries;
     private Dictionary<string, ChineseEntry> entry_map;
+    private Character current_character;
 
     private DecisionGrid decision_grid;
     private DecisionButton[] decision_buttons;
@@ -20,26 +21,23 @@ public class EventControllerMain : MonoBehaviour {
         entry_map = new Dictionary<string, ChineseEntry>();
         text_loader = FindObjectOfType<TextLoader>();
         decision_grid = FindObjectOfType<DecisionGrid>();
-        // decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
-
     }
 
     void Start() {
         decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
         nbr_choices = decision_buttons.Length;
-
-        for (var i = 0; i < decision_buttons.Length; i++) {
-            print("Content of button: " + decision_buttons[i].GetText());
-        }
-
-        print("Found " + nbr_choices + " decision buttons");
         List<ChineseEntry> all_entries = text_loader.ParseChineseEntries(text_source);
-        print("Loaded " + all_entries.Count + " entries");
         entries = all_entries;
-        AssignEntry();
+        ClearDecisionButtons();
     }
 
-    private void AssignEntry(ChineseEntry picked=null) {
+    private void ClearDecisionButtons() {
+        for (var j = 0; j < nbr_choices; j++) {
+            decision_buttons[j].SetText("-");
+        }
+    }
+
+    private void AssignDecisionButtons(ChineseEntry picked=null) {
 
         List<ChineseEntry> curr_entries = new List<ChineseEntry>();
 
@@ -64,8 +62,20 @@ public class EventControllerMain : MonoBehaviour {
         }
     }
 
-    public void CharacterTriggered(ChineseEntry character) {
-        AssignEntry(character);
+    public void CharacterTriggered(Character character) {
+        AssignDecisionButtons(character.ChineseEntry);
+        current_character = character;
+    }
+
+    public void DecisionButtonTriggered(DecisionButton button) {
+        if (button.GetText() == current_character.english_meaning) {
+            print("Correct guess!");
+            Destroy(current_character.gameObject);
+            ClearDecisionButtons();
+        }
+        else {
+            print("Incorrect guess!");
+        }
     }
 
     public void TrigStep() {

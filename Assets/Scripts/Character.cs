@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
 
     private EventControllerMain event_controller;
 
-    private ChineseEntry ChineseEntry {
+    public ChineseEntry ChineseEntry {
         get {
             return new ChineseEntry(this.chinese_character, this.pinjing, this.english_meaning);
         }
@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
     void OnMouseDown() {
         print("Object clicked: " + chinese_character);
         curr_char_text.SetText("Assigned text: " + chinese_character);
-        event_controller.CharacterTriggered(this.ChineseEntry);
+        event_controller.CharacterTriggered(this);
     }
 
 
