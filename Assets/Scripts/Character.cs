@@ -35,7 +35,7 @@ public class Character : MonoBehaviour
 
     void OnMouseDown() {
         print("Object clicked: " + chinese_character);
-        curr_char_text.SetText("Assigned text: " + chinese_character);
+        curr_char_text.SetText(chinese_character + " (" + pinjing + ")");
         event_controller.CharacterTriggered(this);
     }
 
