@@ -13,9 +13,18 @@ public class Character : MonoBehaviour
     public string pinjing;
     public string tone;
 
+    private EventControllerMain event_controller;
+
+    private ChineseEntry ChineseEntry {
+        get {
+            return new ChineseEntry(this.chinese_character, this.pinjing, this.english_meaning);
+        }
+    }
+
     void Awake() {
         my_text_obj = GetComponentInChildren<Text>();
         curr_char_text = FindObjectOfType<CurrCharText>();
+        event_controller = FindObjectOfType<EventControllerMain>();
     }
 
     void Start() {
@@ -27,5 +36,8 @@ public class Character : MonoBehaviour
     void OnMouseDown() {
         print("Object clicked: " + chinese_character);
         curr_char_text.SetText("Assigned text: " + chinese_character);
+        event_controller.CharacterTriggered(this.ChineseEntry);
     }
+
+
 }

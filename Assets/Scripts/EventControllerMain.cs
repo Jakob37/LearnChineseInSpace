@@ -28,8 +28,6 @@ public class EventControllerMain : MonoBehaviour {
         decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
         nbr_choices = decision_buttons.Length;
 
-        // Assets.Utils.Utils.Shuffle(entries);
-
         for (var i = 0; i < decision_buttons.Length; i++) {
             print("Content of button: " + decision_buttons[i].GetText());
         }
@@ -38,22 +36,36 @@ public class EventControllerMain : MonoBehaviour {
         List<ChineseEntry> all_entries = text_loader.ParseChineseEntries(text_source);
         print("Loaded " + all_entries.Count + " entries");
         entries = all_entries;
-            //SetupGame();
         AssignEntry();
     }
 
-    // private void SetupGame() {
-    // 
-    //     for (var i = 0; i < )
-    // 
-    // }
+    private void AssignEntry(ChineseEntry picked=null) {
 
-    private void AssignEntry() {
+        List<ChineseEntry> curr_entries = new List<ChineseEntry>();
 
-        for (var i = 0; i < nbr_choices; i++) {
-            ChineseEntry target_entry = entries[i];
-            decision_buttons[i].SetText(target_entry.english);
+        if (picked != null) {
+            curr_entries.Add(picked);
         }
+
+        List<ChineseEntry> shuffled_entries = MyUtils.Shuffle(entries);
+
+        int i = 0;
+        while (curr_entries.Count < nbr_choices) {
+            ChineseEntry choice_entry = shuffled_entries[i];
+            curr_entries.Add(choice_entry);
+            i++;
+        }
+
+        curr_entries = MyUtils.Shuffle(curr_entries);
+
+        for (var j = 0; j < nbr_choices; j++) {
+            ChineseEntry entry = curr_entries[j];
+            decision_buttons[j].SetText(entry.english);
+        }
+    }
+
+    public void CharacterTriggered(ChineseEntry character) {
+        AssignEntry(character);
     }
 
     public void TrigStep() {

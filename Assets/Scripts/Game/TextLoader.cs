@@ -57,7 +57,7 @@ public class TextLoader : MonoBehaviour {
 
     private List<String[]> ParseStoryEntities(string resource_name, string splitter = "\t") {
 
-        List<string[]> results = Utils.ParseTextToSplitList(resource_name, splitter);
+        List<string[]> results = MyUtils.ParseTextToSplitList(resource_name, splitter);
         string characters = results[0][0];
         characters = Regex.Replace(characters, "<.*?>", "");
 
