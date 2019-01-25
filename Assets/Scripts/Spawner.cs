@@ -12,7 +12,8 @@ public class Spawner : MonoBehaviour
         var x_pos = Random.Range(-screen_size / 2, screen_size / 2);
         // new_object.gameObject.transform.parent = gameObject.transform;
         new_object.gameObject.transform.position = new Vector2(gameObject.transform.position.x + x_pos, gameObject.transform.position.y);
-        new_object.gameObject.transform.localScale = new Vector2(0.5f, 0.5f);
+        float scale_size = 1;
+        new_object.gameObject.transform.localScale = new Vector2(scale_size, scale_size);
         var obj_char = new_object.GetComponent<Character>();
         obj_char.Initialize();
     }
