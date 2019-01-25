@@ -13,6 +13,10 @@ public class Character : MonoBehaviour
     public string pinjing;
     public string tone;
 
+    public float step_length;
+
+    private Transform transform;
+
     private EventControllerMain event_controller;
 
     public ChineseEntry ChineseEntry {
@@ -25,12 +29,26 @@ public class Character : MonoBehaviour
         my_text_obj = GetComponentInChildren<Text>();
         curr_char_text = FindObjectOfType<CurrCharText>();
         event_controller = FindObjectOfType<EventControllerMain>();
+        transform = gameObject.transform;
+    }
+
+    public void Initialize() {
+        var entry = event_controller.RequestEntry();
+        chinese_character = entry.character;
+        english_meaning = entry.english;
+        pinjing = entry.pinying;
+        my_text_obj.text = chinese_character;
+        // chinese_character = "书";
     }
 
     void Start() {
 
         my_text_obj.text = chinese_character;
         print("Activated");
+    }
+
+    public void Step() {
+        transform.position = new Vector2(transform.position.x, transform.position.y - step_length);
     }
 
     void OnMouseDown() {

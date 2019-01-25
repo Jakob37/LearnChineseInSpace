@@ -15,6 +15,16 @@ public class EventControllerMain : MonoBehaviour {
     private DecisionButton[] decision_buttons;
     private int nbr_choices;
     private TextLoader text_loader;
+    private bool ButtonsAssigned {
+        get {
+            for (var j = 0; j < nbr_choices; j++) {
+                if (decision_buttons[j].GetText() != "-") {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 
     void Awake() {
 
@@ -31,6 +41,12 @@ public class EventControllerMain : MonoBehaviour {
         ClearDecisionButtons();
     }
 
+    public ChineseEntry RequestEntry() {
+        int rand_val = Random.Range(0, 10);
+        print("Random val: " + rand_val);
+        return entries[rand_val];
+    }
+
     private void ClearDecisionButtons() {
         for (var j = 0; j < nbr_choices; j++) {
             decision_buttons[j].SetText("-");
@@ -40,13 +56,11 @@ public class EventControllerMain : MonoBehaviour {
     private void AssignDecisionButtons(ChineseEntry picked=null) {
 
         List<ChineseEntry> curr_entries = new List<ChineseEntry>();
-
         if (picked != null) {
             curr_entries.Add(picked);
         }
 
         List<ChineseEntry> shuffled_entries = MyUtils.Shuffle(entries);
-
         int i = 0;
         while (curr_entries.Count < nbr_choices) {
             ChineseEntry choice_entry = shuffled_entries[i];
@@ -63,28 +77,34 @@ public class EventControllerMain : MonoBehaviour {
     }
 
     public void CharacterTriggered(Character character) {
+        if (ButtonsAssigned) {
+            // Trig step when buttons assigned
+            TrigStep();
+        }
         AssignDecisionButtons(character.ChineseEntry);
         current_character = character;
     }
 
     public void DecisionButtonTriggered(DecisionButton button) {
+
         if (button.GetText() == current_character.english_meaning) {
             print("Correct guess!");
             Destroy(current_character.gameObject);
-            ClearDecisionButtons();
         }
         else {
             print("Incorrect guess!");
         }
+        ClearDecisionButtons();
+        TrigStep();
     }
 
     public void TrigStep() {
 
         print("Step trigged!");
-        BasicEnemy[] enemies = FindObjectsOfType<BasicEnemy>();
-        foreach (BasicEnemy enemy in enemies) {
-            Movement enemy_movement = enemy.transform.gameObject.GetComponent<Movement>();
-            enemy_movement.Step();
+        Character[] enemies = FindObjectsOfType<Character>();
+        foreach (Character enemy in enemies) {
+            // Movement enemy_movement = enemy.transform.gameObject.GetComponent<Movement>();
+            enemy.Step();
         }
 
         Spawner[] spawners = FindObjectsOfType<Spawner>();
