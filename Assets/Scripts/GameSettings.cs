@@ -13,6 +13,14 @@ public class GameSettings : MonoBehaviour {
         }
     }
 
+    private List<string> selected_radicals;
+    public List<string> SelectedRadicals {
+        get { return selected_radicals; }
+        set {
+            selected_radicals = value;
+        }
+    }
+
     void Awake() {
         DontDestroyOnLoad(gameObject);
     }

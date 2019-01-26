@@ -58,6 +58,11 @@ public class EventControllerMain : MonoBehaviour {
         for (var i = 0; i < start_steps; i++) {
             TrigStep();
         }
+
+
+        foreach (string radical in game_settings.SelectedRadicals) {
+            print("Selected radical: " + radical);
+        }
     }
 
     void Update() {
