@@ -7,7 +7,7 @@ public class StatusText : MonoBehaviour {
 
     private Text my_text;
 
-    void Start() {
+    void Awake() {
         my_text = GetComponent<Text>();
     }
 

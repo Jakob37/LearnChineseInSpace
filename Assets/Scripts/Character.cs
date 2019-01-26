@@ -34,6 +34,10 @@ public class Character : MonoBehaviour
     private CharacterBackground background;
     private const int penalty_ticks = 3;
 
+    private Color inactive_color = new Color(0.8f, 0.8f, 0.8f);
+    private Color english_color = new Color(1, 0.9f, 0.9f);
+    private Color pinyin_color = new Color(0.9f, 1, 0.9f);
+
     public ChineseEntry ChineseEntry {
         get {
             return new ChineseEntry(this.chinese_character, this.pinyin, this.english_meaning);
@@ -63,18 +67,16 @@ public class Character : MonoBehaviour
     private void AssignColor() {
         Color my_color;
         if (inactive_ticks > 0) {
-            my_color = new Color(0.9f, 0.9f, 0.9f);
+            my_color = inactive_color;
         }
         else {
             if (this.char_type == CharacterType.English) {
-                print("Assigning color");
-                my_color = new Color(1, 0.9f, 0.9f);
+                my_color = english_color;
             }
             else {
-                my_color = new Color(0.9f, 1, 0.9f);
+                my_color = pinyin_color;
             }
         }
-        print("My background: " + background);
         background.SetColor(my_color);
     }
 

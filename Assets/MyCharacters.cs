@@ -10,6 +10,11 @@ public class MyCharacters : MonoBehaviour
     private Dictionary<string, ChineseEntry> study_entries;
     private TextLoader text_loader;
 
+    public int NumberEntries {
+        get {
+            return study_entries.Count;
+        }
+    }
 
     void Awake() {
         study_entries = new Dictionary<string, ChineseEntry>();

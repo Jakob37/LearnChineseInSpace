@@ -13,6 +13,11 @@ public class EventControllerMain : MonoBehaviour {
     private GameSettings game_settings;
     private MyCharacters my_characters;
     private CurrCharText curr_char_text;
+    private StatusText status_text;
+
+    private int iterations;
+    private int correct_choices;
+    private int incorrect_choices;
 
     private bool ButtonsAssigned {
         get {
@@ -31,9 +36,14 @@ public class EventControllerMain : MonoBehaviour {
         game_settings = FindObjectOfType<GameSettings>();
         my_characters = gameObject.GetComponent<MyCharacters>();
         curr_char_text = FindObjectOfType<CurrCharText>();
+        status_text = FindObjectOfType<StatusText>();
     }
 
     void Start() {
+        iterations = 0;
+        correct_choices = 0;
+        incorrect_choices = 0;
+
         decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
         nbr_choices = decision_buttons.Length;
         if (game_settings != null) {
@@ -110,16 +120,20 @@ public class EventControllerMain : MonoBehaviour {
         if (button.GetText() == correct_text) {
             print("Correct guess!");
             Destroy(current_character.gameObject);
+            correct_choices++;
         }
         else {
             print("Incorrect guess!");
             current_character.IncorrectGuess();
+            incorrect_choices++;
         }
         ClearDecisionButtons();
         TrigStep();
     }
 
     public void TrigStep() {
+
+        iterations++;
 
         print("Step trigged!");
         Character[] enemies = FindObjectsOfType<Character>();
@@ -132,5 +146,13 @@ public class EventControllerMain : MonoBehaviour {
         foreach (Spawner spawner in spawners) {
             spawner.TrigStep();
         }
+        SetStatusText();
+    }
+
+    private void SetStatusText() {
+        status_text.SetText("Trig!");
+        int total_entries = my_characters.NumberEntries;
+
+        string status_string = "Total entries: " + total_entries + "\n" + "" + correct_choices + "\n" + "" + incorrect_choices + "\n";
     }
 }
