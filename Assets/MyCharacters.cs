@@ -10,15 +10,36 @@ public class MyCharacters : MonoBehaviour
     private Dictionary<string, ChineseEntry> study_entries;
     private TextLoader text_loader;
 
+    private const int score_threshold = 1;
+
     public int NumberEntries {
         get {
             return study_entries.Count;
         }
     }
 
+    public int NumberActiveEntries {
+        get {
+            return ActiveEntries.Count;
+        }
+    }
+
     void Awake() {
         study_entries = new Dictionary<string, ChineseEntry>();
         text_loader = FindObjectOfType<TextLoader>();
+    }
+
+    private Dictionary<string, ChineseEntry> ActiveEntries {
+        get {
+            Dictionary<string, ChineseEntry> active_entries = new Dictionary<string, ChineseEntry>();
+            foreach (string key in study_entries.Keys) {
+                ChineseEntry entry = study_entries[key];
+                if (entry.GetTotalScore() <= score_threshold) {
+                    active_entries[key] = entry;
+                }
+            }
+            return active_entries;
+        }
     }
 
     public void Initialize(int total_words) {
@@ -41,6 +62,12 @@ public class MyCharacters : MonoBehaviour
         }
     }
 
+    private void RemoveEntry(string character) {
+        print(study_entries.Keys);
+        study_entries.Remove(character);
+        print(study_entries.Keys);
+    }
+
     public string GuessStats(string character) {
 
         string english_stats = study_entries[character].english_correct_guesses + "/" +
@@ -51,17 +78,17 @@ public class MyCharacters : MonoBehaviour
     }
 
     public ChineseEntry RequestEntry() {
-        int rand_val = Random.Range(0, 10);
-        List<string> study_entry_keys = new List<string>(study_entries.Keys);
-        return study_entries[study_entry_keys[rand_val]];
+        List<string> active_entries_keys = new List<string>(ActiveEntries.Keys);
+        int rand_val = Random.Range(0, active_entries_keys.Count);
+        return study_entries[active_entries_keys[rand_val]];
     }
 
     public List<ChineseEntry> RequestEntries(int count, bool studied_only = true) {
 
         var entries = new List<ChineseEntry>();
         if (studied_only) {
-            List<string> study_entry_keys = new List<string>(study_entries.Keys);
-            var shuffled_keys = MyUtils.Shuffle(study_entry_keys);
+            List<string> active_entries_keys = new List<string>(ActiveEntries.Keys);
+            var shuffled_keys = MyUtils.Shuffle(active_entries_keys);
             for (var i = 0; i < count; i++) {
                 var curr_key = shuffled_keys[i];
                 entries.Add(study_entries[curr_key]);

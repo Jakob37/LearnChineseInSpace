@@ -90,7 +90,6 @@ public class EventControllerMain : MonoBehaviour {
 
         curr_entries = MyUtils.Shuffle(curr_entries);
         for (var j = 0; j < nbr_choices; j++) {
-
             ChineseEntry entry = curr_entries[j];
             string button_text = GetEntryText(entry, char_type);
             decision_buttons[j].SetText(button_text);
@@ -135,7 +134,6 @@ public class EventControllerMain : MonoBehaviour {
         }
 
         my_characters.RecordGuess(current_character.chinese_character, correct_guess, current_character.CharType);
-
         ClearDecisionButtons();
         TrigStep();
     }
@@ -159,7 +157,9 @@ public class EventControllerMain : MonoBehaviour {
 
     private void SetStatusText() {
         int total_entries = my_characters.NumberEntries;
-        string status_string = "Total entries: " + total_entries + "\n" + "" + correct_choices + "\n" + "" + incorrect_choices + "\n";
+        int total_active_entries = my_characters.NumberActiveEntries;
+        string status_string = "Total entries: " + total_entries + "/" + total_active_entries + 
+            "\n" + "" + correct_choices + "\n" + "" + incorrect_choices + "\n";
         status_text.SetText(status_string);
     }
 }

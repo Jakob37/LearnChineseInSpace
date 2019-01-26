@@ -31,6 +31,11 @@ public class ChineseEntry {
         }
     }
 
+    public int GetTotalScore() {
+        return english_correct_guesses + pinyin_correct_guesses - 
+            english_incorrect_guesses - pinyin_incorrect_guesses;
+    }
+
     public ChineseEntry(string character, string pinying, string english) {
         this.character = character;
         this.pinying = pinying;
