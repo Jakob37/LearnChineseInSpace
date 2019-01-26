@@ -32,6 +32,7 @@ public class Character : MonoBehaviour
     private MyCharacters my_characters;
     private CharacterType char_type;
     private CharacterBackground background;
+    private const int penalty_ticks = 3;
 
     public ChineseEntry ChineseEntry {
         get {
@@ -73,6 +74,7 @@ public class Character : MonoBehaviour
                 my_color = new Color(0.9f, 1, 0.9f);
             }
         }
+        print("My background: " + background);
         background.SetColor(my_color);
     }
 
@@ -83,22 +85,29 @@ public class Character : MonoBehaviour
 
     public void Step() {
         my_transform.position = new Vector2(my_transform.position.x, my_transform.position.y - step_length);
-    }
-
-    public void TrigStep() {
         if (inactive_ticks > 0) {
             inactive_ticks--;
         }
         AssignColor();
     }
 
+    public void IncorrectGuess() {
+        inactive_ticks = penalty_ticks;
+    }
+
     void OnMouseDown() {
         print("Object clicked: " + chinese_character);
+
+        if (inactive_ticks > 0) {
+            print("Inactive! Ticks left: " + inactive_ticks);
+            return;
+        }
+
         if (char_type == CharacterType.Pinying) {
-            curr_char_text.SetText(chinese_character + " (" + pinyin + ")");
+            curr_char_text.SetText(chinese_character + " (" + english_meaning + ")");
         }
         else if (char_type == CharacterType.English) {
-            curr_char_text.SetText(chinese_character + " (" + english_meaning + ")");
+            curr_char_text.SetText(chinese_character + " (" + pinyin + ")");
         }
         else {
             throw new System.Exception("Unknown char_type: " + char_type);

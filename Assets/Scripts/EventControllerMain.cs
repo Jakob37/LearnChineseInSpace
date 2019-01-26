@@ -113,6 +113,7 @@ public class EventControllerMain : MonoBehaviour {
         }
         else {
             print("Incorrect guess!");
+            current_character.IncorrectGuess();
         }
         ClearDecisionButtons();
         TrigStep();
