@@ -24,6 +24,12 @@ public class MyCharacters : MonoBehaviour
         }
     }
 
+    public List<ChineseEntry> AllEntries {
+        get {
+            return all_entries;
+        }
+    }
+
     void Awake() {
         study_entries = new Dictionary<string, ChineseEntry>();
         text_loader = FindObjectOfType<TextLoader>();
@@ -43,8 +49,10 @@ public class MyCharacters : MonoBehaviour
     }
 
     public void Initialize(int total_words) {
+
         all_entries = text_loader.ParseChineseEntries(text_source);
-        var study_entry_list = MyUtils.Shuffle(all_entries).GetRange(0, total_words);
+        List<ChineseEntry> study_entry_list = MyUtils.Shuffle(all_entries).GetRange(0, total_words);
+
         foreach (ChineseEntry entry in study_entry_list) {
             study_entries.Add(entry.character, entry);
         }

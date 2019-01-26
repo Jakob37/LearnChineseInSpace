@@ -16,6 +16,10 @@ public static class MyUtils {
         for (int i = 0; i < lines.Length; i++) {
 
             string line = lines[i];
+            if (line == "") {
+                continue;
+            }
+
             string[] values = Regex.Split(line, splitter);
 
             if (enforce_expected_length && values.Length != expected_length) {

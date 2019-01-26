@@ -40,14 +40,15 @@ public class TextLoader : MonoBehaviour {
             }
         }
         else {
-            word_entries = MyUtils.ParseTextToSplitList(text_source, "\t", expected_length : 3, enforce_expected_length : true);
+            word_entries = MyUtils.ParseTextToSplitList(text_source, "\t", expected_length : 4, enforce_expected_length : true);
             foreach (String[] word_entry in word_entries) {
                 String raw_chinese_char = word_entry[0];
                 String raw_pinying = word_entry[1];
                 String raw_english = word_entry[2];
+                String radical = word_entry[3];
                 // print(raw_chinese_char + " " + raw_pinying + " " + raw_english);
 
-                ChineseEntry entry = new ChineseEntry(raw_chinese_char, raw_pinying, raw_english);
+                ChineseEntry entry = new ChineseEntry(raw_chinese_char, raw_pinying, raw_english, radical);
                 chinese_entries.Add(entry);
             }
         }

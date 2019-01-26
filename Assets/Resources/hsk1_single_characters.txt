@@ -1,83 +1,83 @@
-我	wǒ	I, me
-你	nǐ	you
-他	tā	he, him
-她	tā	she, her
-这	zhè ( zhèr)	here, this
-那	nà (nàr)	there, that
-哪	nǎ (nǎr)	where
-谁	shuí	who
-几	jǐ	a few, how many
-一	yī	one
-二	èr	two
-三	sān	three
-四	sì	four
-五	wǔ	five
-六	liù	six
-七	qī	seven
-八	bā	eight
-九	jiǔ	nine
-十	shí	ten
-零	líng	zero
-个	gè	one, a, an
-岁	suì	year
-本	běn	volume
-些	xiē	some
-块	kuài	piece
-不	bù	no
-没	méi	no
-很	hěn	quite, very
-太	tài	too
-都	dōu	all
-和	hé	and
-在	zài	in, at
-的	de	possessive particle
-了	le	Progression / past particle
-吗	ma	question particle
-呢	ne	question particle
-喂	wèi	hello
-家	jiā	home
-上	shàng	up
-下	xià	down
-里	lǐmiàn	inside
-年	nián	year
-月	yuè	month
-日	rì	day
-点	diǎn	dot, spot
-水	shuǐ	water
-菜	cài	vegetable
-茶	chá	tea
-钱	qián	money
-猫	māo	cat
-狗	gǒu	dog
-人	rén	person
-书	shū	book
-字	zì	character
-请	qǐng	please
-是	shì	be (am, is, are)
-有	yǒu	have
-看	kàn	look
-听	tīng	listen
-读	dú	read
-写	xiě	write
-叫	jiào	call
-来	lái	come
-回	huí	return
-去	qù	go
-吃	chī	eat
-喝	hē	drink
-做	zuò	do
-买	mǎi	buy
-开	kāi	open
-坐	zuò	sit
-住	zhù	live
-爱	ài	love
-想	xiǎng	want
-会	huì	can
-能	néng	can, be able to
-好	hǎo	good
-大	dà	big
-小	xiǎo	small
-多	duō	many, much
-少	shǎo	few, little
-冷	lěng	cold
-热	rè	hot
+一	yī	one	一
+三	sān	three	一
+七	qī	seven	一
+不	bù	no	一
+上	shàng	up	一
+下	xià	down	一
+个	gè	one, a, an	丨
+九	jiǔ	nine	乙
+书	shū	book	乙
+买	mǎi	buy	乙
+了	le	Progression / past particle	亅
+二	èr	two	二
+五	wǔ	five	二
+些	xiē	some	二
+你	nǐ	you	人
+他	tā	he, him	人
+人	rén	person	人
+做	zuò	do	人
+住	zhù	live	人
+会	huì	can	人
+六	liù	six	八
+八	bā	eight	八
+写	xiě	write	冖
+冷	lěng	cold	冫
+几	jǐ	a few, how many	几
+十	shí	ten	十
+去	qù	go	厶
+哪	nǎ (nǎr)	where	口
+和	hé	and	口
+吗	ma	question particle	口
+呢	ne	question particle	口
+喂	wèi	hello	口
+听	tīng	listen	口
+叫	jiào	call	口
+吃	chī	eat	口
+喝	hē	drink	口
+四	sì	four	囗
+回	huí	return	囗
+块	kuài	piece	土
+在	zài	in, at	土
+坐	zuò	sit	土
+多	duō	many, much	夕
+太	tài	too	大
+大	dà	big	大
+她	tā	she, her	女
+好	hǎo	good	女
+字	zì	character	子
+家	jiā	home	宀
+小	xiǎo	small	小
+少	shǎo	few, little	小
+岁	suì	year	山
+年	nián	year	干
+开	kāi	open	廾
+很	hěn	quite, very	彳
+想	xiǎng	want	心
+我	wǒ	I, me	戈
+日	rì	day	日
+是	shì	be (am, is, are)	日
+月	yuè	month	月
+有	yǒu	have	月
+本	běn	volume	木
+来	lái	come	木
+没	méi	no	水
+水	shuǐ	water	水
+点	diǎn	dot, spot	火
+热	rè	hot	火
+爱	ài	love	爪
+猫	māo	cat	犬
+狗	gǒu	dog	犬
+的	de	possessive particle	白
+看	kàn	look	目
+能	néng	can, be able to	肉
+菜	cài	vegetable	艸
+茶	chá	tea	艸
+谁	shuí	who	讠
+请	qǐng	please	讠
+读	dú	read	讠
+这	zhè ( zhèr)	here, this	辶
+那	nà (nàr)	there, that	邑
+都	dōu	all	邑
+里	lǐ	inside	里
+钱	qián	money	金
+零	líng	zero	雨
