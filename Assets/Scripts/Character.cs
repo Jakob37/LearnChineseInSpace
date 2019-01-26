@@ -16,9 +16,15 @@ public class Character : MonoBehaviour
     public string pinyin;
     public string tone;
     public float step_length;
+    public CharacterType CharType {
+        get {
+            return char_type;
+        }
+    }
 
     // public SpriteRenderer my_renderer;
 
+    private int inactive_ticks;
     private Text my_text_obj;
     private CurrCharText curr_char_text;
     private Transform my_transform;
@@ -40,8 +46,6 @@ public class Character : MonoBehaviour
         my_transform = gameObject.transform;
         my_characters = FindObjectOfType<MyCharacters>();
         background = GetComponentInChildren<CharacterBackground>();
-        // my_renderer = GetComponentInChildren<SpriteRenderer>();
-        // print("My renderer: " + my_renderer);
     }
 
     public void Initialize(CharacterType char_type) {
@@ -52,19 +56,27 @@ public class Character : MonoBehaviour
         my_text_obj.text = chinese_character;
         this.char_type = char_type;
         // chinese_character = "书";
+        AssignColor();
+    }
 
-
-        if (this.char_type == CharacterType.English) {
-            print("Assigning color");
-            background.SetColor(new Color(1, 0.9f, 0.9f));
+    private void AssignColor() {
+        Color my_color;
+        if (inactive_ticks > 0) {
+            my_color = new Color(0.9f, 0.9f, 0.9f);
         }
         else {
-            background.SetColor(new Color(0.9f, 1, 0.9f));
+            if (this.char_type == CharacterType.English) {
+                print("Assigning color");
+                my_color = new Color(1, 0.9f, 0.9f);
+            }
+            else {
+                my_color = new Color(0.9f, 1, 0.9f);
+            }
         }
+        background.SetColor(my_color);
     }
 
     void Start() {
-
         my_text_obj.text = chinese_character;
         print("Activated");
     }
@@ -73,13 +85,23 @@ public class Character : MonoBehaviour
         my_transform.position = new Vector2(my_transform.position.x, my_transform.position.y - step_length);
     }
 
+    public void TrigStep() {
+        if (inactive_ticks > 0) {
+            inactive_ticks--;
+        }
+        AssignColor();
+    }
+
     void OnMouseDown() {
         print("Object clicked: " + chinese_character);
-        if (char_type == CharacterType.English) {
+        if (char_type == CharacterType.Pinying) {
             curr_char_text.SetText(chinese_character + " (" + pinyin + ")");
         }
-        else {
+        else if (char_type == CharacterType.English) {
             curr_char_text.SetText(chinese_character + " (" + english_meaning + ")");
+        }
+        else {
+            throw new System.Exception("Unknown char_type: " + char_type);
         }
         event_controller.CharacterTriggered(this);
     }

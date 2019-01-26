@@ -43,6 +43,10 @@ public class EventControllerMain : MonoBehaviour {
             my_characters.Initialize(10);
         }
         ClearDecisionButtons();
+
+        for (var i = 0; i < 5; i++) {
+            TrigStep();
+        }
     }
 
     private void ClearDecisionButtons() {
@@ -52,7 +56,7 @@ public class EventControllerMain : MonoBehaviour {
         curr_char_text.SetText("-");
     }
 
-    private void AssignDecisionButtons(ChineseEntry picked=null) {
+    private void AssignDecisionButtons(CharacterType char_type, ChineseEntry picked=null) {
 
         List<ChineseEntry> curr_entries = new List<ChineseEntry>();
         if (picked != null) {
@@ -68,11 +72,27 @@ public class EventControllerMain : MonoBehaviour {
         }
 
         curr_entries = MyUtils.Shuffle(curr_entries);
-
         for (var j = 0; j < nbr_choices; j++) {
+
             ChineseEntry entry = curr_entries[j];
-            decision_buttons[j].SetText(entry.english);
+            string button_text = GetEntryText(entry, char_type);
+            decision_buttons[j].SetText(button_text);
         }
+    }
+
+    private string GetEntryText(ChineseEntry entry, CharacterType char_type) {
+        string entry_text;
+        switch (char_type) {
+            case CharacterType.English:
+                entry_text = entry.english;
+                break;
+            case CharacterType.Pinying:
+                entry_text = entry.pinying;
+                break;
+            default:
+                throw new System.Exception("Unknown char_type: " + char_type);
+        }
+        return entry_text;
     }
 
     public void CharacterTriggered(Character character) {
@@ -80,13 +100,14 @@ public class EventControllerMain : MonoBehaviour {
             // Trig step when buttons assigned
             TrigStep();
         }
-        AssignDecisionButtons(character.ChineseEntry);
+        AssignDecisionButtons(character.CharType, character.ChineseEntry);
         current_character = character;
     }
 
     public void DecisionButtonTriggered(DecisionButton button) {
 
-        if (button.GetText() == current_character.english_meaning) {
+        string correct_text = GetEntryText(current_character.ChineseEntry, current_character.CharType);
+        if (button.GetText() == correct_text) {
             print("Correct guess!");
             Destroy(current_character.gameObject);
         }

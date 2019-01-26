@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     private System.Random random;
 
     void Start() {
-        screen_size = 680;
+        screen_size = 650;
         random = new System.Random();
     }
 
