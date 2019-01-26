@@ -8,13 +8,32 @@ public class ChineseEntry {
     public string pinying;
     public string english;
 
+    public int english_correct_guesses;
+    public int english_incorrect_guesses;
+    public int pinyin_correct_guesses;
+    public int pinyin_incorrect_guesses;
+
+    public void AddGuessEnglish(bool correct) {
+        if (correct) {
+            english_correct_guesses++;
+        }
+        else {
+            english_incorrect_guesses++;
+        }
+    }
+
+    public void AddGuessPinyin(bool correct) {
+        if (correct) {
+            pinyin_correct_guesses++;
+        }
+        else {
+            pinyin_incorrect_guesses++;
+        }
+    }
+
     public ChineseEntry(string character, string pinying, string english) {
         this.character = character;
         this.pinying = pinying;
         this.english = english;
-    }
-
-    void Start() {
-
     }
 }

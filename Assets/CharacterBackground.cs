@@ -10,9 +10,6 @@ public class CharacterBackground : MonoBehaviour
         my_renderer = GetComponent<SpriteRenderer>();
     }
 
-    void Start() {
-    }
-
     public void SetColor(Color color) {
         my_renderer.color = color;
     }

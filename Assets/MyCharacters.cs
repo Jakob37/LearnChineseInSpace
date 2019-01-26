@@ -29,6 +29,27 @@ public class MyCharacters : MonoBehaviour
         }
     }
 
+    public void RecordGuess(string character, bool correct, CharacterType char_type) {
+        if (char_type == CharacterType.English) {
+            study_entries[character].AddGuessEnglish(correct);
+        }
+        else if (char_type == CharacterType.Pinying) {
+            study_entries[character].AddGuessPinyin(correct);
+        }
+        else {
+            throw new System.Exception("Unknown char_type: " + char_type);
+        }
+    }
+
+    public string GuessStats(string character) {
+
+        string english_stats = study_entries[character].english_correct_guesses + "/" +
+                study_entries[character].english_incorrect_guesses;
+        string pinyin_stats = study_entries[character].pinyin_correct_guesses + "/" +
+                study_entries[character].pinyin_incorrect_guesses;
+        return english_stats + " " + pinyin_stats;
+    }
+
     public ChineseEntry RequestEntry() {
         int rand_val = Random.Range(0, 10);
         List<string> study_entry_keys = new List<string>(study_entries.Keys);

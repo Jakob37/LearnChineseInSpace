@@ -24,7 +24,6 @@ public class Spawner : MonoBehaviour
 
         remain_to_spawn--;
         if (remain_to_spawn <= 0 || !chars_left) {
-            print("Spawned");
             NewSpawn();
             remain_to_spawn = spawn_steps;
         }

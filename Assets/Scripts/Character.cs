@@ -104,17 +104,16 @@ public class Character : MonoBehaviour
             return;
         }
 
+        string char_stats = my_characters.GuessStats(chinese_character);
         if (char_type == CharacterType.Pinying) {
-            curr_char_text.SetText(chinese_character + " (" + english_meaning + ")");
+            curr_char_text.SetText(chinese_character + " (" + english_meaning + ") " + char_stats);
         }
         else if (char_type == CharacterType.English) {
-            curr_char_text.SetText(chinese_character + " (" + pinyin + ")");
+            curr_char_text.SetText(chinese_character + " (" + pinyin + ") " + char_stats);
         }
         else {
             throw new System.Exception("Unknown char_type: " + char_type);
         }
         event_controller.CharacterTriggered(this);
     }
-
-
 }

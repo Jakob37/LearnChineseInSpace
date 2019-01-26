@@ -18,7 +18,7 @@ public class EventControllerMain : MonoBehaviour {
     private int iterations;
     private int correct_choices;
     private int incorrect_choices;
-    private const int start_steps = 2;
+    private const int start_steps = 10;
 
     private bool ButtonsAssigned {
         get {
@@ -56,6 +56,12 @@ public class EventControllerMain : MonoBehaviour {
         ClearDecisionButtons();
 
         for (var i = 0; i < start_steps; i++) {
+            TrigStep();
+        }
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.DownArrow)) {
             TrigStep();
         }
     }
@@ -118,7 +124,8 @@ public class EventControllerMain : MonoBehaviour {
     public void DecisionButtonTriggered(DecisionButton button) {
 
         string correct_text = GetEntryText(current_character.ChineseEntry, current_character.CharType);
-        if (button.GetText() == correct_text) {
+        bool correct_guess = button.GetText() == correct_text;
+        if (correct_guess) {
             Destroy(current_character.gameObject);
             correct_choices++;
         }
@@ -126,6 +133,9 @@ public class EventControllerMain : MonoBehaviour {
             current_character.IncorrectGuess();
             incorrect_choices++;
         }
+
+        my_characters.RecordGuess(current_character.chinese_character, correct_guess, current_character.CharType);
+
         ClearDecisionButtons();
         TrigStep();
     }
@@ -148,9 +158,7 @@ public class EventControllerMain : MonoBehaviour {
     }
 
     private void SetStatusText() {
-        // status_text.SetText("Trig!");
         int total_entries = my_characters.NumberEntries;
-
         string status_string = "Total entries: " + total_entries + "\n" + "" + correct_choices + "\n" + "" + incorrect_choices + "\n";
         status_text.SetText(status_string);
     }
