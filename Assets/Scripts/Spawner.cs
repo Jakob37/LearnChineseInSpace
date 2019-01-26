@@ -20,10 +20,11 @@ public class Spawner : MonoBehaviour
         spawn_steps = 2;
     }
 
-    public void TrigStep() {
+    public void TrigStep(bool chars_left=true) {
 
         remain_to_spawn--;
-        if (remain_to_spawn <= 0) {
+        if (remain_to_spawn <= 0 || !chars_left) {
+            print("Spawned");
             NewSpawn();
             remain_to_spawn = spawn_steps;
         }

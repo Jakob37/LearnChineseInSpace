@@ -31,7 +31,6 @@ public class MyCharacters : MonoBehaviour
 
     public ChineseEntry RequestEntry() {
         int rand_val = Random.Range(0, 10);
-        print("Random val: " + rand_val);
         List<string> study_entry_keys = new List<string>(study_entries.Keys);
         return study_entries[study_entry_keys[rand_val]];
     }

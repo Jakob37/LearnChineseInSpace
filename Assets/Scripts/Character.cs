@@ -62,6 +62,8 @@ public class Character : MonoBehaviour
         this.char_type = char_type;
         // chinese_character = "书";
         AssignColor();
+
+        print("New character: " + entry.character);
     }
 
     private void AssignColor() {
@@ -82,7 +84,6 @@ public class Character : MonoBehaviour
 
     void Start() {
         my_text_obj.text = chinese_character;
-        print("Activated");
     }
 
     public void Step() {
@@ -98,10 +99,8 @@ public class Character : MonoBehaviour
     }
 
     void OnMouseDown() {
-        print("Object clicked: " + chinese_character);
 
         if (inactive_ticks > 0) {
-            print("Inactive! Ticks left: " + inactive_ticks);
             return;
         }
 

@@ -18,7 +18,7 @@ public class EventControllerMain : MonoBehaviour {
     private int iterations;
     private int correct_choices;
     private int incorrect_choices;
-    private const int start_steps = 10;
+    private const int start_steps = 2;
 
     private bool ButtonsAssigned {
         get {
@@ -119,12 +119,10 @@ public class EventControllerMain : MonoBehaviour {
 
         string correct_text = GetEntryText(current_character.ChineseEntry, current_character.CharType);
         if (button.GetText() == correct_text) {
-            print("Correct guess!");
             Destroy(current_character.gameObject);
             correct_choices++;
         }
         else {
-            print("Incorrect guess!");
             current_character.IncorrectGuess();
             incorrect_choices++;
         }
@@ -136,7 +134,6 @@ public class EventControllerMain : MonoBehaviour {
 
         iterations++;
 
-        print("Step trigged!");
         Character[] enemies = FindObjectsOfType<Character>();
         foreach (Character enemy in enemies) {
             // Movement enemy_movement = enemy.transform.gameObject.GetComponent<Movement>();
