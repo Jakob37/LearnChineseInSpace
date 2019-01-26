@@ -11,13 +11,22 @@ public class Spawner : MonoBehaviour
     private const float scale_size = 1.4f;
     private const float grid_size = 50;
 
+    private int remain_to_spawn;
+    private int spawn_steps;
+
     void Start() {
         screen_size = 650;
         random = new System.Random();
+        spawn_steps = 2;
     }
 
     public void TrigStep() {
-        NewSpawn();
+
+        remain_to_spawn--;
+        if (remain_to_spawn <= 0) {
+            NewSpawn();
+            remain_to_spawn = spawn_steps;
+        }
     }
 
     private void NewSpawn() {

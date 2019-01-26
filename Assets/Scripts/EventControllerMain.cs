@@ -18,6 +18,7 @@ public class EventControllerMain : MonoBehaviour {
     private int iterations;
     private int correct_choices;
     private int incorrect_choices;
+    private const int start_steps = 10;
 
     private bool ButtonsAssigned {
         get {
@@ -54,7 +55,7 @@ public class EventControllerMain : MonoBehaviour {
         }
         ClearDecisionButtons();
 
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < start_steps; i++) {
             TrigStep();
         }
     }
@@ -150,9 +151,10 @@ public class EventControllerMain : MonoBehaviour {
     }
 
     private void SetStatusText() {
-        status_text.SetText("Trig!");
+        // status_text.SetText("Trig!");
         int total_entries = my_characters.NumberEntries;
 
         string status_string = "Total entries: " + total_entries + "\n" + "" + correct_choices + "\n" + "" + incorrect_choices + "\n";
+        status_text.SetText(status_string);
     }
 }
