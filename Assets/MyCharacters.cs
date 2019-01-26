@@ -9,6 +9,7 @@ public class MyCharacters : MonoBehaviour
     private List<ChineseEntry> all_entries;
     private Dictionary<string, ChineseEntry> study_entries;
     private TextLoader text_loader;
+    private GameSettings game_settings;
 
     private const int score_threshold = 1;
 
@@ -33,6 +34,7 @@ public class MyCharacters : MonoBehaviour
     void Awake() {
         study_entries = new Dictionary<string, ChineseEntry>();
         text_loader = FindObjectOfType<TextLoader>();
+        game_settings = FindObjectOfType<GameSettings>();
     }
 
     private Dictionary<string, ChineseEntry> ActiveEntries {
@@ -48,10 +50,23 @@ public class MyCharacters : MonoBehaviour
         }
     }
 
-    public void Initialize(int total_words) {
+    public void Initialize(int total_words, bool do_radical_subset=true) {
 
         all_entries = text_loader.ParseChineseEntries(text_source);
-        List<ChineseEntry> study_entry_list = MyUtils.Shuffle(all_entries).GetRange(0, total_words);
+
+        List<ChineseEntry> study_entry_list;
+        if (!do_radical_subset) {
+            study_entry_list = MyUtils.Shuffle(all_entries).GetRange(0, total_words);
+        }
+        else {
+            study_entry_list = new List<ChineseEntry>();
+            List<string> target_radicals = game_settings.SelectedRadicals;
+            foreach (ChineseEntry entry in all_entries) {
+                if (target_radicals.Contains(entry.radical)) {
+                    study_entry_list.Add(entry);
+                }
+            }
+        }
 
         foreach (ChineseEntry entry in study_entry_list) {
             study_entries.Add(entry.character, entry);

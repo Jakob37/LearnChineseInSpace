@@ -51,7 +51,7 @@ public class MenuCharacter : MonoBehaviour
             background.SetColor(new Color(0.6f, 0, 0.6f));
         }
         else {
-            background.SetColor(new Color(0, 0, 0));
+            background.SetColor(new Color(1, 1, 1));
         }
         menu_controller.UpdateSelected();
     }

@@ -59,7 +59,6 @@ public class EventControllerMain : MonoBehaviour {
             TrigStep();
         }
 
-
         foreach (string radical in game_settings.SelectedRadicals) {
             print("Selected radical: " + radical);
         }
