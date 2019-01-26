@@ -14,7 +14,6 @@ public class TextLoader : MonoBehaviour {
 
     private List<String[]> word_entries;
     private List<ChineseEntry> chinese_entries;
-
     public Boolean use_anki_format;
 
     // public static TextSource text_source = TextSource.HalfThreePigs;
