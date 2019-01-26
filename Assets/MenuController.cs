@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour
 
     void Awake() {
         text_loader = FindObjectOfType<TextLoader>();
+
     }
 
     void Start() {

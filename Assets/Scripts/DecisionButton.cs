@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DecisionButton : MonoBehaviour
 {
-
     private Text text_object;
     private EventControllerMain event_controller;
 
