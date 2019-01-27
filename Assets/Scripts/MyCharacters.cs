@@ -37,6 +37,16 @@ public class MyCharacters : MonoBehaviour
         game_settings = FindObjectOfType<GameSettings>();
     }
 
+    public bool AllScoresReached() {
+        foreach (string key in study_entries.Keys) {
+            int score = study_entries[key].GetTotalScore();
+            if (score < score_threshold) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private Dictionary<string, ChineseEntry> ActiveEntries {
         get {
             Dictionary<string, ChineseEntry> active_entries = new Dictionary<string, ChineseEntry>();
@@ -85,11 +95,11 @@ public class MyCharacters : MonoBehaviour
         }
     }
 
-    private void RemoveEntry(string character) {
-        print(study_entries.Keys);
-        study_entries.Remove(character);
-        print(study_entries.Keys);
-    }
+    // private void RemoveEntry(string character) {
+    //     print(study_entries.Keys);
+    //     study_entries.Remove(character);
+    //     print(study_entries.Keys);
+    // }
 
     public string GuessStats(string character) {
 

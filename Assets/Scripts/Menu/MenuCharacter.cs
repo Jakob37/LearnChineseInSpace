@@ -9,6 +9,9 @@ public class MenuCharacter : MonoBehaviour
     public string display_char;
     private Text my_text;
     private int count;
+    private int most_abund_count;
+    private Color base_color;
+
     private CharacterBackground background;
     private MenuController menu_controller;
     private bool is_selected;
@@ -35,8 +38,17 @@ public class MenuCharacter : MonoBehaviour
         my_text.text = radical;
     }
 
-    public void SetCount(int count) {
+    public void SetCount(int count, int most_abund_count) {
         this.count = count;
+        this.most_abund_count = most_abund_count;
+
+        float frac_size = (float)count / (float)most_abund_count;
+        this.base_color = new Color(1 - frac_size, 1, 1);
+        background.SetColor(base_color);
+    }
+
+    public void SetMostAbundantCount() {
+        
     }
 
     void OnMouseDown() {
@@ -51,7 +63,7 @@ public class MenuCharacter : MonoBehaviour
             background.SetColor(new Color(0.6f, 0, 0.6f));
         }
         else {
-            background.SetColor(new Color(1, 1, 1));
+            background.SetColor(base_color);
         }
         menu_controller.UpdateSelected();
     }

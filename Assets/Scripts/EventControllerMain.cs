@@ -45,7 +45,7 @@ public class EventControllerMain : MonoBehaviour {
         iterations = 0;
         correct_choices = 0;
         incorrect_choices = 0;
-        start_steps = 10;
+        // start_steps = 10;
 
         decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
         nbr_choices = decision_buttons.Length;
@@ -56,10 +56,6 @@ public class EventControllerMain : MonoBehaviour {
             my_characters.Initialize(10);
         }
         ClearDecisionButtons();
-
-        // for (var i = 0; i < start_steps; i++) {
-        //     TrigStep();
-        // }
 
         foreach (string radical in game_settings.SelectedRadicals) {
             print("Selected radical: " + radical);
@@ -148,6 +144,10 @@ public class EventControllerMain : MonoBehaviour {
         my_characters.RecordGuess(current_character.chinese_character, correct_guess, current_character.CharType);
         ClearDecisionButtons();
         TrigStep();
+
+        if (my_characters.AllScoresReached()) {
+            status_text.SetText("YOU WIN!");
+        }
     }
 
     public void TrigStep() {
