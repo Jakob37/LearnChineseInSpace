@@ -1,83 +1,351 @@
 一	yī	one	一
-三	sān	three	一
 七	qī	seven	一
-不	bù	no	一
+丈 	zhàng 	senior, measure (verb)	一
+三	sān	three	一
 上	shàng	up	一
 下	xià	down	一
+不	bù	no	一
+东 	dōng 	east	一
+两 	liǎng 	pair	一
 个	gè	one, a, an	丨
+中 	zhōng 	centre，middle	丨
+为 	wèi 	do，act	丶
+乐 	lè 	pleasure, enjoyment	丿
 九	jiǔ	nine	乙
+也 	yě 	also	乙
+习 	xí 	habit, custom practice	乙
 书	shū	book	乙
 买	mǎi	buy	乙
 了	le	Progression / past particle	亅
+事 	shì 	matter, affair	亅
 二	èr	two	二
 五	wǔ	five	二
 些	xiē	some	二
-你	nǐ	you	人
-他	tā	he, him	人
+京 	jīng 	capital of country	亠
 人	rén	person	人
-做	zuò	do	人
-住	zhù	live	人
+今 	jīn 	now，the present	人
+介 	jiè	situate between, introduce briefly	人
+他	tā	he, him	人
+以 	yǐ 	to use, because of	人
+件 	jiàn 	piece 	人
+休 	xiū 	cease, rest	人
 会	huì	can	人
-六	liù	six	八
+但 	dàn 	but, nevertheless	人
+住	zhù	live	人
+体 	tǐ 	part of the body, style, substance	人
+你	nǐ	you	人
+便 	pián 	(part of) cheap, convenient	人
+候 	hóu 	wait, inquire after, time, season	人
+做	zuò	do	人
+儿 	ér 	child, son	儿
+元 	yuán 	yuan，component	儿
+先 	xiān	ancestor，earlier	儿
 八	bā	eight	八
+公 	gōng	public affairs	八
+六	liù	six	八
+共 	gòng 	common, general	八
+关 	guān 	close, turn off, mountain pass	八
+兴 	xìng 	prosper, flourish	八
+冂	jiōng	wide	冂
+再 	zài 	again 	冂
+最 	zuì 	most 	冂
 写	xiě	write	冖
 冷	lěng	cold	冫
+准 	zhǔn 	grant, allow	冫
 几	jǐ	a few, how many	几
+出 	chū	go out, to rise, go beyond	凵
+分 	fēn 	divide, part	刀
+别 	bié 	leave, depart, other	刀
+到 	dào 	arrive, reach	刀
+前 	qián 	front, first, before	刀
+力	lì 	power, force	力
+务 	wù 	affair, business	力
+动 	dòng 	move, displace, make use of	力
+助 	zhù 	to help, to assist	力
+匕	bǐ	spoon	匕
+北 	běi 	north	匕
+匸	xì	box	匸
+医 	yī 	doctor, to treat	匸
 十	shí	ten	十
+千 	qiān 	thousand 	十
+午 	wǔ 	noon, midday	十
 去	qù	go	厶
-哪	nǎ (nǎr)	where	口
-和	hé	and	口
-吗	ma	question particle	口
-呢	ne	question particle	口
-喂	wèi	hello	口
-听	tīng	listen	口
+友 	yǒu 	friend	又
+口	kǒu	mouth, open end	口
 叫	jiào	call	口
+右 	yòu 	right side	口
+号 	hào 	number 	口
 吃	chī	eat	口
+名 	míng 	name	口
+后 	hòu 	back, behind, after	口
+向 	xiàng 	towards, direction	口
+吗	ma	question particle	口
+听	tīng	listen	口
+告 	gào 	tell, inform, report, sue	口
+员 	yuán 	person, employee, member	口
+呢	ne	question particle	口
+和	hé	and	口
+哥 	gē 	elder brother	口
+哪	nǎ (nǎr)	where	口
+唱 	chàng 	sing, call	口
+商 	shāng 	merchant, commerse	口
+喂	wèi	hello	口
+喜 	xǐ 	to like, to enjoy, happiness	口
 喝	hē	drink	口
+囗	wéi	erect, proud, upright	囗
 四	sì	four	囗
 回	huí	return	囗
-块	kuài	piece	土
+因 	yīn 	cause, reason	囗
+国 	guó 	country, nation	囗
 在	zài	in, at	土
+场 	chǎng 		
 坐	zuò	sit	土
+块	kuài	piece	土
+夂	zhǐ	go, walk slowly	夂
+备 	bèi 	prepare, get ready	夂
+外 	wài 	outside, foreigner	夕
 多	duō	many, much	夕
-太	tài	too	大
 大	dà	big	大
+天 	tiān 	sky, day, heaven	大
+太	tài	too	大
+夫 	fu 	husband, man, manual worker	大
+女 	nǚ 	female, daughter	女 
+奶 	nǎi 	milk	女 
 她	tā	she, her	女
 好	hǎo	good	女
+妈 	mā 	mother 	女
+妹 	mèi 	younger sister	女
+妻 	qī 	wife	女
+始 	shǐ 	begin, start, then	女
+姐 	jiě 	elder sister	女
+姓 	xìng 	surname 	女
+子	zi	offspring, child	子
 字	zì	character	子
+学 	xué 	learning, knowledge	子
+孩 	hái 	child	子
+它 	tā 	it 	宀
+完 	wán 	finish, complete, whole	宀
+宜 	yi 	proper, suitable, should	宀
+客 	kè 	customer, visitor, guest	宀
+室 	shì 	room	宀
 家	jiā	home	宀
 小	xiǎo	small	小
 少	shǎo	few, little	小
+就 	jiǜ 	at once	
 岁	suì	year	山
+工 	gōng 	labor, work	工 
+左 	zuǒ 	left	工 
+已 	yǐ	already, afterwards	已 
+巾	jīn 	towel, turban	巾
+师 	shī 	teacher, expert, master	巾
+希 	xī 	hope, admire	巾
+帮 	bāng 	help, assist	巾
+常 	cháng 	often, common	巾
 年	nián	year	干
+广	guǎng 	wide, extensive, broad	广
+床 	chuáng 	bed	广
+店 	diàn 	shop, store	广
 开	kāi	open	廾
+竹	zhú 	bamboo, flute	竹
+弟 	dì 	order, prefix	竹
+弓	gōng 	bow, curved	弓
+张 	zhāng 	sheet 	弓
+彡	shān 	hair	彡
+影 	yǐng 	picture	彡
 很	hěn	quite, very	彳
+心	xīn 	heart	心
+忙	máng 	busy 	心
+快 	kuài 	fast 	心
+怎 	zěn	why, how	心
+思 	si 	to think, to consider	心
+息 	xi 	breath, rest, news	心
+您 	nín 	you (polite)	心
+情 	qing 	feeling, emotion	心
 想	xiǎng	want	心
+意 	yì 	idea, meaning, desire	心
+慢 	màn 	slow 	心
+懂 	dǒng 	to understand, to comprehend	心
 我	wǒ	I, me	戈
+戶	hù 	door, household	戶
+房 	fáng 	house, room	戶
+所 	suǒ	c. house, actually	戶
+手 	shǒu 	hand, convenient	手 
+打 	dǎ 	to hit	手 
+找 	zhǎo 	to seek, to find	手 
+报 	bào 	to announce, newspaper	手 
+攴	pū 	rap, tap lightly	攴
+教 	jiào 	religion, teaching, to tell	攴
+斤 	jīn 	axe, half kilogram	斤 
+新 	xīn 	new 	斤 
+旁 	páng 	side	方
+旅 	lǚ 	square, a region	方
 日	rì	day	日
+早 	zǎo	early, morning	日
+时 	shí 	time, period	日
+明 	míng 	bright, next, wise	日
+星 	xīng	star, heavenly body	日
+昨 	zuó 	yesterday	日
 是	shì	be (am, is, are)	日
+晚 	wǎn 	evening, late	日
+晴 	qíng 	clear, fine (weather)	日
 月	yuè	month	月
 有	yǒu	have	月
+朋 	péng 	friend	月
+服 	fú 	clothes, obey	月
+望 	wàng 	to hope, to expect	月
+期 	qī 	period of time	月
 本	běn	volume	木
+机 	jī 	machie, engine	木
 来	lái	come	木
-没	méi	no	水
+杯 	bēi 	c. cup	木
+果 	guǒ 	fruit	木
+校 	xiào 	school, military officer	木
+样 	yàng 	manner, appearance	木
+桌 	zhuō	table, desk	木
+椅 	yǐ 	chair	木
+欠		owe, lack	欠
+次 	cì 	next in sequence	欠
+欢 	huān 	joyous	欠
+歌 	gē 	sing	欠
+正	zhèng, zhǐ	straight, upright, stop, halt	正
+此 	cǐ 	this 	
+步 	bù 	run 	
+每 	měi 	every 	
 水	shuǐ	water	水
+汉 	hàn		
+汽 	qì 		
+没	méi	no	水
+泳 	yǒng 		
+洗 	xǐ 	wash 	
+游 	yóu 		
+游 	yóu 		
+漂 	piào 		
+火 	huǒ 		
 点	diǎn	dot, spot	火
 热	rè	hot	火
 爱	ài	love	爪
-猫	māo	cat	犬
+爸 	bà 	father 	
+牛 	niú 		
 狗	gǒu	dog	犬
+猫	māo	cat	犬
+玩 	wán 	play 	
+现 	xiàn 		
+班 	bān 		
+球 	qiú 		
+瓜 	guā 		
+生 	shēng 	birthday 	
+电 	diàn 		
+男 	nán 		
+病 	bìng 	illness	
+白 	bái 	white 	
+百 	bǎi 	hundred 	
 的	de	possessive particle	白
 看	kàn	look	目
+真 	zhēn 	real 	
+眼 	yǎn 		
+着 	zhe 		
+睛 	jīng 		
+睡 	shuì 		
+知 	zhī 		
+视 	shì 		
+票 	piào 	ticket 	
+离 	lí 	leave 	
+租 	zū 		
+穿	chuān 	wear 	
+站 	zhàn 		
+笑 	xiào 	smile 	
+第 	dì 		
+等 	děng 	wait 	
+答 	dá 	answer 	
+篮 	lán 		
+米 	mǐ 		
+系 	xì 		
+累 	lèi 	tire 	
+红 	hóng 	red 	
+纸 	zhǐ 		
+绍 	shào 		
+经 	jīng 		
+给 	gěi 	give 	
+羊 	yáng 		
+老 	lǎo 		
+考 	kǎo		
+肉 	ròu 	meat	
 能	néng	can, be able to	肉
-菜	cài	vegetable	艸
+脑 	nǎo 		
+自 	zì 		
+舞 	wǔ 		
+船 	chuán 	boat 	
+色 	sè 		
+苹 	píng 		
 茶	chá	tea	艸
-谁	shuí	who	讠
+药 	yào 	medicine 	
+菜	cài	vegetable	艸
+蛋 	dàn 		
+行 	xíng 		
+衣 	yī 		
+表 	biǎo 		
+西 	xī 		
+要 	yào 		
+觉 	jué		
+认 	rèn 		
+让 	ràng 	let 	
+识 	shi 		
+诉 	sù 		
+试 	shì 		
+话 	huà 		
+语 	yǔ 		
+说 	shuō 		
 请	qǐng	please	讠
 读	dú	read	讠
+读 	dú 	read 	
+课 	kè 	lesson 	
+谁	shuí	who	讠
+谢 	xiè 		
+贵 	guì 	expensive 	
+走	zǒu 	walk 	
+起 	qǐ 		
+起 	qǐ 		
+足 	zú 		
+路 	lù 	road 	
+跳 	tiào		
+身 	shēn 		
+车 	chē 		
+车 	chē 		
+边 	biān 		
+迎 	yíng 		
+运 	yùn 		
+近 	jìn 	close 	
+还 	hái 	repay 	
 这	zhè ( zhèr)	here, this	辶
+进 	jìn 	enter 	
+远 	yuǎn 	far 	
+送 	sòng 	present 	
+道 	dào 		
 那	nà (nàr)	there, that	邑
 都	dōu	all	邑
 里	lǐ	inside	里
+钟 	zhōng 		
 钱	qián	money	金
+钱 	qián 	money 	
+错	cuò 	wrong 	
+长 	cháng 	long 	
+门 	mén 	door 	
+问 	wèn 	ask 	
+间 	jiān 		
+阴 	yīn 	cloudy 	
+院 	yuàn 		
+雨 	yǔ 		
+雪 	xué 	snow 	
 零	líng	zero	雨
+非 	fēi		
+面 	miàn 		
+题 	tí 	topic 	
+颜 	yán 		
+飞 	fēi 		
+饭 	fàn 		
+饭 	fàn 		
+馆 	diàn 		
+高 	gāo 	tall 	
+鱼 	yú 	fish 	
+鸡 	jī		
+黑 	hēi 	black 	
