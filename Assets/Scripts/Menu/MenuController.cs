@@ -10,6 +10,8 @@ public class MenuController : MonoBehaviour
     private TextLoader text_loader;
     private MyCharacters my_chars;
     private GameSettings game_settings;
+    private MenuStatusText menu_status_text;
+
     private Dictionary<string, int> radicals;
     public Dictionary<string, int> RadicalDict {
         get {
@@ -21,6 +23,7 @@ public class MenuController : MonoBehaviour
     void Awake() {
         text_loader = FindObjectOfType<TextLoader>();
         game_settings = FindObjectOfType<GameSettings>();
+        menu_status_text = FindObjectOfType<MenuStatusText>();
     }
 
     public void UpdateSelected() {
@@ -32,6 +35,16 @@ public class MenuController : MonoBehaviour
             }
         }
         game_settings.SelectedRadicals = selected_radicals;
+        int total_words = GetNumberWords(selected_radicals);
+        menu_status_text.SetCount(total_words);
+    }
+
+    private int GetNumberWords(List<string> selected_radicals) {
+        int total_words = 0;
+        foreach (string radical in selected_radicals) {
+            total_words += radicals[radical];
+        }
+        return total_words;
     }
 
     void Start() {
@@ -43,10 +56,5 @@ public class MenuController : MonoBehaviour
             }
             radicals[entry.radical] += 1;
         }
-
-        // foreach (string radical in radicals.Keys) {
-        //     print(radical + ": " + radicals[radical]);
-        // }
     }
-
 }

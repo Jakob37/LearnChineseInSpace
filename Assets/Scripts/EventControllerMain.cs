@@ -18,7 +18,7 @@ public class EventControllerMain : MonoBehaviour {
     private int iterations;
     private int correct_choices;
     private int incorrect_choices;
-    private const int start_steps = 10;
+    public int start_steps;
 
     private bool ButtonsAssigned {
         get {
@@ -41,9 +41,11 @@ public class EventControllerMain : MonoBehaviour {
     }
 
     void Start() {
+
         iterations = 0;
         correct_choices = 0;
         incorrect_choices = 0;
+        start_steps = 10;
 
         decision_buttons = decision_grid.gameObject.GetComponentsInChildren<DecisionButton>();
         nbr_choices = decision_buttons.Length;
@@ -55,9 +57,9 @@ public class EventControllerMain : MonoBehaviour {
         }
         ClearDecisionButtons();
 
-        for (var i = 0; i < start_steps; i++) {
-            TrigStep();
-        }
+        // for (var i = 0; i < start_steps; i++) {
+        //     TrigStep();
+        // }
 
         foreach (string radical in game_settings.SelectedRadicals) {
             print("Selected radical: " + radical);
@@ -67,6 +69,12 @@ public class EventControllerMain : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.DownArrow)) {
             TrigStep();
+        }
+
+        // To avoid running the starting TrigStep() calls before everything is loaded
+        if (start_steps > 0) {
+            TrigStep();
+            start_steps--;
         }
     }
 
