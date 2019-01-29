@@ -98,7 +98,7 @@
 因 	yīn 	cause, reason	囗
 国 	guó 	country, nation	囗
 在	zài	in, at	土
-场 	chǎng 		
+场 	chǎng 	large space, stage	土
 坐	zuò	sit	土
 块	kuài	piece	土
 夂	zhǐ	go, walk slowly	夂
@@ -131,7 +131,7 @@
 家	jiā	home	宀
 小	xiǎo	small	小
 少	shǎo	few, little	小
-就 	jiǜ 	at once	
+就 	jiǜ 	at once	尢
 岁	suì	year	山
 工 	gōng 	labor, work	工 
 左 	zuǒ 	left	工 
@@ -203,84 +203,102 @@
 样 	yàng 	manner, appearance	木
 桌 	zhuō	table, desk	木
 椅 	yǐ 	chair	木
-欠		owe, lack	欠
+欠	qiàn	owe, lack	欠
 次 	cì 	next in sequence	欠
 欢 	huān 	joyous	欠
 歌 	gē 	sing	欠
-正	zhèng, zhǐ	straight, upright, stop, halt	正
-此 	cǐ 	this 	
-步 	bù 	run 	
-每 	měi 	every 	
+止	zhǐ	stop, halt	止
+正	zhèng	straight, upright	止
+此 	cǐ 	this 	止
+步 	bù 	step, walk	止
+毋	wú	do not	毋
+每 	měi 	every 	毋
 水	shuǐ	water	水
-汉 	hàn		
-汽 	qì 		
+汉 	hàn	man	水
+汽 	qì 	vapor, steam	水
 没	méi	no	水
-泳 	yǒng 		
-洗 	xǐ 	wash 	
-游 	yóu 		
-游 	yóu 		
-漂 	piào 		
-火 	huǒ 		
+泳 	yǒng 	swim	水
+洗 	xǐ 	wash 	水
+游 	yóu 	part of a river, swim	水
+漂 	piào 	float, drift	水
+火 	huǒ 	fire, anger	火
 点	diǎn	dot, spot	火
 热	rè	hot	火
 爱	ài	love	爪
-爸 	bà 	father 	
-牛 	niú 		
+父	fù	father 	父
+爸 	bà 	father 	父
+牛 	niú 	ox, cattle	牛 
 狗	gǒu	dog	犬
 猫	māo	cat	犬
-玩 	wán 	play 	
-现 	xiàn 		
-班 	bān 		
-球 	qiú 		
-瓜 	guā 		
-生 	shēng 	birthday 	
-电 	diàn 		
-男 	nán 		
-病 	bìng 	illness	
-白 	bái 	white 	
-百 	bǎi 	hundred 	
+玉	yù 	jade, gem	玉
+玩 	wán 	play 	玉
+现 	xiàn 	present, now	玉
+班 	bān 	work shift, team	玉
+球 	qiú 	ball, sphere	玉
+瓜 	guā 	melon	瓜 
+生 	shēng 	birthday 	生 
+田	tiān	field, farmland	田
+电 	diàn 	electricity, electrical	田
+男 	nán 	male, boy	田
+疒	nè	sick	疒
+病 	bìng 	illness	疒
+白 	bái 	white, pure	白 
+百 	bǎi 	hundred 	白 
 的	de	possessive particle	白
+目	mù	eye, look	目
 看	kàn	look	目
-真 	zhēn 	real 	
-眼 	yǎn 		
-着 	zhe 		
-睛 	jīng 		
-睡 	shuì 		
-知 	zhī 		
-视 	shì 		
-票 	piào 	ticket 	
-离 	lí 	leave 	
-租 	zū 		
-穿	chuān 	wear 	
-站 	zhàn 		
-笑 	xiào 	smile 	
-第 	dì 		
-等 	děng 	wait 	
-答 	dá 	answer 	
-篮 	lán 		
-米 	mǐ 		
-系 	xì 		
-累 	lèi 	tire 	
-红 	hóng 	red 	
-纸 	zhǐ 		
-绍 	shào 		
-经 	jīng 		
-给 	gěi 	give 	
-羊 	yáng 		
-老 	lǎo 		
-考 	kǎo		
-肉 	ròu 	meat	
+真 	zhēn 	real, genuinely, really	目
+眼 	yǎn 	eye, small hole	目
+着 	zhe 	progress particle	目
+睛 	jīng 	eyeball	目
+睡 	shuì 	sleep	目
+失	shǐ	arrow; vow	失
+知 	zhī 	to know, realize, inform	失
+示	shì 	show, manifest, demonstrate	示
+视 	shì 	to inspect, to regard	示
+票 	piào 	ticket 	示
+禸	róu	rump	禸
+离 	lí 	leave 	禸
+禾	hé	grain on a stalk, rice plant	禾
+租 	zū 	to hire, to rent	禾
+穴	xué	cave, den, hole	穴
+穿	chuān 	to wear, to pass through	穴
+立	lì 	stand, establish	立
+站 	zhàn 	station, to stop	立
+竹	zhú	bamboo, flute	竹
+笑 	xiào 	smile 	竹
+第 	dì 	order (numerical)	竹
+等 	děng 	wait, sort, grade	竹
+答 	dá 	answer, reply	竹
+篮 	lán 	basketball	竹
+米 	mǐ 	rice	米 
+糸	mì 	silk	糸
+系 	xì 	tie, bind; system, department	糸
+累 	lèi 	tired	糸
+红 	hóng 	red 	糸
+纸 	zhǐ 	paper, c. documents	糸
+绍 	shào 	carry on, continue	糸
+经 	jīng 	to endure, scripture, menstruate	糸
+给 	gěi 	give 	糸
+羊 	yáng 	sheep, goat	羊 
+老 	lǎo 	old, aged, experienced	老 
+考 	kǎo	examination, test	老 
+肉 	ròu 	meat	肉 
 能	néng	can, be able to	肉
-脑 	nǎo 		
-自 	zì 		
-舞 	wǔ 		
-船 	chuán 	boat 	
-色 	sè 		
-苹 	píng 		
+脑 	nǎo 	brain, mind	肉 
+自 	zì 	self, private	自 
+舛	chuǎn	oppose, deviate, be contrary to	舛
+舞 	wǔ 	dance, to wield	舛
+舟	zhōu	boat, ship	舟
+船 	chuán 	boat 	舟
+色 	sè 	color, kind	色 
+艸	cǎo 	grass	艸
+苹 	píng 	(part of) apple	艸
 茶	chá	tea	艸
-药 	yào 	medicine 	
+药 	yào 	medicine 	艸
 菜	cài	vegetable	艸
-蛋 	dàn 		
+虫	chóng	insect, worms	虫
+蛋 	dàn 	egg	虫
 行 	xíng 		
 衣 	yī 		
 表 	biǎo 		
