@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total_words: 0
-  start_steps: 10
+  start_steps: 5
 --- !u!114 &591054326
 MonoBehaviour:
   m_ObjectHideFlags: 0

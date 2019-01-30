@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     void Start() {
         screen_size = 650;
         random = new System.Random();
-        spawn_steps = 2;
+        spawn_steps = 1;
     }
 
     public void TrigStep(bool chars_left=true) {
