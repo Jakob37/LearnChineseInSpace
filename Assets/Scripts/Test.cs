@@ -36,28 +36,30 @@ public class Test : MonoBehaviour
 
         Vector2 dir = new Vector2(0, 0);
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.LeftArrow)) {
             dir = new Vector2(-1, dir.y);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        else if (Input.GetKey(KeyCode.RightArrow)) {
             dir = new Vector2(1, dir.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKey(KeyCode.UpArrow)) {
             dir = new Vector2(dir.x, 1);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        else if (Input.GetKey(KeyCode.DownArrow)) {
             dir = new Vector2(dir.x, -1);
         }
 
-        return dir;
+        var scaled_dir = dir / dir.magnitude;
+
+        return scaled_dir;
     }
 
     private void Move(Vector2 dir) {
         print("Move triggered");
         print(transform.position);
 
-        float speed = 50;
+        float speed = 10;
 
         transform.position = new Vector2(transform.position.x + dir.x * speed, transform.position.y + dir.y * speed);
 
