@@ -10,7 +10,7 @@ public enum Direction {
     None
 }
 
-public class Test : MonoBehaviour
+public class PlayerCube : MonoBehaviour
 {
 
     private Transform transform;
