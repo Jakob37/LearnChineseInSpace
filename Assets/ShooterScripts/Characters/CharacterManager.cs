@@ -18,6 +18,9 @@ public class CharacterManager : MonoBehaviour
         // characters = new List<ShooterCharacter>();
         curr_char_display = GameObject.FindObjectOfType<CurrentCharacterDisplay>();
         characters = GetHardcodedCharacters();
+    }
+
+    void Start() {
         curr_char_display.SetText(characters[0].StrChar);
     }
 
@@ -74,16 +77,6 @@ public class CharacterManager : MonoBehaviour
         }
         return MyUtils.Shuffle(display_text);
     }
-
-    // private List<string> GetRandomPinyings(ShooterCharacter current, List<ShooterCharacter> chars, int count) {
-    // 
-    //     List<string> pinyings = new List<string>();
-    //     pinyings.Add(current.FlatPinying);
-    //     for (var i = 1; i < count; i++) {
-    //         pinyings.Add(chars[i].FlatPinying);
-    //     }
-    //     return pinyings;
-    // }
 
     private List<string> GetToneStrings(string base_string) {
 
