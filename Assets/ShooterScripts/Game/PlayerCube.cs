@@ -28,12 +28,12 @@ public class PlayerCube : MonoBehaviour
         transform = gameObject.transform;
     }
 
-    void Update() {
-        //if (Input.anyKeyDown) {
-        //    transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
-        //}
-        float speed = 10;
+    public void TrigCorrectEvent(ShooterCharacter character) {
+        FireTestBullet();
+    }
 
+    void Update() {
+        float speed = 10;
         Vector2 dir = GetDirection();
         Move(dir, speed);
 

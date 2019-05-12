@@ -14,6 +14,9 @@ public class ChoiceGrid : MonoBehaviour
     public int debug_count;
     private List<ActionButton> buttons;
 
+    private bool pending_switch;
+    private PlayerCube player;
+
     private Choice[] Choices {
         get {
             return GetComponentsInChildren<Choice>();
@@ -28,17 +31,17 @@ public class ChoiceGrid : MonoBehaviour
 
     void Awake() {
         character_manager = GetComponent<CharacterManager>();
+        player = FindObjectOfType<PlayerCube>();
     }
 
     void Start() {
 
+        pending_switch = false;
+
         buttons = SetupButtonDict();
         List<ShooterCharacter> choices = character_manager.GetChoices(4);
 
-        // OK, we kind of need one collected object for this information
-
         foreach (ShooterCharacter choice in choices) {
-            print(choice);
             AddChoice(choice);
         }
     }
@@ -64,21 +67,37 @@ public class ChoiceGrid : MonoBehaviour
         }
 
         for (var i = 0; i < NbrChoices; i++) {
+
             var button = buttons[i];
             if (Input.GetKeyDown(button.KeyCode)) {
-                print("Triggering for: " + Choices[i].Character + " correct is: " + character_manager.CurrChar);
 
-                if (Choices[i].Character == character_manager.CurrChar) {
+                if (Choices[i].Character.StrChar == character_manager.CurrChar) {
                     Choices[i].TrigCorrect();
+                    TrigCorrectChoice(Choices[i].Character);
                 }
                 else {
                     Choices[i].TrigIncorrect();
                 }
             }
         }
+    }
 
-        foreach (ActionButton button in buttons.GetRange(0, NbrChoices)) {
+    private void TrigCorrectChoice(ShooterCharacter correct_char) {
 
+        ClearChoices();
+        List<ShooterCharacter> choices = character_manager.GetChoices(4);
+
+        player.TrigCorrectEvent(correct_char);
+
+        foreach (ShooterCharacter choice in choices) {
+            print(choice);
+            AddChoice(choice);
+        }
+    }
+
+    private void ClearChoices() {
+        foreach (Choice choices in GetComponentsInChildren<Choice>()) {
+            DestroyImmediate(choices.gameObject);
         }
     }
 
@@ -88,9 +107,8 @@ public class ChoiceGrid : MonoBehaviour
         instance.transform.localScale = new Vector2(200, 100);
 
         Choice choice = instance.GetComponent<Choice>();
-        choice.SetDescription(character.Meaning);
+        choice.SetShooterCharacter(character);
         string key = buttons[NbrChoices-1].KeyString;
         choice.SetKey(key);
-        choice.SetCharacter(character.StrChar);
     }
 }

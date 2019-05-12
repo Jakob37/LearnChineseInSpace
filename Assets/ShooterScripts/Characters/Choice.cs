@@ -14,8 +14,14 @@ public class Choice : MonoBehaviour
     private float correct_remain_time;
     private float incorrect_remain_time;
 
-    private string character;
-    public string Character {
+    public bool ReadyToSwitch {
+        get {
+            return correct_remain_time <= 0 && incorrect_remain_time <= 0;
+        }
+    }
+
+    private ShooterCharacter character;
+    public ShooterCharacter Character {
         get {
             return character;
         }
@@ -26,15 +32,16 @@ public class Choice : MonoBehaviour
     public bool dev_placeholder;
 
     void Awake() {
-        if (dev_placeholder) {
-            print("Cleaning up placeholder grid object");
-            Destroy(gameObject);
-        }
         choice_description = GetComponentInChildren<ChoiceDescription>();
         choice_key = GetComponentInChildren<ChoiceKey>();
         renderer = GetComponent<SpriteRenderer>();
 
         start_color = renderer.color;
+
+        if (dev_placeholder) {
+            print("Cleaning up placeholder grid object");
+            DestroyImmediate(gameObject);
+        }
     }
 
     void Update() {
@@ -67,13 +74,18 @@ public class Choice : MonoBehaviour
         correct_remain_time = 0;
     }
 
-    public void SetCharacter(string character) {
+    public void SetShooterCharacter(ShooterCharacter character) {
         this.character = character;
+        this.choice_description.GetComponent<Text>().text = character.Meaning;
     }
 
-    public void SetDescription(string descr) {
-        choice_description.GetComponent<Text>().text = descr;
-    }
+    // public void SetCharacter(string character) {
+    //     this.character = character;
+    // }
+    // 
+    // public void SetDescription(string descr) {
+    //     choice_description.GetComponent<Text>().text = descr;
+    // }
 
     public void SetKey(string key) {
         choice_key.GetComponent<Text>().text = key;

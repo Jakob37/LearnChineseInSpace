@@ -52,7 +52,5 @@ public static class MyUtils {
         }
         return alpha;
     }
-
-
 }
 
