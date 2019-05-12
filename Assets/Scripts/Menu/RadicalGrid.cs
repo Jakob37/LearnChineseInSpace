@@ -8,18 +8,11 @@ public class RadicalGrid : MonoBehaviour
     private GridLayout grid;
     public GameObject test_object;
     private MenuController menu_controller;
+    private CharacterManager character_manager;
 
     void Awake() {
 
-        // TestObject[] objs = GetComponentsInChildren<TestObject>();
-        // foreach (TestObject obj in objs) {
-        //     Destroy(obj.gameObject);
-        // }
-
         menu_controller = FindObjectOfType<MenuController>();
-        // for (int i = 0; i < 50; i++) {
-        //     print("Creating instance");
-        // }
     }
 
     void Start() {

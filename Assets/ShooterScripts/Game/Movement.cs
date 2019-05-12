@@ -16,9 +16,10 @@ public enum YDir {
 
 public enum Speed {
     None = 0,
-    Low = 50,
-    Medium = 100,
-    High = 200
+    Low = 100,
+    Medium = 200,
+    High = 500,
+    ExtremelyHigh = 1500
 }
 
 public class Movement : MonoBehaviour {

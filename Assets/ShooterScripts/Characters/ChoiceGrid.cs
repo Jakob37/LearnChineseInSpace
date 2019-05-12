@@ -7,6 +7,7 @@ public class ChoiceGrid : MonoBehaviour
 
     public GameObject choice_object;
     private List<Choice> choices;
+    private CharacterManager character_manager;
 
     public int debug_count;
 
@@ -20,35 +21,39 @@ public class ChoiceGrid : MonoBehaviour
 
     void Awake() {
         choices = new List<Choice>();
+        character_manager = GetComponent<CharacterManager>();
     }
 
     void Start() {
 
-        int lacking = debug_count - NbrChoices;
-        print(lacking);
+        // int lacking = debug_count - NbrChoices;
+        // print(lacking);
 
-        for (var i = 0; i < lacking; i++) {
-            AddChoice();
+        List<string> choices = character_manager.GetChoices(ChoiceType.Meaning, 4);
+
+        foreach (string choice in choices) {
+            print(choice);
+            AddChoice(choice);
         }
 
-        //while (NbrChoices < debug_count) {
-        //    AddChoice();
-        //}
+        // for (var i = 0; i < lacking; i++) {
+        //     AddChoice();
+        // }
     }
 
     void Update() {
         
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Return)) {
             AddChoice();
         }
     }
 
-    private void AddChoice() {
+    private void AddChoice(string text="Text") {
         GameObject instance = Instantiate(choice_object);
         instance.transform.SetParent(gameObject.transform);
         instance.transform.localScale = new Vector2(200, 100);
         Choice choice = instance.GetComponent<Choice>();
-        choice.SetDescription("TEXT");
+        choice.SetDescription(text);
 
         string key = letters[NbrChoices];
 

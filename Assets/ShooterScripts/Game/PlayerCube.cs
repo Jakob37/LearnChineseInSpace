@@ -15,6 +15,13 @@ public class PlayerCube : MonoBehaviour
 
     private Transform transform;
     private Movement movement;
+    private GameObjects gos;
+
+    public GameObject test_bullet;
+
+    void Awake() {
+        gos = FindObjectOfType<GameObjects>();
+    }
 
     void Start() {
         movement = GetComponent<Movement>();
@@ -25,10 +32,13 @@ public class PlayerCube : MonoBehaviour
         //if (Input.anyKeyDown) {
         //    transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
         //}
+        float speed = 10;
 
         Vector2 dir = GetDirection();
-        if (dir != Vector2.zero) {
-            Move(dir);
+        Move(dir, speed);
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            FireTestBullet();
         }
     }
 
@@ -50,22 +60,24 @@ public class PlayerCube : MonoBehaviour
             dir = new Vector2(dir.x, -1);
         }
 
-        var scaled_dir = dir / dir.magnitude;
+        var scaled_dir = dir;
+        if (dir.x != 0 || dir.y != 0) {
+            scaled_dir = dir / dir.magnitude;
+        }
 
         return scaled_dir;
     }
 
-    private void Move(Vector2 dir) {
-        print("Move triggered");
-        print(transform.position);
-
-        float speed = 10;
-
+    private void Move(Vector2 dir, float speed) {
         transform.position = new Vector2(transform.position.x + dir.x * speed, transform.position.y + dir.y * speed);
-
     }
 
     void OnMouseDown() {
         print("Success!");
+    }
+
+    private void FireTestBullet() {
+        GameObject instance = Instantiate(test_bullet, gos.gameObject.transform);
+        instance.transform.position = gameObject.transform.position;
     }
 }

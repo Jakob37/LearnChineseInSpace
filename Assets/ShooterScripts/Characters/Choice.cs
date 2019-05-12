@@ -8,7 +8,13 @@ public class Choice : MonoBehaviour
     private ChoiceDescription choice_description;
     private ChoiceKey choice_key;
 
+    public bool dev_placeholder;
+
     void Awake() {
+        if (dev_placeholder) {
+            print("Cleaning up placeholder grid object");
+            Destroy(gameObject);
+        }
         choice_description = GetComponentInChildren<ChoiceDescription>();
         choice_key = GetComponentInChildren<ChoiceKey>();
     }
