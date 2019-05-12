@@ -8,6 +8,21 @@ public enum ChoiceType {
     Tone
 }
 
+// public class CharObj {
+// 
+//     private string character;
+//     private string description;
+//     private string pinying;
+//     private int tone;
+// 
+//     public CharObj(string character, string description, string pinying, int tone) {
+//         this.character = character;
+//         this.description = description;
+//         this.pinying = pinying;
+//         this.tone = tone;
+//     }
+// }
+
 public class CharacterManager : MonoBehaviour
 {
 
@@ -21,23 +36,19 @@ public class CharacterManager : MonoBehaviour
     }
 
     void Start() {
-        curr_char_display.SetText(characters[0].StrChar);
+        curr_char_display.SetText(CurrChar);
     }
 
-    public List<string> GetChoices(ChoiceType choice_type, int choices) {
+    public string CurrChar {
+        get {
+            return characters[0].StrChar;
+        }
+    }
+
+    public List<ShooterCharacter> GetChoices(int nbr_choices) {
 
         var curr_char = characters[0];
-
-        switch (choice_type) {
-            case ChoiceType.Meaning:
-                return GetRandomDisplay(curr_char, characters, choices, ChoiceType.Meaning);
-            case ChoiceType.Pinying:
-                return GetRandomDisplay(curr_char, characters, choices, ChoiceType.Pinying);
-            case ChoiceType.Tone:
-                return GetToneStrings(curr_char.FlatPinying);
-            default:
-                throw new System.Exception("Unknown type: " + choice_type);
-        }
+        return GetRandomCharacters(curr_char, characters, nbr_choices);
     }
 
     private List<ShooterCharacter> GetHardcodedCharacters() {
@@ -59,23 +70,19 @@ public class CharacterManager : MonoBehaviour
         return char_list;
     }
 
-    private List<string> GetRandomDisplay(ShooterCharacter current, List<ShooterCharacter> chars, int count, ChoiceType type) {
+    private List<ShooterCharacter> GetRandomCharacters(ShooterCharacter current, List<ShooterCharacter> chars, int count) {
 
         var chars_copy = new List<ShooterCharacter>(chars);
         chars_copy.Remove(current);
         chars_copy = MyUtils.Shuffle(chars_copy);
 
-        List<string> display_text = new List<string>();
-        if (type == ChoiceType.Meaning) display_text.Add(current.Meaning);
-        else if (type == ChoiceType.Pinying) display_text.Add(current.FlatPinying);
-        else throw new System.Exception("Unknown choice type: " + type);
+        List<ShooterCharacter> choices = new List<ShooterCharacter>();
+        choices.Add(current);
 
         for (var i = 1; i < count; i++) {
-            if (type == ChoiceType.Meaning) display_text.Add(chars_copy[i].Meaning);
-            else if (type == ChoiceType.Pinying) display_text.Add(chars_copy[i].FlatPinying);
-            else throw new System.Exception("Unknown choice type: " + type);
+            choices.Add(chars_copy[i]);
         }
-        return MyUtils.Shuffle(display_text);
+        return MyUtils.Shuffle(choices);
     }
 
     private List<string> GetToneStrings(string base_string) {

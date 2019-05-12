@@ -9,11 +9,16 @@ public class ChoiceGrid : MonoBehaviour
 {
 
     public GameObject choice_object;
-    private List<Choice> choices;
     private CharacterManager character_manager;
 
     public int debug_count;
     private List<ActionButton> buttons;
+
+    private Choice[] Choices {
+        get {
+            return GetComponentsInChildren<Choice>();
+        }
+    }
 
     private int NbrChoices {
         get {
@@ -22,16 +27,17 @@ public class ChoiceGrid : MonoBehaviour
     }
 
     void Awake() {
-        choices = new List<Choice>();
         character_manager = GetComponent<CharacterManager>();
     }
 
     void Start() {
 
         buttons = SetupButtonDict();
-        List<string> choices = character_manager.GetChoices(ChoiceType.Meaning, 4);
+        List<ShooterCharacter> choices = character_manager.GetChoices(4);
 
-        foreach (string choice in choices) {
+        // OK, we kind of need one collected object for this information
+
+        foreach (ShooterCharacter choice in choices) {
             print(choice);
             AddChoice(choice);
         }
@@ -53,24 +59,38 @@ public class ChoiceGrid : MonoBehaviour
 
     void Update() {
 
-        print(NbrChoices);
         if (Input.GetKeyDown(KeyCode.Return)) {
-            AddChoice();
+            AddChoice(new ShooterCharacter("空", "placeholder", "pinyin", -1));
+        }
+
+        for (var i = 0; i < NbrChoices; i++) {
+            var button = buttons[i];
+            if (Input.GetKeyDown(button.KeyCode)) {
+                print("Triggering for: " + Choices[i].Character + " correct is: " + character_manager.CurrChar);
+
+                if (Choices[i].Character == character_manager.CurrChar) {
+                    Choices[i].TrigCorrect();
+                }
+                else {
+                    Choices[i].TrigIncorrect();
+                }
+            }
+        }
+
+        foreach (ActionButton button in buttons.GetRange(0, NbrChoices)) {
+
         }
     }
 
-    private void AddChoice(string text="Text") {
+    private void AddChoice(ShooterCharacter character) {
         GameObject instance = Instantiate(choice_object);
         instance.transform.SetParent(gameObject.transform);
         instance.transform.localScale = new Vector2(200, 100);
+
         Choice choice = instance.GetComponent<Choice>();
-        choice.SetDescription(text);
-
-        //string key = letters[NbrChoices];
-        print("Index: " + NbrChoices);
+        choice.SetDescription(character.Meaning);
         string key = buttons[NbrChoices-1].KeyString;
-        print(key);
-
         choice.SetKey(key);
+        choice.SetCharacter(character.StrChar);
     }
 }
