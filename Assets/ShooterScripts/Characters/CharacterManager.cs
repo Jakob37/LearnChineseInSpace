@@ -23,7 +23,6 @@ public class CharacterManager : MonoBehaviour
     }
 
     void Start() {
-        NewCharacter();
     }
 
     private void NewCharacter() {
@@ -37,16 +36,34 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    public string CurrTone {
+        get {
+            return characters[curr_char_index].Tone;
+        }
+    }
+
     public ShooterCharacter CurrCharObj {
         get {
             return characters[curr_char_index];
         }
     }
 
-    public List<ShooterCharacter> GetChoices(int nbr_choices) {
+    public List<ShooterCharacter> GetChoices(int nbr_choices, bool set_new_character) {
 
-        NewCharacter();
-        return GetRandomCharacters(CurrCharObj, characters, nbr_choices);
+        if (set_new_character) {
+            NewCharacter();
+        }
+        return GetRandomCharacters(characters[curr_char_index], characters, nbr_choices);
+    }
+
+    public List<ShooterCharacter> GetToneChoices() {
+        var tone_choices = new List<ShooterCharacter>();
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "1"));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "2"));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "3"));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "4"));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "5"));
+        return tone_choices;
     }
 
     private List<ShooterCharacter> GetRandomCharacters(ShooterCharacter current, List<ShooterCharacter> chars, int count) {

@@ -26,14 +26,14 @@ public class ShooterCharacter
         }
     }
 
-    private int tone;
-    public int Tone {
+    private string tone;
+    public string Tone {
         get {
             return tone;
         }
     }
 
-    public ShooterCharacter(string str_char, string meaning, string flat_pinying, int tone) {
+    public ShooterCharacter(string str_char, string meaning, string flat_pinying, string tone) {
         this.str_char = str_char;
         this.meaning = meaning;
         this.flat_pinying = flat_pinying;

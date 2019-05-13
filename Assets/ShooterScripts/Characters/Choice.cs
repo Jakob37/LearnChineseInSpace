@@ -74,18 +74,22 @@ public class Choice : MonoBehaviour
         correct_remain_time = 0;
     }
 
-    public void SetShooterCharacter(ShooterCharacter character) {
+    public void SetShooterCharacter(ShooterCharacter character, ChoiceStatus choice_status) {
         this.character = character;
-        this.choice_description.GetComponent<Text>().text = character.Meaning;
-    }
 
-    // public void SetCharacter(string character) {
-    //     this.character = character;
-    // }
-    // 
-    // public void SetDescription(string descr) {
-    //     choice_description.GetComponent<Text>().text = descr;
-    // }
+        if (choice_status == ChoiceStatus.Start) {
+            this.choice_description.GetComponent<Text>().text = character.Meaning;
+        }
+        else if (choice_status == ChoiceStatus.Pinyin) {
+            this.choice_description.GetComponent<Text>().text = character.FlatPinying;
+        }
+        else if (choice_status == ChoiceStatus.Tone) {
+            this.choice_description.GetComponent<Text>().text = "" + character.Tone;
+        }
+        else {
+            throw new System.Exception("Unknown choice status: " + choice_status);
+        }
+    }
 
     public void SetKey(string key) {
         choice_key.GetComponent<Text>().text = key;
