@@ -24,8 +24,8 @@ public enum Speed {
 
 public class Movement : MonoBehaviour {
 
-    public XDir x;
-    public YDir y;
+    public float x;
+    public float y;
     public Speed speed;
 
     public bool is_step;
@@ -37,32 +37,38 @@ public class Movement : MonoBehaviour {
         gameObject.transform.position = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
     }
 
+    public void AssignMovement(Vector2 dir, Speed speed) {
+        this.speed = speed;
+        x = dir.x;
+        y = dir.y;
+    }
+
     public void ResetMovement() {
         x = 0;
         y = 0;
     }
 
     public void MoveRight() {
-        x = XDir.Right;
+        x = 1;
     }
 
     public void MoveLeft() {
-        x = XDir.Left;
+        x = -1;
     }
 
     public void MoveDown() {
-        y = YDir.Down;
+        y = 1;
     }
 
     public void MoveUp() {
-        y = YDir.Up;
+        y = -1;
     }
 
     void Update() {
 
         if (!is_step) {
-            float delta_x = (int)x * (int)speed * Time.deltaTime;
-            float delta_y = (int)y * (int)speed * Time.deltaTime;
+            float delta_x = x * (float)speed * Time.deltaTime;
+            float delta_y = y * (float)speed * Time.deltaTime;
             Vector3 pos = gameObject.transform.position;
             gameObject.transform.position = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
         }
