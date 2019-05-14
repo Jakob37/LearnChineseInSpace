@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_object: {fileID: 8825536840377905228, guid: 102f6dbd25630d3498f28434dfcdbd2a,
     type: 3}
+  shoot_delay: 2
 --- !u!61 &7350963657462537739
 BoxCollider2D:
   m_ObjectHideFlags: 0
