@@ -29,7 +29,6 @@ public class ShooterEnemy : MonoBehaviour
         Vector2 dir = ScaledDirTowards(player.transform.position);
         // bullet.transform.LookAt(player.transform);
         // bullet.transform.rotation = dir;
-        print(dir);
         movement.AssignMovement(dir, Speed.High);
     }
 

@@ -29,7 +29,7 @@ public class PlayerCube : MonoBehaviour
     }
 
     public void TrigCorrectEvent(ShooterCharacter character) {
-        FireTestBullet();
+        FireBullet();
     }
 
     void Update() {
@@ -37,9 +37,9 @@ public class PlayerCube : MonoBehaviour
         Vector2 dir = GetDirection();
         Move(dir, speed);
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            FireTestBullet();
-        }
+        //  if (Input.GetKeyDown(KeyCode.Space)) {
+        //      FireTestBullet();
+        //  }
     }
 
     private Vector2 GetDirection() {
@@ -76,8 +76,15 @@ public class PlayerCube : MonoBehaviour
         print("Success!");
     }
 
-    private void FireTestBullet() {
+    private void FireBullet() {
         GameObject instance = Instantiate(test_bullet, gos.gameObject.transform);
         instance.transform.position = gameObject.transform.position;
+    }
+
+    void OnCollisionEnter2D(Collision2D coll) {
+        if (coll.gameObject.GetComponent<ShooterEnemyBullet>()) {
+            Destroy(coll.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
