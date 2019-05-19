@@ -58,11 +58,11 @@ public class CharacterManager : MonoBehaviour
 
     public List<ShooterCharacter> GetToneChoices() {
         var tone_choices = new List<ShooterCharacter>();
-        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "1"));
-        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "2"));
-        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "3"));
-        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "4"));
-        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "5"));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "1", 0));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "2", 0));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "3", 0));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "4", 0));
+        tone_choices.Add(new ShooterCharacter("dummy", "dummy", "dummy", "5", 0));
         return tone_choices;
     }
 

@@ -5,6 +5,13 @@ using UnityEngine;
 public class ShooterCharacter
 {
 
+    private int chapter;
+    public int Chapter {
+        get {
+            return chapter;
+        }
+    }
+
     private string str_char;
     public string StrChar {
         get {
@@ -33,10 +40,11 @@ public class ShooterCharacter
         }
     }
 
-    public ShooterCharacter(string str_char, string meaning, string flat_pinying, string tone) {
+    public ShooterCharacter(string str_char, string meaning, string flat_pinying, string tone, int chapter) {
         this.str_char = str_char;
         this.meaning = meaning;
         this.flat_pinying = flat_pinying;
         this.tone = tone;
+        this.chapter = chapter;
     }
 }

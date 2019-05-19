@@ -75,7 +75,7 @@ public class ChoiceGrid : MonoBehaviour
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.Return)) {
-            AddChoice(new ShooterCharacter("空", "placeholder", "pinyin", "-1"), choice_status);
+            AddChoice(new ShooterCharacter("空", "placeholder", "pinyin", "-1", -1), choice_status);
         }
 
         for (var i = 0; i < NbrChoices; i++) {
