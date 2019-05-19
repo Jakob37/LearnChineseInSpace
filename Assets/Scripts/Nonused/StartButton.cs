@@ -5,7 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour {
 
+    private GameSettings game_settings;
+    private ChaptersSelector chapter_selector;
+
+    void Awake() {
+        game_settings = FindObjectOfType<GameSettings>();
+        chapter_selector = FindObjectOfType<ChaptersSelector>();
+    }
+
     public void StartGame() {
-        SceneManager.LoadScene("main");
+        LoadSettings();
+        SceneManager.LoadScene("3_scroller");
+    }
+
+    private void LoadSettings() {
+        game_settings.SelectedChapters = chapter_selector.GetChapters();
     }
 }

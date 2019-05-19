@@ -14,12 +14,28 @@ public class CharacterManager : MonoBehaviour
 
     private List<ShooterCharacter> characters;
     private CurrentCharacterDisplay curr_char_display;
+    private GameSettings game_settings;
 
     private int curr_char_index;
 
     void Awake() {
         curr_char_display = GameObject.FindObjectOfType<CurrentCharacterDisplay>();
-        characters = LoadCharacters.LoadLearningChineseCharacters();
+        game_settings = FindObjectOfType<GameSettings>();
+        var all_characters = LoadCharacters.LoadLearningChineseCharacters();
+
+        if (game_settings == null) {
+            characters = all_characters;
+        }
+        else {
+            characters = new List<ShooterCharacter>();
+            foreach (ShooterCharacter shoot_char in all_characters) {
+                var chapter = shoot_char.Chapter;
+                if (game_settings.SelectedChapters.Contains(chapter)) {
+                    characters.Add(shoot_char);
+                    print("Adding character: " + shoot_char.StrChar);
+                }
+            }
+        }
     }
 
     void Start() {

@@ -30,9 +30,6 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("女", "woman", "nü", "3", chapter));
             char_list.Add(new ShooterCharacter("她", "her", "ta", "1", chapter));
 
-
-            // char_list.Add(new ShooterCharacter("", "", "", ""));
-
             // Chapter 2
             chapter = 2;
             char_list.Add(new ShooterCharacter("子", "child", "zi", "5", chapter));

@@ -12,13 +12,19 @@ public class GameSettings : MonoBehaviour {
             print("Assigned: " + value);
         }
     }
-
+    
     private List<string> selected_radicals;
     public List<string> SelectedRadicals {
         get { return selected_radicals; }
         set {
             selected_radicals = value;
         }
+    }
+
+    private List<int> selected_chapters;
+    public List<int> SelectedChapters {
+        get { return selected_chapters; }
+        set { selected_chapters = value; }
     }
 
     void Awake() {
