@@ -18,7 +18,7 @@ public enum Speed {
     None = 0,
     Low = 100,
     Medium = 200,
-    High = 500,
+    High = 800,
     ExtremelyHigh = 1500
 }
 
