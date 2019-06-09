@@ -115,7 +115,7 @@ public class ShooterEnemy : MonoBehaviour
         if (coll.gameObject.GetComponent<Bullet>() != null) {
             Destroy(coll.gameObject);
             Destroy(gameObject);
-            score_display.increment_score(1);
+            score_display.increment_score(10);
         }
     }
 

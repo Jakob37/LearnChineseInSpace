@@ -26,6 +26,8 @@ public class ChoiceGrid : MonoBehaviour
 
     public int number_choices;
 
+    private ScoreDisplay score_display;
+
     private Choice[] Choices {
         get {
             return GetComponentsInChildren<Choice>();
@@ -41,14 +43,13 @@ public class ChoiceGrid : MonoBehaviour
     void Awake() {
         character_manager = GetComponent<CharacterManager>();
         player = FindObjectOfType<PlayerCube>();
+        score_display = FindObjectOfType<ScoreDisplay>();
     }
 
     void Start() {
 
         pending_switch = false;
-
         buttons = SetupButtonDict();
-
         choice_status = ChoiceStatus.Start;
 
         ClearChoices();
@@ -91,6 +92,7 @@ public class ChoiceGrid : MonoBehaviour
                 }
                 else {
                     Choices[i].TrigIncorrect();
+                    score_display.increment_score(-2);
                 }
             }
         }

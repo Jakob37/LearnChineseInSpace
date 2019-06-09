@@ -545,10 +545,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy_prefab: {fileID: 5911392973121301951, guid: 5db14e949af7cec4e9e2cba4774809f4,
     type: 3}
-  spawn_delay: 4
+  spawn_delay: 6
   min_x: -500
   max_y: 500
-  spawn_count: 5
+  spawn_count: 20
 --- !u!1 &618414187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,12 +1755,12 @@ PrefabInstance:
     - target: {fileID: 4407395637871940430, guid: 90af23147ba6e5d4e82e956703acb69f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4407395637871940430, guid: 90af23147ba6e5d4e82e956703acb69f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -99.6
+      value: -109
       objectReference: {fileID: 0}
     - target: {fileID: 4407395637871940430, guid: 90af23147ba6e5d4e82e956703acb69f,
         type: 3}
@@ -1802,16 +1802,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4407395637871940418, guid: 90af23147ba6e5d4e82e956703acb69f,
+    - target: {fileID: 4407395637871940416, guid: 90af23147ba6e5d4e82e956703acb69f,
         type: 3}
-      propertyPath: test_bullet
-      value: 
-      objectReference: {fileID: 1116675512399329377, guid: 1c6d0116b3fde844f9643a730f275cef,
+      propertyPath: x_max_bound
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407395637871940416, guid: 90af23147ba6e5d4e82e956703acb69f,
         type: 3}
-    - target: {fileID: 4407395637871940418, guid: 90af23147ba6e5d4e82e956703acb69f,
-        type: 3}
-      propertyPath: health
-      value: 5
+      propertyPath: y_max_bound
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4407395637871940419, guid: 90af23147ba6e5d4e82e956703acb69f,
         type: 3}

@@ -30,6 +30,12 @@ public class Movement : MonoBehaviour {
 
     public bool is_step;
 
+    public bool use_bound;
+    public float x_min_bound;
+    public float x_max_bound;
+    public float y_min_bound;
+    public float y_max_bound;
+
     public void Step() {
         float delta_x = (int)x * (int)speed;
         float delta_y = (int)y * (int)speed;
@@ -70,7 +76,21 @@ public class Movement : MonoBehaviour {
             float delta_x = x * (float)speed * Time.deltaTime;
             float delta_y = y * (float)speed * Time.deltaTime;
             Vector3 pos = gameObject.transform.position;
-            gameObject.transform.position = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
+
+            Vector3 new_pos;
+            if (use_bound) {
+                print(pos);
+                new_pos = new Vector3(
+                    Mathf.Clamp(pos.x + delta_x, x_min_bound, x_max_bound),
+                    Mathf.Clamp(pos.y + delta_y, y_min_bound, y_max_bound),
+                    pos.z
+                );
+            }
+            else {
+                new_pos = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
+            }
+
+            gameObject.transform.position = new_pos;
         }
     }
 }

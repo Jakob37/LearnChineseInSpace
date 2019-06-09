@@ -130,6 +130,11 @@ MonoBehaviour:
   y: -1
   speed: 100
   is_step: 1
+  use_bound: 0
+  x_min_bound: -50
+  x_max_bound: 75
+  y_min_bound: -120
+  y_max_bound: -10
 --- !u!114 &4407395637871940418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588e9f38ef8e6184390c3cd67de48ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test_bullet: {fileID: 0}
-  health: 0
+  test_bullet: {fileID: 1116675512399329377, guid: 1c6d0116b3fde844f9643a730f275cef,
+    type: 3}
+  health: 5
+  x_min_bound: -50
+  x_max_bound: 1100
+  y_min_bound: 100
+  y_max_bound: 1000
 --- !u!50 &4407395637871940419
 Rigidbody2D:
   serializedVersion: 4

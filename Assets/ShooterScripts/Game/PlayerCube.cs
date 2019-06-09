@@ -22,6 +22,11 @@ public class PlayerCube : MonoBehaviour
     private HealthDisplay health_display;
     public int health;
 
+    public float x_min_bound;
+    public float x_max_bound;
+    public float y_min_bound;
+    public float y_max_bound;
+
     public bool IsAlive {
         get {
             return health > 0;
@@ -82,7 +87,11 @@ public class PlayerCube : MonoBehaviour
     }
 
     private void Move(Vector2 dir, float speed) {
-        transform.position = new Vector2(transform.position.x + dir.x * speed, transform.position.y + dir.y * speed);
+        print(transform.position);
+        transform.position = new Vector2(
+            Mathf.Clamp(transform.position.x + dir.x * speed, x_min_bound, x_max_bound), 
+            Mathf.Clamp(transform.position.y + dir.y * speed, y_min_bound, y_max_bound)
+        );
     }
 
     void OnMouseDown() {
