@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeaningDisplay : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

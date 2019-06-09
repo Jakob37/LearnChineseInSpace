@@ -15,6 +15,8 @@ public class ShooterEnemy : MonoBehaviour
     private PlayerCube player;
     private Movement movement;
 
+    private ScoreDisplay score_display;
+
     public float shoot_interval;
     private float current_shoot_timer;
     private ShooterEnemyBehaviour behaviour;
@@ -32,25 +34,17 @@ public class ShooterEnemy : MonoBehaviour
         behaviour = ShooterEnemyBehaviour.MovingSilently;
         movement = GetComponent<Movement>();
         my_rand = new Random();
+        score_display = FindObjectOfType<ScoreDisplay>();
     }
 
     void Start() {
-        // FireBullet();
         current_shoot_timer = shoot_interval;
         time_since_spawn = 0;
     }
 
     public void Initialize(float stop_position) {
         this.stop_position = stop_position;
-        print("Stop position: " + this.stop_position);
-    }
-
-    private void FireBullet() {
-        GameObject bullet = Instantiate(bullet_object, gos.gameObject.transform);
-        bullet.transform.position = gameObject.transform.position;
-        var movement = bullet.GetComponent<Movement>();
-        Vector2 dir = ScaledDirTowards(player.transform.position);
-        movement.AssignMovement(dir, Speed.High);
+        // print("Stop position: " + this.stop_position);
     }
 
     private Vector2 ScaledDirTowards(Vector3 pos) {
@@ -62,7 +56,6 @@ public class ShooterEnemy : MonoBehaviour
     void Update() {
 
         time_since_spawn += Time.deltaTime;
-        // print(transform.position.y);
 
         if (behaviour == ShooterEnemyBehaviour.MovingSilently) {
             behaviour = MovingSilently();
@@ -111,18 +104,27 @@ public class ShooterEnemy : MonoBehaviour
 
     private void UpdateShooting() {
         current_shoot_timer -= Time.deltaTime;
-        if (current_shoot_timer <= 0) {
+        if (current_shoot_timer <= 0 && player.IsAlive) {
             current_shoot_timer = shoot_interval;
             FireBullet();
         }
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
-        print("Colliding with enemy");
 
         if (coll.gameObject.GetComponent<Bullet>() != null) {
             Destroy(coll.gameObject);
             Destroy(gameObject);
+            score_display.increment_score(1);
         }
+    }
+
+    private void FireBullet() {
+        GameObject bullet = Instantiate(bullet_object, gos.gameObject.transform);
+
+        bullet.transform.position = gameObject.transform.position;
+        var movement = bullet.GetComponent<Movement>();
+        Vector2 dir = ScaledDirTowards(player.transform.position);
+        movement.AssignMovement(dir, Speed.High);
     }
 }

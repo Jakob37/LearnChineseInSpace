@@ -19,8 +19,18 @@ public class PlayerCube : MonoBehaviour
 
     public GameObject test_bullet;
 
+    private HealthDisplay health_display;
+    public int health;
+
+    public bool IsAlive {
+        get {
+            return health > 0;
+        }
+    }
+
     void Awake() {
         gos = FindObjectOfType<GameObjects>();
+        health_display = FindObjectOfType<HealthDisplay>();
     }
 
     void Start() {
@@ -37,9 +47,12 @@ public class PlayerCube : MonoBehaviour
         Vector2 dir = GetDirection();
         Move(dir, speed);
 
-        //  if (Input.GetKeyDown(KeyCode.Space)) {
-        //      FireTestBullet();
-        //  }
+        health_display.SetHealth(health);
+
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
+
     }
 
     private Vector2 GetDirection() {
@@ -82,9 +95,11 @@ public class PlayerCube : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
-        if (coll.gameObject.GetComponent<ShooterEnemyBullet>()) {
+
+        if (coll.gameObject.GetComponent<EnemyBullet>() != null) {
+            print("hit player!");
             Destroy(coll.gameObject);
-            Destroy(gameObject);
+            health -= 1;
         }
     }
 }

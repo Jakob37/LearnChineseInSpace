@@ -78,7 +78,7 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("你", "you", "ni", "3", chapter));
             char_list.Add(new ShooterCharacter("又", "right hand, again", "you", "4", chapter));
             char_list.Add(new ShooterCharacter("友", "friend", "you", "3", chapter));
-            char_list.Add(new ShooterCharacter("地", "ground, -ly", "di, de", "4, 5", chapter));
+            char_list.Add(new ShooterCharacter("地", "ground, -ly", "di, de", "4", chapter));
             char_list.Add(new ShooterCharacter("在", "at", "zai", "4", chapter));
             char_list.Add(new ShooterCharacter("云", "cloud", "yun", "2", chapter));
             char_list.Add(new ShooterCharacter("运", "transport", "yun", "4", chapter));
@@ -93,7 +93,7 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("有", "have", "you", "3", chapter));
             char_list.Add(new ShooterCharacter("妹", "younger sister", "mei", "4", chapter));
             char_list.Add(new ShooterCharacter("来", "come", "lai", "2", chapter));
-            char_list.Add(new ShooterCharacter("了", "transition, complete", "le, liao", "5, 3", chapter));
+            char_list.Add(new ShooterCharacter("了", "transition, complete", "le, liao", "5", chapter));
             char_list.Add(new ShooterCharacter("说", "say", "shuo", "1", chapter));
             char_list.Add(new ShooterCharacter("语", "language", "yu", "3", chapter));
             char_list.Add(new ShooterCharacter("多", "many", "duo", "1", chapter));
@@ -102,7 +102,7 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("刀", "knife", "dao", "1", chapter));
             char_list.Add(new ShooterCharacter("分", "division", "fen", "1", chapter));
             char_list.Add(new ShooterCharacter("到", "arrive", "dao", "4", chapter));
-            char_list.Add(new ShooterCharacter("倒", "topple, invert", "dao, dao", "3, 4", chapter));
+            char_list.Add(new ShooterCharacter("倒", "topple, invert", "dao, dao", "3", chapter));
 
             // Chapter 7
             chapter = 7;
@@ -111,7 +111,7 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("汉", "Han Chinese", "han", "4", chapter));
             char_list.Add(new ShooterCharacter("别", "don't", "bie", "2", chapter));
             char_list.Add(new ShooterCharacter("如", "if", "ru", "2", chapter));
-            char_list.Add(new ShooterCharacter("行", "OK, line", "xing, hang", "2, 2", chapter));
+            char_list.Add(new ShooterCharacter("行", "OK, line", "xing, hang", "2", chapter));
             char_list.Add(new ShooterCharacter("学", "study", "xue", "2", chapter));
             char_list.Add(new ShooterCharacter("车", "car", "car", "1", chapter));
             char_list.Add(new ShooterCharacter("连", "linked up", "lian", "2", chapter));
@@ -134,7 +134,7 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("那", "that", "na", "4", chapter));
             char_list.Add(new ShooterCharacter("哪", "which?", "na", "3", chapter));
             char_list.Add(new ShooterCharacter("西", "west", "xi", "1", chapter));
-            char_list.Add(new ShooterCharacter("要", "want, ask for", "yao, yao", "4, 1", chapter));
+            char_list.Add(new ShooterCharacter("要", "want, ask for", "yao, yao", "4", chapter));
             char_list.Add(new ShooterCharacter("酒", "liquor", "jiu", "3", chapter));
             char_list.Add(new ShooterCharacter("从", "from", "cong", "2", chapter));
             char_list.Add(new ShooterCharacter("村", "village", "cun", "1", chapter));
@@ -154,15 +154,15 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("础", "plinth", "chu", "3", chapter));
             char_list.Add(new ShooterCharacter("岁", "years old", "sui", "4", chapter));
             char_list.Add(new ShooterCharacter("但", "but", "dan", "4", chapter));
-            char_list.Add(new ShooterCharacter("得", "obtain, way, must", "de, de, dei", "2, 5, 3", chapter));
+            char_list.Add(new ShooterCharacter("得", "obtain, way, must", "de, de, dei", "2", chapter));
             char_list.Add(new ShooterCharacter("公", "public", "gong", "1", chapter));
             char_list.Add(new ShooterCharacter("以", "using", "yi", "3", chapter));
             char_list.Add(new ShooterCharacter("之", "of", "zhi", "1", chapter));
-            char_list.Add(new ShooterCharacter("为", "act as, for", "wei, wei", "2, 4", chapter));
+            char_list.Add(new ShooterCharacter("为", "act as, for", "wei, wei", "2", chapter));
             char_list.Add(new ShooterCharacter("办", "manage", "ban", "4", chapter));
-            char_list.Add(new ShooterCharacter("干", "dry, work", "gan, gan", "1, 4", chapter));
+            char_list.Add(new ShooterCharacter("干", "dry, work", "gan, gan", "1", chapter));
             char_list.Add(new ShooterCharacter("午", "noon", "wu", "3", chapter));
-            char_list.Add(new ShooterCharacter("和", "with, mix", "with, mix", "with, mix", chapter));
+            char_list.Add(new ShooterCharacter("和", "with, mix", "he, huo", "2", chapter));
 
             // Chapter 10
             chapter = 10;
@@ -205,7 +205,7 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("同", "same", "tong", "2", chapter));
             char_list.Add(new ShooterCharacter("心", "heart", "xin", "1", chapter));
             char_list.Add(new ShooterCharacter("必", "inevitably", "bi", "4", chapter));
-            char_list.Add(new ShooterCharacter("相", "mutual, appearance", "xiang, xiang", "1, 4", chapter));
+            char_list.Add(new ShooterCharacter("相", "mutual, appearance", "xiang, xiang", "1", chapter));
             char_list.Add(new ShooterCharacter("想", "think about", "xiang", "3", chapter));
             char_list.Add(new ShooterCharacter("思", "think", "si", "3", chapter));
             char_list.Add(new ShooterCharacter("今", "now", "jin", "1", chapter));
@@ -217,7 +217,7 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("没", "not", "mei", "2", chapter));
             char_list.Add(new ShooterCharacter("广", "shelter", "guang", "3", chapter));
             char_list.Add(new ShooterCharacter("床", "bed", "chuang", "2", chapter));
-            char_list.Add(new ShooterCharacter("长", "long, chief", "chang, zhang", "2, 3", chapter));
+            char_list.Add(new ShooterCharacter("长", "long, chief", "chang, zhang", "2", chapter));
             char_list.Add(new ShooterCharacter("张", "sheet (of paper)", "zhang", "1", chapter));
             char_list.Add(new ShooterCharacter("本", "source", "ben", "3", chapter));
             char_list.Add(new ShooterCharacter("体", "body", "ti", "3", chapter));
@@ -247,13 +247,13 @@ namespace Assets.Scripts {
             char_list.Add(new ShooterCharacter("亲", "kin", "qin", "1", chapter));
             char_list.Add(new ShooterCharacter("产", "to produce", "chan", "3", chapter));
             char_list.Add(new ShooterCharacter("卡", "card", "ka", "3", chapter));
-            char_list.Add(new ShooterCharacter("还", "still, give back", "hai, huan", "still, give back", chapter));
+            char_list.Add(new ShooterCharacter("还", "still, give back", "hai, huan", "2", chapter));
             char_list.Add(new ShooterCharacter("看", "look at", "kan", "4", chapter));
             char_list.Add(new ShooterCharacter("讨", "ask for", "tao", "3", chapter));
             char_list.Add(new ShooterCharacter("回", "return", "hui", "2", chapter));
             char_list.Add(new ShooterCharacter("接", "receive", "jie", "1", chapter));
             char_list.Add(new ShooterCharacter("差", "fall short", "cha", "4", chapter));
-            char_list.Add(new ShooterCharacter("着", "to catch, -ing", "zhao, zhe", "2, 5", chapter));
+            char_list.Add(new ShooterCharacter("着", "to catch, -ing", "zhao, zhe", "2", chapter));
 
             // Chapter 14
             chapter = 14;
