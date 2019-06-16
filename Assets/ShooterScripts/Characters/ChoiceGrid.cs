@@ -10,8 +10,7 @@ public enum ChoiceStatus {
     Done
 }
 
-public class ChoiceGrid : MonoBehaviour
-{
+public class ChoiceGrid : MonoBehaviour {
 
     public GameObject choice_object;
     private CharacterManager character_manager;
@@ -21,11 +20,9 @@ public class ChoiceGrid : MonoBehaviour
 
     private bool pending_switch;
     private PlayerCube player;
-
     private ChoiceStatus choice_status;
 
     public int number_choices;
-
     private ScoreDisplay score_display;
 
     private Choice[] Choices {
@@ -41,7 +38,7 @@ public class ChoiceGrid : MonoBehaviour
     }
 
     void Awake() {
-        character_manager = GetComponent<CharacterManager>();
+        character_manager = FindObjectOfType<CharacterManager>();
         player = FindObjectOfType<PlayerCube>();
         score_display = FindObjectOfType<ScoreDisplay>();
     }

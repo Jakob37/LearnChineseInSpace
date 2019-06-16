@@ -9,10 +9,15 @@ public enum ChoiceType {
     Tone
 }
 
-public class CharacterManager : MonoBehaviour
-{
+public class CharacterManager : MonoBehaviour {
 
     private List<ShooterCharacter> characters;
+    public List<ShooterCharacter> Characters {
+        get {
+            return characters;
+        }
+    }
+
     private CurrentCharacterDisplay curr_char_display;
     private GameSettings game_settings;
 
@@ -21,24 +26,26 @@ public class CharacterManager : MonoBehaviour
     void Awake() {
         curr_char_display = GameObject.FindObjectOfType<CurrentCharacterDisplay>();
         game_settings = FindObjectOfType<GameSettings>();
-        var all_characters = LoadCharacters.LoadLearningChineseCharacters();
+        characters = SetupCharactersFromSettings();
+    }
 
+    private List<ShooterCharacter> SetupCharactersFromSettings() {
+        List<ShooterCharacter> curr_characters;
+        var all_characters = LoadCharacters.LoadLearningChineseCharacters();
         if (game_settings == null) {
-            characters = all_characters;
+            curr_characters = all_characters;
         }
         else {
-            characters = new List<ShooterCharacter>();
+            curr_characters = new List<ShooterCharacter>();
             foreach (ShooterCharacter shoot_char in all_characters) {
                 var chapter = shoot_char.Chapter;
                 if (game_settings.SelectedChapters.Contains(chapter)) {
-                    characters.Add(shoot_char);
+                    curr_characters.Add(shoot_char);
                     print("Adding character: " + shoot_char.StrChar);
                 }
             }
         }
-    }
-
-    void Start() {
+        return curr_characters;
     }
 
     private void NewCharacter() {

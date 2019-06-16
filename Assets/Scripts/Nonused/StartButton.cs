@@ -15,7 +15,7 @@ public class StartButton : MonoBehaviour {
 
     public void StartGame() {
         LoadSettings();
-        SceneManager.LoadScene("3_scroller");
+        SceneManager.LoadScene("2_setup");
     }
 
     private void LoadSettings() {

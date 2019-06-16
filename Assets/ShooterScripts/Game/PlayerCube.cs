@@ -87,7 +87,6 @@ public class PlayerCube : MonoBehaviour
     }
 
     private void Move(Vector2 dir, float speed) {
-        print(transform.position);
         transform.position = new Vector2(
             Mathf.Clamp(transform.position.x + dir.x * speed, x_min_bound, x_max_bound), 
             Mathf.Clamp(transform.position.y + dir.y * speed, y_min_bound, y_max_bound)
