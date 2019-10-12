@@ -58,13 +58,6 @@ public class MenuCharacter : MonoBehaviour
 
     private void ToggleSelected() {
         is_selected = !is_selected;
-
-        // if (is_selected) {
-        //     background.SetColor(new Color(0.6f, 0, 0.6f));
-        // }
-        // else {
-        //     background.SetColor(base_color);
-        // }
         menu_controller.UpdateSelected();
     }
 }

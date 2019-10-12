@@ -11,5 +11,7 @@ Builds/
 Text/
 *#
 *.nb.html
+*.nb.html.meta
 **/anki_char_notes.tsv
 **/anki_char_notes.tsv.meta
+*.Rhistory
