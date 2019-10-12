@@ -3,9 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts {
     class LoadCharacters {
+
+        public static List<ShooterCharacter> LoadCharactersFromAnki() {
+
+            string target_path = "anki";
+            TextAsset mytxtData = (TextAsset)Resources.Load(target_path);
+            string txt = mytxtData.text;
+            string[] lines = txt.Split('\n');
+
+            List<ShooterCharacter> shooter_chars = new List<ShooterCharacter>();
+
+            for (int i = 0; i < lines.Length; i++) {
+
+                string line = lines[i];
+                string[] fields = line.Split('\t');
+
+                Debug.Log(fields[0]);
+                Debug.Log(fields[1]);
+                Debug.Log(fields[2]);
+                Debug.Log(fields[3]);
+                Debug.Log(fields[4]);
+                Debug.Log(fields[5]);
+
+                // new ShooterCharacter("char", "meaning", "flat_pinying", "tone", "chapter");
+
+                ShooterCharacter char_instance = new ShooterCharacter(
+                    str_char: fields[0],
+                    meaning: fields[3],
+                    flat_pinying: fields[5],
+                    tone: fields[6]
+                );
+                shooter_chars.Add(char_instance);
+            }
+
+            // var shooter_char = new List<ShooterCharacter>();
+            // shooter_char.Add(new ShooterCharacter("", "", "", "", 1));
+
+            return shooter_chars;
+        }
 
         public static List<ShooterCharacter> LoadLearningChineseCharacters() {
 

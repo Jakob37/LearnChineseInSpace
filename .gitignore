@@ -12,6 +12,11 @@ Text/
 *#
 *.nb.html
 *.nb.html.meta
+mypy_toneless = pydic(method = 'toneless')
+mypy_normal = pydic(method = 'quanpin')
+mypy_tone = pydic(method = 'tone')
+**/anki.txt
+**/anki.txt.meta
 **/anki_char_notes.tsv
 **/anki_char_notes.tsv.meta
 *.Rhistory

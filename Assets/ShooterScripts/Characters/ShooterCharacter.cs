@@ -46,7 +46,7 @@ public class ShooterCharacter
         }
     }
 
-    public ShooterCharacter(string str_char, string meaning, string flat_pinying, string tone, int chapter) {
+    public ShooterCharacter(string str_char, string meaning, string flat_pinying, string tone, int chapter=-1) {
         this.str_char = str_char;
         this.meaning = meaning;
         this.flat_pinying = flat_pinying;

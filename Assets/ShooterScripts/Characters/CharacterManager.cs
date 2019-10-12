@@ -11,13 +11,17 @@ public enum ChoiceType {
 
 public class CharacterManager : MonoBehaviour {
 
-    private List<ShooterCharacter> characters;
-    public List<ShooterCharacter> Characters {
+    public bool load_chapters_active;
+    public bool load_anki_active;
+
+    private List<ShooterCharacter> chapter_characters;
+    public List<ShooterCharacter> ChapterCharacters {
         get {
-            return characters;
+            return chapter_characters;
         }
     }
 
+    private List<ShooterCharacter> random_characters;
     private CurrentCharacterDisplay curr_char_display;
     private GameSettings game_settings;
 
@@ -26,7 +30,18 @@ public class CharacterManager : MonoBehaviour {
     void Awake() {
         curr_char_display = GameObject.FindObjectOfType<CurrentCharacterDisplay>();
         game_settings = FindObjectOfType<GameSettings>();
-        characters = SetupCharactersFromSettings();
+        if (load_chapters_active) {
+            chapter_characters = SetupCharactersFromSettings();
+        }
+        if (load_anki_active) {
+            random_characters = SetupAnkiCharacters();
+        }
+    }
+
+    private List<ShooterCharacter> SetupAnkiCharacters() {
+        print("Anki characters triggered");
+        var all_characters = LoadCharacters.LoadCharactersFromAnki();
+        return all_characters;
     }
 
     private List<ShooterCharacter> SetupCharactersFromSettings() {
@@ -49,25 +64,25 @@ public class CharacterManager : MonoBehaviour {
     }
 
     private void NewCharacter() {
-        curr_char_index = Random.Range(0, characters.Count);
-        curr_char_display.SetText(characters[curr_char_index].StrChar);
+        curr_char_index = Random.Range(0, chapter_characters.Count);
+        curr_char_display.SetText(chapter_characters[curr_char_index].StrChar);
     }
 
     public string CurrChar {
         get {
-            return characters[curr_char_index].StrChar;
+            return chapter_characters[curr_char_index].StrChar;
         }
     }
 
     public string CurrTone {
         get {
-            return characters[curr_char_index].Tone;
+            return chapter_characters[curr_char_index].Tone;
         }
     }
 
     public ShooterCharacter CurrCharObj {
         get {
-            return characters[curr_char_index];
+            return chapter_characters[curr_char_index];
         }
     }
 
@@ -76,7 +91,7 @@ public class CharacterManager : MonoBehaviour {
         if (set_new_character) {
             NewCharacter();
         }
-        return GetRandomCharacters(characters[curr_char_index], characters, nbr_choices);
+        return GetRandomCharacters(chapter_characters[curr_char_index], chapter_characters, nbr_choices);
     }
 
     public List<ShooterCharacter> GetToneChoices() {

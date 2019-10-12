@@ -11,8 +11,7 @@ public enum Direction {
     None
 }
 
-public class PlayerCube : MonoBehaviour
-{
+public class PlayerCube : MonoBehaviour {
 
     private Transform transform;
     private Movement movement;

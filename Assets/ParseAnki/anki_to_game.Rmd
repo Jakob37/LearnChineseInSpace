@@ -16,29 +16,31 @@ pinyin::py Able to retrieve pinyin for character
 
 https://github.com/pzhaonet/pinyin
 
+## Preload data and dictionaries
 
 ```{r}
 anki_cards <- read_tsv("anki_char_notes.tsv", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)
 colnames(anki_cards) <- c("char", "descr")
 
-head(anki_cards)
-colnames(anki_cards)
-anki_cards$char %>% head(10)
-
-anki_cards_test <- anki_cards %>% head(10)
-
-lapply(strsplit(anki_cards_test$descr, " "), 
-       function(entry) {
-           entry[3]
-       }) %>% unlist() %>% gsub("<br>.*", "", .)
-
 mypy_toneless = pydic(method = 'toneless')
 mypy_normal = pydic(method = 'quanpin')
 mypy_tone = pydic(method = 'tone')
 
+# Testing
 py("我", dic=mypy_toneless, sep="_")
 py("我", dic=mypy_normal, sep="_")
 py("我", dic=mypy_tone, sep="_")
+```
+
+## Generate parsed matrix
+
+```{r}
+anki_cards_test <- anki_cards %>% head(10)
+
+meaning <- lapply(strsplit(anki_cards_test$descr, " "), 
+       function(entry) {
+           entry[3]
+       }) %>% unlist() %>% gsub("<br>.*", "", .)
 
 anki_cards_test$char
 
@@ -63,13 +65,14 @@ base_pinyin_only <- vapply(all_chars_one_string_tone_split, function(pinyin_str)
     paste(full_split[1:length(full_split)-1], collapse="")
 }, "")
 
+anki_cards_test$meaning <- meaning
 anki_cards_test$pinyin <- real_pinyin
 anki_cards_test$base_pinyin <- base_pinyin_only
 anki_cards_test$tone <- tone_only
 
 anki_cards_test
 
-write_tsv(anki_cards_test, path="test_out.tsv")
+write_tsv(anki_cards_test, path="../Resources/anki.txt")
 
 ```
 
