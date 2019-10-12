@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_object: {fileID: 8825536840377905228, guid: 102f6dbd25630d3498f28434dfcdbd2a,
     type: 3}
+  start_tint: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   health: 2
   shoot_interval: 1
   shoot_interval_decrease: 0.1

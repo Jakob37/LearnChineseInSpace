@@ -15,10 +15,15 @@ public class ShooterEnemy : MonoBehaviour
     private PlayerCube player;
     private Movement movement;
 
+    public Color start_tint;
+    private Color end_tint;
+
     public int health;
 
+    private SpriteRenderer sprite_renderer;
     private ScoreDisplay score_display;
 
+    private float start_shoot_interval;
     public float shoot_interval;
     public float shoot_interval_decrease;
     public float shoot_interval_min;
@@ -33,17 +38,22 @@ public class ShooterEnemy : MonoBehaviour
     private Random my_rand;
 
     void Awake() {
+        sprite_renderer = GetComponent<SpriteRenderer>();
         gos = FindObjectOfType<GameObjects>();
         player = FindObjectOfType<PlayerCube>();
         behaviour = ShooterEnemyBehaviour.MovingSilently;
         movement = GetComponent<Movement>();
         my_rand = new Random();
         score_display = FindObjectOfType<ScoreDisplay>();
+        start_shoot_interval = shoot_interval;
     }
 
     void Start() {
         current_shoot_timer = shoot_interval;
         time_since_spawn = 0;
+        end_tint = sprite_renderer.color;
+        sprite_renderer.color = start_tint;
+        // print(start_tint);
     }
 
     public void Initialize(float stop_position) {
@@ -73,6 +83,18 @@ public class ShooterEnemy : MonoBehaviour
         else {
             throw new System.Exception("Unknown behaviour: " + behaviour);
         }
+
+        float heat_frac = HeatupFraction();
+        if (heat_frac > 0) {
+            sprite_renderer.color = Color.Lerp(start_tint, end_tint, heat_frac);
+        }
+    }
+
+    private float HeatupFraction() {
+        float full_range = start_shoot_interval - shoot_interval_min;
+        float curr_range = start_shoot_interval - shoot_interval;
+        float curr_frac = curr_range / full_range;
+        return curr_frac;
     }
 
     private ShooterEnemyBehaviour MovingSilently() {
