@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthDisplay : MonoBehaviour
+public class EnergyDisplay : MonoBehaviour
 {
     private Text text;
 
     void Awake() {
         text = GetComponent<Text>();
-        print(text);
     }
 
-    public void SetHealth(int health) {
-        text.text = "Health: " + health;
+    public void SetEnergy(int energy) {
+        text.text = "Energy: " + energy;
     }
 }

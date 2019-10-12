@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5911392973121301951}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.8, y: -38.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -60,6 +60,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -97,7 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_object: {fileID: 8825536840377905228, guid: 102f6dbd25630d3498f28434dfcdbd2a,
     type: 3}
+  health: 2
   shoot_interval: 1
+  shoot_interval_decrease: 0.1
+  shoot_interval_min: 0.3
   shooting_delay: 5
 --- !u!61 &7350963657462537739
 BoxCollider2D:
@@ -162,3 +166,8 @@ MonoBehaviour:
   y: -0.2
   speed: 1500
   is_step: 0
+  use_bound: 0
+  x_min_bound: 0
+  x_max_bound: 0
+  y_min_bound: 0
+  y_max_bound: 0

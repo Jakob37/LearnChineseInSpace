@@ -11,6 +11,13 @@ public class SelectedCharactersStartButton : MonoBehaviour {
         game_settings = FindObjectOfType<GameSettings>();
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Return)) {
+
+            SceneManager.LoadScene("3_scroller");
+        }
+    }
+
     public void StartGame() {
         SceneManager.LoadScene("3_scroller");
     }

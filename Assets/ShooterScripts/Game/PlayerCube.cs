@@ -20,7 +20,10 @@ public class PlayerCube : MonoBehaviour
     public GameObject test_bullet;
 
     private HealthDisplay health_display;
+    private EnergyDisplay energy_display;
     public int health;
+    public int energy;
+    public float speed;
 
     public float x_min_bound;
     public float x_max_bound;
@@ -36,6 +39,7 @@ public class PlayerCube : MonoBehaviour
     void Awake() {
         gos = FindObjectOfType<GameObjects>();
         health_display = FindObjectOfType<HealthDisplay>();
+        energy_display = FindObjectOfType<EnergyDisplay>();
     }
 
     void Start() {
@@ -43,21 +47,25 @@ public class PlayerCube : MonoBehaviour
         transform = gameObject.transform;
     }
 
-    public void TrigCorrectEvent(ShooterCharacter character) {
-        FireBullet();
+    public void TrigCorrectEvent(ShooterCharacter character, int energy_points=1) {
+        energy += energy_points;
     }
 
     void Update() {
-        float speed = 10;
         Vector2 dir = GetDirection();
         Move(dir, speed);
 
         health_display.SetHealth(health);
+        energy_display.SetEnergy(energy);
 
         if (health <= 0) {
             Destroy(gameObject);
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && energy > 0) {
+            FireBullet();
+            energy--;
+        }
     }
 
     private Vector2 GetDirection() {
@@ -93,10 +101,6 @@ public class PlayerCube : MonoBehaviour
         );
     }
 
-    void OnMouseDown() {
-        print("Success!");
-    }
-
     private void FireBullet() {
         GameObject instance = Instantiate(test_bullet, gos.gameObject.transform);
         instance.transform.position = gameObject.transform.position;
@@ -105,7 +109,6 @@ public class PlayerCube : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll) {
 
         if (coll.gameObject.GetComponent<EnemyBullet>() != null) {
-            print("hit player!");
             Destroy(coll.gameObject);
             health -= 1;
         }

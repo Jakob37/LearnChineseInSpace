@@ -64,7 +64,6 @@ public class Choice : MonoBehaviour
     }
 
     public void TrigCorrect() {
-        print("Trig correct");
         correct_remain_time = color_sec;
         incorrect_remain_time = 0;
     }

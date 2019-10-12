@@ -15,9 +15,13 @@ public class ShooterEnemy : MonoBehaviour
     private PlayerCube player;
     private Movement movement;
 
+    public int health;
+
     private ScoreDisplay score_display;
 
     public float shoot_interval;
+    public float shoot_interval_decrease;
+    public float shoot_interval_min;
     private float current_shoot_timer;
     private ShooterEnemyBehaviour behaviour;
 
@@ -98,7 +102,9 @@ public class ShooterEnemy : MonoBehaviour
     private ShooterEnemyBehaviour StoppingShooting() {
 
         movement.speed = Speed.None;
-        UpdateShooting();
+        if (player != null) {
+            UpdateShooting();
+        }
         return ShooterEnemyBehaviour.StoppingShooting;
     }
 
@@ -107,6 +113,9 @@ public class ShooterEnemy : MonoBehaviour
         if (current_shoot_timer <= 0 && player.IsAlive) {
             current_shoot_timer = shoot_interval;
             FireBullet();
+            if (shoot_interval > shoot_interval_min) {
+                shoot_interval -= shoot_interval_decrease;
+            }
         }
     }
 
@@ -114,8 +123,16 @@ public class ShooterEnemy : MonoBehaviour
 
         if (coll.gameObject.GetComponent<Bullet>() != null) {
             Destroy(coll.gameObject);
-            Destroy(gameObject);
+            int damage = coll.gameObject.GetComponent<Damage>().damage;
+            InflictDamage(damage);
             score_display.increment_score(10);
+        }
+    }
+
+    private void InflictDamage(int damage) {
+        health -= damage;
+        if (health <= 0) {
+            Destroy(gameObject);
         }
     }
 

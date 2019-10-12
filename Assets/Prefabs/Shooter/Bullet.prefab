@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1116675512399329381}
   - component: {fileID: 1116675512399329378}
   - component: {fileID: 1116675512399329379}
+  - component: {fileID: -6656269370391429558}
   m_Layer: 5
   m_Name: Bullet
   m_TagString: Untagged
@@ -90,6 +91,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -129,6 +131,11 @@ MonoBehaviour:
   y: 1
   speed: 1500
   is_step: 0
+  use_bound: 0
+  x_min_bound: 0
+  x_max_bound: 0
+  y_min_bound: 0
+  y_max_bound: 0
 --- !u!114 &1116675512399329379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +148,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a359051fb46e714eaf79c0fdf0be181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6656269370391429558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116675512399329377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0505604e75fb21d408f29f3fb583da79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

@@ -9,6 +9,8 @@ public class ShooterEnemySpawner : MonoBehaviour
     private GameObjects gos;
     
     public float spawn_delay;
+    public float spawn_delay_decrease;
+    public float min_spawn_delay;
     private float current_spawn_timer;
 
     public float min_x;
@@ -27,10 +29,10 @@ public class ShooterEnemySpawner : MonoBehaviour
     void Update() {
         current_spawn_timer -= Time.deltaTime;
         if (spawn_count > 0 && current_spawn_timer <= 0) {
-            print("Triggering spawn");
             current_spawn_timer = spawn_delay;
             spawn_count -= 1;
             SpawnEnemy();
+            spawn_delay -= spawn_delay_decrease;
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using Assets.ShooterScripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,14 @@ public class ChoiceGrid : MonoBehaviour {
 
     public int number_choices;
     private ScoreDisplay score_display;
+
+    public int perfect_score;
+    public int part_score;
+
+    private int curr_meaning_score;
+    private int curr_pinyin_score;
+    private int curr_tone_score;
+    private bool has_no_errors;
 
     private Choice[] Choices {
         get {
@@ -54,6 +63,8 @@ public class ChoiceGrid : MonoBehaviour {
         foreach (ShooterCharacter choice in choices) {
             AddChoice(choice, choice_status);
         }
+
+        SetupNewCharacter();
     }
 
     private List<ActionButton> SetupButtonDict() {
@@ -85,22 +96,52 @@ public class ChoiceGrid : MonoBehaviour {
                     (choice_status == ChoiceStatus.Tone && Choices[i].Character.Tone == character_manager.CurrTone)) {
                     Choices[i].TrigCorrect();
                     choice_status = IterateChoiceStatus(choice_status);
+
                     TrigCorrectChoice(Choices[i].Character, choice_status);
+                    if (choice_status == ChoiceStatus.Start) {
+                        SetupNewCharacter();
+                    }
                 }
                 else {
                     Choices[i].TrigIncorrect();
-                    score_display.increment_score(-2);
+                    //score_display.increment_score(-2);
+                    DecreaseScore(choice_status);
                 }
             }
         }
     }
 
+    private void DecreaseScore(ChoiceStatus choice_status) {
+        print("Descrease score triggered");
+        has_no_errors = false;
+        if (choice_status == ChoiceStatus.Start) {
+            if (curr_meaning_score > 0) curr_meaning_score -= 1;
+            print("meaning: " + curr_meaning_score);
+        }
+        else if (choice_status == ChoiceStatus.Pinyin) {
+            if (curr_pinyin_score > 0) curr_pinyin_score -= 1;
+            print("pinyin: " + curr_pinyin_score);
+        }
+        else if (choice_status == ChoiceStatus.Tone) {
+            if (curr_tone_score > 0) curr_tone_score -= 1;
+            print("tone: " + curr_tone_score);
+        }
+        else {
+            throw new Exception("Unsupported status: " + choice_status);
+        }
+    }
+
+    private void SetupNewCharacter() {
+        curr_meaning_score = part_score;
+        curr_pinyin_score = part_score;
+        curr_tone_score = part_score;
+        has_no_errors = true;
+    }
+
     private void TrigCorrectChoice(ShooterCharacter correct_char, ChoiceStatus choice_status) {
 
         ClearChoices();
-
         bool new_character = choice_status == ChoiceStatus.Start;
-
         List<ShooterCharacter> choices;
         if (choice_status != ChoiceStatus.Tone) {
             choices = character_manager.GetChoices(number_choices, new_character);
@@ -110,12 +151,22 @@ public class ChoiceGrid : MonoBehaviour {
         }
 
         if (new_character) {
-            player.TrigCorrectEvent(correct_char);
+            player.TrigCorrectEvent(correct_char, CalculateScore());
         }
 
         foreach (ShooterCharacter choice in choices) {
             AddChoice(choice, choice_status);
         }
+    }
+
+    private int CalculateScore() {
+        print("Add score");
+        int score = curr_meaning_score + curr_pinyin_score + curr_tone_score;
+        if (has_no_errors) {
+            score += perfect_score;
+        }
+        print(score);
+        return score;
     }
 
     private ChoiceStatus IterateChoiceStatus(ChoiceStatus choice_status) {
