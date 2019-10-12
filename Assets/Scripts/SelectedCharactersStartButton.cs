@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SelectedCharactersStartButton : MonoBehaviour {
 
-    private GameSettings game_settings;
+    // private GameSettings game_settings;
 
     void Start() {
-        game_settings = FindObjectOfType<GameSettings>();
+        // game_settings = FindObjectOfType<GameSettings>();
     }
 
     void Update() {

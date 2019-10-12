@@ -8,7 +8,7 @@ public class MenuController : MonoBehaviour
     public string text_source;
 
     private TextLoader text_loader;
-    private MyCharacters my_chars;
+    // private MyCharacters my_chars;
     private GameSettings game_settings;
     private MenuStatusText menu_status_text;
 

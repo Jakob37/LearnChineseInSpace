@@ -35,7 +35,7 @@ public class ShooterEnemy : MonoBehaviour
     private float time_since_spawn;
 
     private Random my_rand;
-
+    
     void Awake() {
         sprite_renderer = GetComponent<SpriteRenderer>();
         gos = FindObjectOfType<GameObjects>();

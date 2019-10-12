@@ -12,7 +12,7 @@ public class MenuCharacter : MonoBehaviour
     private int most_abund_count;
     private Color base_color;
 
-    private CharacterBackground background;
+    // private CharacterBackground background;
     private MenuController menu_controller;
     private bool is_selected;
     public bool IsSelected {
@@ -30,7 +30,7 @@ public class MenuCharacter : MonoBehaviour
     void Awake() {
         my_text = GetComponentInChildren<Text>();
         my_text.text = display_char;
-        background = GetComponentInChildren<CharacterBackground>();
+        // background = GetComponentInChildren<CharacterBackground>();
         menu_controller = FindObjectOfType<MenuController>();
     }
 
@@ -44,7 +44,7 @@ public class MenuCharacter : MonoBehaviour
 
         float frac_size = (float)count / (float)most_abund_count;
         this.base_color = new Color(1 - frac_size, 1, 1);
-        background.SetColor(base_color);
+        // background.SetColor(base_color);
     }
 
     public void SetMostAbundantCount() {
@@ -59,12 +59,12 @@ public class MenuCharacter : MonoBehaviour
     private void ToggleSelected() {
         is_selected = !is_selected;
 
-        if (is_selected) {
-            background.SetColor(new Color(0.6f, 0, 0.6f));
-        }
-        else {
-            background.SetColor(base_color);
-        }
+        // if (is_selected) {
+        //     background.SetColor(new Color(0.6f, 0, 0.6f));
+        // }
+        // else {
+        //     background.SetColor(base_color);
+        // }
         menu_controller.UpdateSelected();
     }
 }
