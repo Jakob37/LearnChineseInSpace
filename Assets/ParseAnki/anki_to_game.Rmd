@@ -5,6 +5,7 @@ output: html_notebook
 
 ```{r}
 library(tidyverse)
+library(pinyin)
 ```
 
 `charToRaw` from `base` package seems to be the key!
@@ -17,47 +18,58 @@ https://github.com/pzhaonet/pinyin
 
 
 ```{r}
-library(Unicode)
-library(pinyin)
-
-anki_cards <- read_tsv("anki_char_cards.txt", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)
+anki_cards <- read_tsv("anki_char_notes.tsv", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)
 colnames(anki_cards) <- c("char", "descr")
 
 head(anki_cards)
+colnames(anki_cards)
+anki_cards$char %>% head(10)
 
-# anki_cards$pinyin <- 
-    
-pinyins <- lapply(strsplit(anki_cards$descr, " "), 
-       function(entry) {
-           entry[2]
-       }) %>% head(50) %>% unlist() %>% gsub("<br>.*", "", .)
+anki_cards_test <- anki_cards %>% head(10)
 
-lapply(strsplit(anki_cards$descr, " "), 
+lapply(strsplit(anki_cards_test$descr, " "), 
        function(entry) {
            entry[3]
-       }) %>% head(50) %>% unlist() %>% gsub("<br>.*", "", .)
+       }) %>% unlist() %>% gsub("<br>.*", "", .)
 
-#pinyin('羌笛何须怨杨柳春风不度玉门关', sep = ' ', method = 'tone')
-# pinyin::pinyin("我是一个苹果", method="tone")
-# pinyin::pinyin(stringi::stri_enc_toutf8("我是一个苹果"))
-# ?pinyin::pinyin
-
-# > library('pinyin')
 mypy_toneless = pydic(method = 'toneless')
 mypy_normal = pydic(method = 'quanpin')
 mypy_tone = pydic(method = 'tone')
-
 
 py("我", dic=mypy_toneless, sep="_")
 py("我", dic=mypy_normal, sep="_")
 py("我", dic=mypy_tone, sep="_")
 
-py(c("我", "一定", "是个", "天才"),  dic = mypy)
-#[1] "wo"
+anki_cards_test$char
 
-pinyin_dict <- "C:/Users/jakob/OneDrive/Dokument/R/win-library/3.6/pinyin/lib/pinyin.txt"
+all_chars_one_string <- paste(anki_cards_test$char, collapse="")
 
+real_pinyin_string <- py(all_chars_one_string, dic=mypy_normal, sep="_")
+real_pinyin <- strsplit(real_pinyin_string, "_") %>% unlist %>% unname()
 
+all_chars_one_string_tone <- py(all_chars_one_string, dic=mypy_tone, sep="_")
+all_chars_one_string_tone_split <- strsplit(all_chars_one_string_tone, "_") %>% unlist() %>% unname()
+all_chars_one_string_tone_split
+
+tone_only <- vapply(all_chars_one_string_tone_split, function(pinyin_str) {
+    
+    full_split <- strsplit(pinyin_str, "")[[1]]
+    full_split[length(full_split)]
+}, "")
+
+base_pinyin_only <- vapply(all_chars_one_string_tone_split, function(pinyin_str) {
+    
+    full_split <- strsplit(pinyin_str, "")[[1]]
+    paste(full_split[1:length(full_split)-1], collapse="")
+}, "")
+
+anki_cards_test$pinyin <- real_pinyin
+anki_cards_test$base_pinyin <- base_pinyin_only
+anki_cards_test$tone <- tone_only
+
+anki_cards_test
+
+write_tsv(anki_cards_test, path="test_out.tsv")
 
 ```
 

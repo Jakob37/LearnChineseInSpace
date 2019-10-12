@@ -11,3 +11,5 @@ Builds/
 Text/
 *#
 *.nb.html
+**/anki_char_notes.tsv
+**/anki_char_notes.tsv.meta
