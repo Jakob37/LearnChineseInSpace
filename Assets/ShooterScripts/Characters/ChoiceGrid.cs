@@ -34,6 +34,13 @@ public class ChoiceGrid : MonoBehaviour {
     private int curr_tone_score;
     private bool has_no_errors;
 
+    private List<String> incorrect_characters;
+    public List<String> IncorrectCharacters {
+        get {
+            return incorrect_characters;
+        }
+    }
+
     private Choice[] Choices {
         get {
             return GetComponentsInChildren<Choice>();
@@ -50,6 +57,7 @@ public class ChoiceGrid : MonoBehaviour {
         character_manager = FindObjectOfType<CharacterManager>();
         player = FindObjectOfType<PlayerCube>();
         score_display = FindObjectOfType<ScoreDisplay>();
+        incorrect_characters = new List<String>();
     }
 
     void Start() {
@@ -103,6 +111,7 @@ public class ChoiceGrid : MonoBehaviour {
                     }
                 }
                 else {
+                    incorrect_characters.Add(character_manager.CurrChar);
                     Choices[i].TrigIncorrect();
                     //score_display.increment_score(-2);
                     DecreaseScore(choice_status);

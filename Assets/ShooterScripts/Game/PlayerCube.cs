@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Direction {
     Up,
@@ -16,8 +17,11 @@ public class PlayerCube : MonoBehaviour
     private Transform transform;
     private Movement movement;
     private GameObjects gos;
+    private ScoreDisplay score_display;
+    private int score;
 
     public GameObject test_bullet;
+    private ChoiceGrid choice_grid;
 
     private HealthDisplay health_display;
     private EnergyDisplay energy_display;
@@ -40,6 +44,8 @@ public class PlayerCube : MonoBehaviour
         gos = FindObjectOfType<GameObjects>();
         health_display = FindObjectOfType<HealthDisplay>();
         energy_display = FindObjectOfType<EnergyDisplay>();
+        choice_grid = FindObjectOfType<ChoiceGrid>();
+        score_display = FindObjectOfType<ScoreDisplay>();
     }
 
     void Start() {
@@ -49,23 +55,33 @@ public class PlayerCube : MonoBehaviour
 
     public void TrigCorrectEvent(ShooterCharacter character, int energy_points=1) {
         energy += energy_points;
+        score += energy_points;
+        UpdatePlayerStats();
     }
 
     void Update() {
+
         Vector2 dir = GetDirection();
         Move(dir, speed);
 
         health_display.SetHealth(health);
         energy_display.SetEnergy(energy);
+        score_display.SetScore(score);
 
         if (health <= 0) {
-            Destroy(gameObject);
+            GameOver();
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && energy > 0) {
             FireBullet();
             energy--;
         }
+    }
+
+    private void GameOver() {
+        Destroy(gameObject);
+        var incorr_chars = choice_grid.IncorrectCharacters;
+        SceneManager.LoadScene("4_win");
     }
 
     private Vector2 GetDirection() {
@@ -112,5 +128,10 @@ public class PlayerCube : MonoBehaviour
             Destroy(coll.gameObject);
             health -= 1;
         }
+    }
+
+    private void UpdatePlayerStats() {
+        PlayerStats.incorr_chars = choice_grid.IncorrectCharacters;
+        PlayerStats.score = score;
     }
 }

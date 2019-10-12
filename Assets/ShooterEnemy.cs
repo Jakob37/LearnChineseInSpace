@@ -21,7 +21,6 @@ public class ShooterEnemy : MonoBehaviour
     public int health;
 
     private SpriteRenderer sprite_renderer;
-    private ScoreDisplay score_display;
 
     private float start_shoot_interval;
     public float shoot_interval;
@@ -44,7 +43,6 @@ public class ShooterEnemy : MonoBehaviour
         behaviour = ShooterEnemyBehaviour.MovingSilently;
         movement = GetComponent<Movement>();
         my_rand = new Random();
-        score_display = FindObjectOfType<ScoreDisplay>();
         start_shoot_interval = shoot_interval;
     }
 
@@ -147,7 +145,6 @@ public class ShooterEnemy : MonoBehaviour
             Destroy(coll.gameObject);
             int damage = coll.gameObject.GetComponent<Damage>().damage;
             InflictDamage(damage);
-            score_display.increment_score(10);
         }
     }
 
