@@ -1,0 +1,160 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+`charToRaw` from `base` package seems to be the key!
+
+ā á ǎ à ē é ě è ī í ǐ ì ō ó ǒ ò ū ú ǔ ù ǖ ǘ ǚ ǜ 
+
+pinyin::py Able to retrieve pinyin for character
+
+https://github.com/pzhaonet/pinyin
+
+
+```{r}
+library(Unicode)
+library(pinyin)
+
+anki_cards <- read_tsv("anki_char_cards.txt", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)
+colnames(anki_cards) <- c("char", "descr")
+
+head(anki_cards)
+
+# anki_cards$pinyin <- 
+    
+pinyins <- lapply(strsplit(anki_cards$descr, " "), 
+       function(entry) {
+           entry[2]
+       }) %>% head(50) %>% unlist() %>% gsub("<br>.*", "", .)
+
+lapply(strsplit(anki_cards$descr, " "), 
+       function(entry) {
+           entry[3]
+       }) %>% head(50) %>% unlist() %>% gsub("<br>.*", "", .)
+
+#pinyin('羌笛何须怨杨柳春风不度玉门关', sep = ' ', method = 'tone')
+# pinyin::pinyin("我是一个苹果", method="tone")
+# pinyin::pinyin(stringi::stri_enc_toutf8("我是一个苹果"))
+# ?pinyin::pinyin
+
+# > library('pinyin')
+mypy_toneless = pydic(method = 'toneless')
+mypy_normal = pydic(method = 'quanpin')
+mypy_tone = pydic(method = 'tone')
+
+
+py("我", dic=mypy_toneless, sep="_")
+py("我", dic=mypy_normal, sep="_")
+py("我", dic=mypy_tone, sep="_")
+
+py(c("我", "一定", "是个", "天才"),  dic = mypy)
+#[1] "wo"
+
+pinyin_dict <- "C:/Users/jakob/OneDrive/Dokument/R/win-library/3.6/pinyin/lib/pinyin.txt"
+
+
+
+```
+
+
+# Initial experiments follow below
+
+Can be useful as source of possible commands for character conversions.
+
+```{r}
+
+tmcn::catUTF8("ŏ")
+getCharset()
+
+pinyins
+
+vect <- c("我", "他", "你")
+"我" %in% vect
+
+vect <- c("wŏ", "tā", "nǐ")
+"wŏ" %in% vect
+
+
+"wŏ" %in% pinyins[1]
+
+
+# out <- pinyin::py("我")
+
+# byte[] bytes = Encoding.Unicode.GetBytes("string here");
+
+
+rawToChar("77")
+
+char1 <- charToRaw(pinyins[2])
+char2 <- charToRaw("ŏ")
+
+pinyins
+
+rawToChar(char1)
+
+char1 == char2
+
+
+utf8ToInt("a")
+intToUtf8(97)
+
+as.hexmode(utf8ToInt("我"))
+intToUtf8(25105)
+
+
+utf8ToInt("o")
+utf8ToInt("ŏ")
+utf8ToInt("ǒ")
+utf8ToInt("ō")
+utf8ToInt("ó")
+utf8ToInt("ò")
+intToUtf8(111)
+
+pinyins[1]
+
+tone_threes %in% pinyins
+#"ŏ" %in% 
+strsplit(pinyins[1], "")[[1]]
+n_of_u_chars("ŏ")
+u_char("ŏ")
+u_char_match("ŏ", "ŏ")
+"\\ŏ" == unlist(strsplit(pinyins[1], ""))[2]
+"\\ǒ" == unlist(strsplit(pinyins[1], ""))[2]
+"ŏ" %in% unlist(strsplit(pinyins[1], ""))
+pinyins[1]
+tone_threes <- c("ă", "ě", "ǐ", "ǒ", "ǔ")
+"ǒ" == "ŏ"
+
+```
+
+
+
+
+
+
+pinyin_codes <- c(
+    "ā",
+    "á",
+    "ǎ",
+    "à",
+    "ē",      
+    "é",
+    "ě",
+    "è",
+    "ī",
+    "í",
+    "ǐ",
+    "ì",
+    "ǒ",
+    "ò",
+    "ū",
+    "ú",
+    "ǔ",
+    "ù",  
+    "ǚ"
+)

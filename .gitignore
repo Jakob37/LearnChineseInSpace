@@ -10,3 +10,4 @@ Packages/
 Builds/
 Text/
 *#
+*.nb.html
