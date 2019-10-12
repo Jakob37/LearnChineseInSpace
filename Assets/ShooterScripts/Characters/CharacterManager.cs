@@ -11,31 +11,66 @@ public enum ChoiceType {
 
 public class CharacterManager : MonoBehaviour {
 
+    private static bool created = false;
+
     public bool load_chapters_active;
     public bool load_anki_active;
 
-    private List<ShooterCharacter> chapter_characters;
-    public List<ShooterCharacter> ChapterCharacters {
+    private List<ShooterCharacter> target_characters;
+    public List<ShooterCharacter> TargetCharacters {
         get {
-            return chapter_characters;
+            return target_characters;
         }
     }
 
-    private List<ShooterCharacter> random_characters;
+    public List<string> GetChineseCharacters {
+        get {
+            List<string> string_char = new List<string>();
+            foreach (ShooterCharacter shooter_char in target_characters) {
+                string_char.Add(shooter_char.StrChar);
+            }
+            return string_char;
+        }
+    }
+
     private CurrentCharacterDisplay curr_char_display;
     private GameSettings game_settings;
 
     private int curr_char_index;
 
     void Awake() {
+        print("CharacterManager awakes");
+        print("Created: " + created);
+        DestroyIfLoaded();
+        print("Surviving");
+
         curr_char_display = GameObject.FindObjectOfType<CurrentCharacterDisplay>();
         game_settings = FindObjectOfType<GameSettings>();
+    }
+
+    private void DestroyIfLoaded() {
+        if (!created) {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+        else {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void Start() {
+
         if (load_chapters_active) {
-            chapter_characters = SetupCharactersFromSettings();
+            target_characters = SetupCharactersFromSettings();
         }
-        if (load_anki_active) {
-            random_characters = SetupAnkiCharacters();
+        else if (load_anki_active) {
+            target_characters = SetupAnkiCharacters();
+            print("Anki characters loaded");
         }
+        else {
+            throw new System.Exception("No loading assigned!");
+        }
+
     }
 
     private List<ShooterCharacter> SetupAnkiCharacters() {
@@ -64,25 +99,25 @@ public class CharacterManager : MonoBehaviour {
     }
 
     private void NewCharacter() {
-        curr_char_index = Random.Range(0, chapter_characters.Count);
-        curr_char_display.SetText(chapter_characters[curr_char_index].StrChar);
+        curr_char_index = Random.Range(0, target_characters.Count);
+        curr_char_display.SetText(target_characters[curr_char_index].StrChar);
     }
 
     public string CurrChar {
         get {
-            return chapter_characters[curr_char_index].StrChar;
+            return target_characters[curr_char_index].StrChar;
         }
     }
 
     public string CurrTone {
         get {
-            return chapter_characters[curr_char_index].Tone;
+            return target_characters[curr_char_index].Tone;
         }
     }
 
     public ShooterCharacter CurrCharObj {
         get {
-            return chapter_characters[curr_char_index];
+            return target_characters[curr_char_index];
         }
     }
 
@@ -91,7 +126,7 @@ public class CharacterManager : MonoBehaviour {
         if (set_new_character) {
             NewCharacter();
         }
-        return GetRandomCharacters(chapter_characters[curr_char_index], chapter_characters, nbr_choices);
+        return GetRandomCharacters(target_characters[curr_char_index], target_characters, nbr_choices);
     }
 
     public List<ShooterCharacter> GetToneChoices() {

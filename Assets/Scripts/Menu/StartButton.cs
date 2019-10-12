@@ -7,6 +7,7 @@ public class StartButton : MonoBehaviour {
 
     private GameSettings game_settings;
     private ChaptersSelector chapter_selector;
+    private CharacterManager char_manager;
 
     private GameMode game_mode;
 
@@ -14,6 +15,7 @@ public class StartButton : MonoBehaviour {
         game_settings = FindObjectOfType<GameSettings>();
         chapter_selector = FindObjectOfType<ChaptersSelector>();
         game_mode = FindObjectOfType<GameMode>();
+        char_manager = FindObjectOfType<CharacterManager>();
     }
 
     public void StartGame() {
@@ -22,7 +24,7 @@ public class StartButton : MonoBehaviour {
             LoadChapterSettings();
         }
         else if (game_mode.CurrentDisplay == "Random") {
-
+            LoadAnki();
         }
         else {
             throw new System.Exception("Unsupported display, nothing loaded! Display: " + game_mode.CurrentDisplay);
@@ -32,5 +34,10 @@ public class StartButton : MonoBehaviour {
 
     private void LoadChapterSettings() {
         game_settings.SelectedChapters = chapter_selector.GetChapters();
+    }
+
+    private void LoadAnki() {
+        print("Anki loaded");
+        game_settings.SelectedCharacters = char_manager.GetChineseCharacters;
     }
 }

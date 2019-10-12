@@ -34,7 +34,7 @@ public class MenuController : MonoBehaviour
                 selected_radicals.Add(menu_char.Text);
             }
         }
-        game_settings.SelectedRadicals = selected_radicals;
+        game_settings.SelectedCharacters = selected_radicals;
         int total_words = GetNumberWords(selected_radicals);
         menu_status_text.SetCount(total_words);
     }

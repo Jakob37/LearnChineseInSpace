@@ -20,17 +20,20 @@ namespace Assets.Scripts {
             for (int i = 0; i < lines.Length; i++) {
 
                 string line = lines[i];
+                if (line == "") {
+                    continue;
+                }
+
                 string[] fields = line.Split('\t');
 
-                Debug.Log(fields[0]);
-                Debug.Log(fields[1]);
-                Debug.Log(fields[2]);
-                Debug.Log(fields[3]);
-                Debug.Log(fields[4]);
-                Debug.Log(fields[5]);
+                // Debug.Log(fields[0]);
+                // Debug.Log(fields[1]);
+                // Debug.Log(fields[2]);
+                // Debug.Log(fields[3]);
+                // Debug.Log(fields[4]);
+                // Debug.Log(fields[5]);
 
                 // new ShooterCharacter("char", "meaning", "flat_pinying", "tone", "chapter");
-
                 ShooterCharacter char_instance = new ShooterCharacter(
                     str_char: fields[0],
                     meaning: fields[3],
@@ -39,9 +42,6 @@ namespace Assets.Scripts {
                 );
                 shooter_chars.Add(char_instance);
             }
-
-            // var shooter_char = new List<ShooterCharacter>();
-            // shooter_char.Add(new ShooterCharacter("", "", "", "", 1));
 
             return shooter_chars;
         }

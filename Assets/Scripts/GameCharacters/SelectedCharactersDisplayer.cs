@@ -14,7 +14,7 @@ public class SelectedCharactersDisplayer : MonoBehaviour
     }
 
     void Start() {
-        selected_characters = character_manager.ChapterCharacters;
+        selected_characters = character_manager.TargetCharacters;
 
         foreach (ShooterCharacter my_char in selected_characters) {
             AddDisplayedCharacter(my_char);

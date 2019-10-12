@@ -13,11 +13,11 @@ public class GameSettings : MonoBehaviour {
         }
     }
     
-    private List<string> selected_radicals;
-    public List<string> SelectedRadicals {
-        get { return selected_radicals; }
+    private List<string> selected_characters;
+    public List<string> SelectedCharacters {
+        get { return selected_characters; }
         set {
-            selected_radicals = value;
+            selected_characters = value;
         }
     }
 
