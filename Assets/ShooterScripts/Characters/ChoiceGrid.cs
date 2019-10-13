@@ -169,12 +169,10 @@ public class ChoiceGrid : MonoBehaviour {
     }
 
     private int CalculateScore() {
-        print("Add score");
         int score = curr_meaning_score + curr_pinyin_score + curr_tone_score;
         if (has_no_errors) {
             score += perfect_score;
         }
-        print(score);
         return score;
     }
 

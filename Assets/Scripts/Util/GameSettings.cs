@@ -21,11 +21,11 @@ public class GameSettings : MonoBehaviour {
         }
     }
 
-    private List<int> selected_chapters;
-    public List<int> SelectedChapters {
-        get { return selected_chapters; }
-        set { selected_chapters = value; }
-    }
+    // private List<int> selected_chapters;
+    // public List<int> SelectedChapters {
+    //     get { return selected_chapters; }
+    //     set { selected_chapters = value; }
+    // }
 
     void Awake() {
         DontDestroyOnLoad(gameObject);

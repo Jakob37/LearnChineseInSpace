@@ -12,21 +12,20 @@ public enum ChoiceType {
 public class CharacterManager : MonoBehaviour {
 
     private static bool created = false;
+    public LoadMode load_mode;
+    private ChaptersSelector chapter_selector;
 
-    public bool load_chapters_active;
-    public bool load_anki_active;
-
-    private List<ShooterCharacter> target_characters;
-    public List<ShooterCharacter> TargetCharacters {
-        get {
-            return target_characters;
-        }
-    }
+    // private List<ShooterCharacter> target_characters;
+    // public List<ShooterCharacter> TargetCharacters {
+    //     get {
+    //         return target_characters;
+    //     }
+    // }
 
     public List<string> GetChineseCharacters {
         get {
             List<string> string_char = new List<string>();
-            foreach (ShooterCharacter shooter_char in target_characters) {
+            foreach (ShooterCharacter shooter_char in LoadCharacters.TargetCharacters) {
                 string_char.Add(shooter_char.StrChar);
             }
             return string_char;
@@ -39,39 +38,46 @@ public class CharacterManager : MonoBehaviour {
     private int curr_char_index;
 
     void Awake() {
-        print("CharacterManager awakes");
-        print("Created: " + created);
-        DestroyIfLoaded();
-        print("Surviving");
+        // print("CharacterManager awakes");
+        // print("Created: " + created);
+        // DestroyIfLoaded();
+        // print("Surviving");
 
         curr_char_display = GameObject.FindObjectOfType<CurrentCharacterDisplay>();
         game_settings = FindObjectOfType<GameSettings>();
+        chapter_selector = FindObjectOfType<ChaptersSelector>();
     }
 
-    private void DestroyIfLoaded() {
-        if (!created) {
-            DontDestroyOnLoad(this.gameObject);
-            created = true;
-        }
-        else {
-            Destroy(this.gameObject);
-        }
-    }
+    // private void DestroyIfLoaded() {
+    //     if (!created) {
+    //         DontDestroyOnLoad(this.gameObject);
+    //         created = true;
+    //     }
+    //     else {
+    //         Destroy(this.gameObject);
+    //     }
+    // }
 
     void Start() {
-
-        if (load_chapters_active) {
-            target_characters = SetupCharactersFromSettings();
-        }
-        else if (load_anki_active) {
-            target_characters = SetupAnkiCharacters();
-            print("Anki characters loaded");
-        }
-        else {
-            throw new System.Exception("No loading assigned!");
-        }
-
+        // SyncCharacters();
     }
+
+    // public void SyncCharacters() {
+    //     if (load_mode == LoadMode.chapters) {
+    //         List<int> chapters = chapter_selector.GetChapters();
+    //         target_characters = SetupCharactersFromChapters(chapters);
+    //         print("Characters loaded");
+    //     }
+    //     else if (load_mode == LoadMode.anki) {
+    //         target_characters = SetupAnkiCharacters();
+    //         print("Anki characters loaded");
+    //     }
+    //     else {
+    //         throw new System.Exception("No loading assigned!");
+    //     }
+    // 
+    //     Debug.Log("Synced! Number of characters: " + LoadCharacters.TargetCharacters.Count);
+    // }
 
     private List<ShooterCharacter> SetupAnkiCharacters() {
         print("Anki characters triggered");
@@ -79,45 +85,26 @@ public class CharacterManager : MonoBehaviour {
         return all_characters;
     }
 
-    private List<ShooterCharacter> SetupCharactersFromSettings() {
-        List<ShooterCharacter> curr_characters;
-        var all_characters = LoadCharacters.LoadLearningChineseCharacters();
-        if (game_settings == null) {
-            curr_characters = all_characters;
-        }
-        else {
-            curr_characters = new List<ShooterCharacter>();
-            foreach (ShooterCharacter shoot_char in all_characters) {
-                var chapter = shoot_char.Chapter;
-                if (game_settings.SelectedChapters.Contains(chapter)) {
-                    curr_characters.Add(shoot_char);
-                    print("Adding character: " + shoot_char.StrChar);
-                }
-            }
-        }
-        return curr_characters;
-    }
-
     private void NewCharacter() {
-        curr_char_index = Random.Range(0, target_characters.Count);
-        curr_char_display.SetText(target_characters[curr_char_index].StrChar);
+        curr_char_index = Random.Range(0, LoadCharacters.TargetCharacters.Count);
+        curr_char_display.SetText(LoadCharacters.TargetCharacters[curr_char_index].StrChar);
     }
 
     public string CurrChar {
         get {
-            return target_characters[curr_char_index].StrChar;
+            return LoadCharacters.TargetCharacters[curr_char_index].StrChar;
         }
     }
 
     public string CurrTone {
         get {
-            return target_characters[curr_char_index].Tone;
+            return LoadCharacters.TargetCharacters[curr_char_index].Tone;
         }
     }
 
     public ShooterCharacter CurrCharObj {
         get {
-            return target_characters[curr_char_index];
+            return LoadCharacters.TargetCharacters[curr_char_index];
         }
     }
 
@@ -126,7 +113,7 @@ public class CharacterManager : MonoBehaviour {
         if (set_new_character) {
             NewCharacter();
         }
-        return GetRandomCharacters(target_characters[curr_char_index], target_characters, nbr_choices);
+        return GetRandomCharacters(LoadCharacters.TargetCharacters[curr_char_index], LoadCharacters.TargetCharacters, nbr_choices);
     }
 
     public List<ShooterCharacter> GetToneChoices() {

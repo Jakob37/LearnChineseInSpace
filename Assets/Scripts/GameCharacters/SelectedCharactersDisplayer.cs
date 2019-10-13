@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +11,12 @@ public class SelectedCharactersDisplayer : MonoBehaviour
     private List<ShooterCharacter> selected_characters;
 
     void Awake() {
-        character_manager = FindObjectOfType<CharacterManager>();
     }
 
     void Start() {
-        selected_characters = character_manager.TargetCharacters;
+        character_manager = FindObjectOfType<CharacterManager>();
+        // print(character_manager.TargetCharacters);
+        selected_characters = LoadCharacters.TargetCharacters;
 
         foreach (ShooterCharacter my_char in selected_characters) {
             AddDisplayedCharacter(my_char);

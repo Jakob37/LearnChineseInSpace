@@ -13,7 +13,6 @@ public class SelectedCharacterDisplay : MonoBehaviour {
     void Awake() {
         display_text = GetComponent<Text>();
         if (is_display_object) {
-            print("Cleaning up placeholder SelectedCharacterDisplay object");
             DestroyImmediate(gameObject);
         }
     }

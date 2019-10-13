@@ -5,8 +5,55 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+public enum LoadMode {
+    chapters,
+    anki
+}
+
 namespace Assets.Scripts {
     class LoadCharacters {
+
+        private static List<ShooterCharacter> target_characters;
+        public static List<ShooterCharacter> TargetCharacters {
+            get {
+                return target_characters;
+            }
+        }
+
+        public static void UpdateTargetCharacters(LoadMode load_mode, List<int> chapters=null, int anki_count=-1) {
+            if (load_mode == LoadMode.chapters) {
+                target_characters = SetupCharactersFromChapters(chapters);
+                Debug.Log("Characters loaded");
+            }
+            else if (load_mode == LoadMode.anki) {
+                Debug.Log("Anki characters loaded");
+                target_characters = LoadCharactersFromAnki();
+            }
+            else {
+                throw new System.Exception("No loading assigned!");
+            }
+
+            Debug.Log("Synced! Number of characters: " + LoadCharacters.TargetCharacters.Count);
+        }
+
+        private static List<ShooterCharacter> SetupCharactersFromChapters(List<int> selected_chapters=null) {
+            List<ShooterCharacter> curr_characters;
+            var all_characters = LoadCharacters.LoadLearningChineseCharacters();
+            if (selected_chapters == null) {
+                curr_characters = all_characters;
+            }
+            else {
+                curr_characters = new List<ShooterCharacter>();
+                foreach (ShooterCharacter shoot_char in all_characters) {
+                    var chapter = shoot_char.Chapter;
+                    if (selected_chapters.Contains(chapter)) {
+                        curr_characters.Add(shoot_char);
+                        Debug.Log("Adding character: " + shoot_char.StrChar);
+                    }
+                }
+            }
+            return curr_characters;
+        }
 
         public static List<ShooterCharacter> LoadCharactersFromAnki() {
 
