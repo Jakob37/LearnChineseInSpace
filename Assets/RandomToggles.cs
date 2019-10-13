@@ -16,4 +16,8 @@ public class RandomToggles : MonoBehaviour
     void Update() {
         text.text = "Characters: " + slider.value;
     }
+
+    public int GetSelectedCount() {
+        return (int)slider.value;
+    }
 }

@@ -19,8 +19,8 @@ https://github.com/pzhaonet/pinyin
 ## Preload data and dictionaries
 
 ```{r}
-anki_cards <- read_tsv("anki_char_notes.tsv", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)
-colnames(anki_cards) <- c("char", "descr")
+anki_cards <- read_tsv("anki_char_notes.tsv", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)[, c(1,2)]
+colnames(anki_cards) <- c("raw_char", "descr")
 
 mypy_toneless = pydic(method = 'toneless')
 mypy_normal = pydic(method = 'quanpin')
@@ -35,14 +35,19 @@ py("我", dic=mypy_tone, sep="_")
 ## Generate parsed matrix
 
 ```{r}
-anki_cards_test <- anki_cards %>% head(10)
+anki_cards_test <- anki_cards %>% filter(!grepl("\\(", raw_char)) %>% filter(!grepl("<br>", raw_char))
 
 meaning <- lapply(strsplit(anki_cards_test$descr, " "), 
        function(entry) {
            entry[3]
-       }) %>% unlist() %>% gsub("<br>.*", "", .)
+       }) %>% unlist() %>% 
+    gsub("<br>.*", "", .) %>% 
+    gsub("<div>.*", "", .) %>%
+    gsub(",.*", "", .)
+anki_cards_test$char <- anki_cards_test$raw_char %>% gsub("[ (].*", "", .)
 
-anki_cards_test$char
+# write_tsv(anki_cards_test, path = "C:/Users/jakob/Desktop/anki_check_2.tsv")
+# head(anki_cards_test, 100)
 
 all_chars_one_string <- paste(anki_cards_test$char, collapse="")
 
@@ -51,7 +56,7 @@ real_pinyin <- strsplit(real_pinyin_string, "_") %>% unlist %>% unname()
 
 all_chars_one_string_tone <- py(all_chars_one_string, dic=mypy_tone, sep="_")
 all_chars_one_string_tone_split <- strsplit(all_chars_one_string_tone, "_") %>% unlist() %>% unname()
-all_chars_one_string_tone_split
+# all_chars_one_string_tone_split
 
 tone_only <- vapply(all_chars_one_string_tone_split, function(pinyin_str) {
     
@@ -69,8 +74,6 @@ anki_cards_test$meaning <- meaning
 anki_cards_test$pinyin <- real_pinyin
 anki_cards_test$base_pinyin <- base_pinyin_only
 anki_cards_test$tone <- tone_only
-
-anki_cards_test
 
 write_tsv(anki_cards_test, path="../Resources/anki.txt")
 

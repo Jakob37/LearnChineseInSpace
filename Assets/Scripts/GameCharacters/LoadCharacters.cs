@@ -13,6 +13,13 @@ public enum LoadMode {
 namespace Assets.Scripts {
     class LoadCharacters {
 
+        private static List<ShooterCharacter> all_characters;
+        public static List<ShooterCharacter> AllCharacters {
+            get {
+                return all_characters;
+            }
+        }
+
         private static List<ShooterCharacter> target_characters;
         public static List<ShooterCharacter> TargetCharacters {
             get {
@@ -27,7 +34,8 @@ namespace Assets.Scripts {
             }
             else if (load_mode == LoadMode.anki) {
                 Debug.Log("Anki characters loaded");
-                target_characters = LoadCharactersFromAnki();
+                all_characters = LoadCharactersFromAnki();
+                target_characters = MyUtils.Shuffle(all_characters).GetRange(0, anki_count);
             }
             else {
                 throw new System.Exception("No loading assigned!");
@@ -63,8 +71,14 @@ namespace Assets.Scripts {
             string[] lines = txt.Split('\n');
 
             List<ShooterCharacter> shooter_chars = new List<ShooterCharacter>();
+            bool parsed_header_yet = false;
 
             for (int i = 0; i < lines.Length; i++) {
+
+                if (!parsed_header_yet) {
+                    parsed_header_yet = true;
+                    continue;
+                }
 
                 string line = lines[i];
                 if (line == "") {

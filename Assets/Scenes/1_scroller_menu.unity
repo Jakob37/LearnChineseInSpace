@@ -2333,7 +2333,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &955496288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3564,7 +3564,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!114 &1741714170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3683,8 +3683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f5d306f0d42f245bc5dbc7d860408b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  load_chapters_active: 0
-  load_anki_active: 1
+  load_mode: 0
 --- !u!4 &1828057711
 Transform:
   m_ObjectHideFlags: 0
