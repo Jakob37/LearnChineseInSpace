@@ -56,6 +56,10 @@ public class GameMode : MonoBehaviour
             chapter_selector_object.SetActive(false);
             random_toggles_object.SetActive(true);
         }
+        else if (target_display == "AnkiFails") {
+            chapter_selector_object.SetActive(false);
+            random_toggles_object.SetActive(false);
+        }
         else {
             chapter_selector_object.SetActive(false);
             random_toggles_object.SetActive(false);

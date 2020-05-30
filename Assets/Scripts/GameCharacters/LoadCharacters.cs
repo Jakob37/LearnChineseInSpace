@@ -35,6 +35,11 @@ namespace Assets.Scripts {
             else if (load_mode == LoadMode.anki) {
                 Debug.Log("Anki characters loaded");
                 all_characters = LoadCharactersFromAnki();
+
+                if (anki_count > all_characters.Count) {
+                    anki_count = all_characters.Count;
+                }
+
                 target_characters = MyUtils.Shuffle(all_characters).GetRange(0, anki_count);
             }
             else {
