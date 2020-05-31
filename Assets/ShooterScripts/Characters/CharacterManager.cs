@@ -53,25 +53,29 @@ public class CharacterManager : MonoBehaviour {
     }
 
     private void NewCharacter() {
-        curr_char_index = Random.Range(0, LoadCharacters.TargetCharacters.Count);
-        curr_char_display.SetText(LoadCharacters.TargetCharacters[curr_char_index].StrChar);
+        List<ShooterCharacter> target_chars;
+        target_chars = LoadCharacters.GetTargetCharacters(load_mode);
+        curr_char_index = Random.Range(0, target_chars.Count);
+        curr_char_display.SetText(target_chars[curr_char_index].StrChar);
+        // curr_char_index = Random.Range(0, LoadCharacters.TargetCharacters.Count);
+        // curr_char_display.SetText(LoadCharacters.TargetCharacters[curr_char_index].StrChar);
     }
 
     public string CurrChar {
         get {
-            return LoadCharacters.TargetCharacters[curr_char_index].StrChar;
+            return LoadCharacters.GetTargetCharacters(load_mode)[curr_char_index].StrChar;
         }
     }
 
     public string CurrTone {
         get {
-            return LoadCharacters.TargetCharacters[curr_char_index].Tone;
+            return LoadCharacters.GetTargetCharacters(load_mode)[curr_char_index].Tone;
         }
     }
 
     public ShooterCharacter CurrCharObj {
         get {
-            return LoadCharacters.TargetCharacters[curr_char_index];
+            return LoadCharacters.GetTargetCharacters(load_mode)[curr_char_index];
         }
     }
 
@@ -80,7 +84,8 @@ public class CharacterManager : MonoBehaviour {
         if (set_new_character) {
             NewCharacter();
         }
-        return GetRandomCharacters(LoadCharacters.TargetCharacters[curr_char_index], LoadCharacters.TargetCharacters, nbr_choices);
+        var target_chars = LoadCharacters.GetTargetCharacters(load_mode);
+        return GetRandomCharacters(target_chars[curr_char_index], target_chars, nbr_choices);
     }
 
     public List<ShooterCharacter> GetToneChoices() {

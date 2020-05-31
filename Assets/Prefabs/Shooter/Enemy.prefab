@@ -102,7 +102,7 @@ MonoBehaviour:
   health: 2
   shoot_interval: 1
   shoot_interval_decrease: 0.1
-  shoot_interval_min: 0.3
+  shoot_interval_min: 0.6
   shooting_delay: 5
 --- !u!61 &7350963657462537739
 BoxCollider2D:

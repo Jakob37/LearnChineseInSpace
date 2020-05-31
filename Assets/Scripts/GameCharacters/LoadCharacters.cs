@@ -7,7 +7,8 @@ using UnityEngine;
 
 public enum LoadMode {
     chapters,
-    anki
+    anki,
+    debug
 }
 
 namespace Assets.Scripts {
@@ -24,6 +25,38 @@ namespace Assets.Scripts {
         public static List<ShooterCharacter> TargetCharacters {
             get {
                 return target_characters;
+            }
+        }
+
+        public static List<ShooterCharacter> GetTargetCharacters(LoadMode load_mode) {
+            if (load_mode == LoadMode.debug) {
+                return DebugCharacters;
+            }
+            else {
+                return TargetCharacters;
+            }
+        }
+
+        public static List<ShooterCharacter> DebugCharacters {
+            get {
+                var char_list = new List<ShooterCharacter>();
+                char_list.Add(new ShooterCharacter("一", "one", "yi", "1"));
+                char_list.Add(new ShooterCharacter("二", "two", "er", "4"));
+                char_list.Add(new ShooterCharacter("三", "three", "san", "1"));
+                char_list.Add(new ShooterCharacter("十", "ten", "shi", "2"));
+                char_list.Add(new ShooterCharacter("口", "mouth", "kou", "3"));
+                char_list.Add(new ShooterCharacter("日", "sun", "ri", "4"));
+                char_list.Add(new ShooterCharacter("几", "number of", "ji", "3"));
+                char_list.Add(new ShooterCharacter("也", "also", "ye", "3"));
+                char_list.Add(new ShooterCharacter("不", "not", "bu", "4"));
+                char_list.Add(new ShooterCharacter("机", "machine", "ji", "1"));
+                char_list.Add(new ShooterCharacter("杯", "cup", "bei", "1"));
+                char_list.Add(new ShooterCharacter("人", "person", "ren", "2"));
+                char_list.Add(new ShooterCharacter("他", "he", "ta", "1"));
+                char_list.Add(new ShooterCharacter("力", "power", "li", "4"));
+                char_list.Add(new ShooterCharacter("女", "woman", "nü", "3"));
+                char_list.Add(new ShooterCharacter("她", "her", "ta", "1"));
+                return char_list;
             }
         }
 
@@ -91,13 +124,6 @@ namespace Assets.Scripts {
                 }
 
                 string[] fields = line.Split('\t');
-
-                // Debug.Log(fields[0]);
-                // Debug.Log(fields[1]);
-                // Debug.Log(fields[2]);
-                // Debug.Log(fields[3]);
-                // Debug.Log(fields[4]);
-                // Debug.Log(fields[5]);
 
                 // new ShooterCharacter("char", "meaning", "flat_pinying", "tone", "chapter");
                 ShooterCharacter char_instance = new ShooterCharacter(

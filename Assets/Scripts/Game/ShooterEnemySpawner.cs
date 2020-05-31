@@ -14,7 +14,10 @@ public class ShooterEnemySpawner : MonoBehaviour
     private float current_spawn_timer;
 
     public float min_x;
+    public float max_x;
     public float max_y;
+    public float min_stop_y;
+    public float max_stop_y;
 
     public int spawn_count;
 
@@ -39,10 +42,10 @@ public class ShooterEnemySpawner : MonoBehaviour
     private void SpawnEnemy() {
         GameObject instance = Instantiate(enemy_prefab, gos.gameObject.transform);
         var gos_pos = gameObject.transform.position;
-        instance.transform.position = new Vector2(gos_pos.x + Random.Range(min_x, max_y), gos_pos.y);
+        instance.transform.position = new Vector2(gos_pos.x + Random.Range(min_x, max_x), gos_pos.y);
         ShooterEnemy enemy_script = instance.GetComponent<ShooterEnemy>();
 
-        float stop_pos = Random.Range(300, 1000);
+        float stop_pos = Random.Range(min_stop_y, max_stop_y);
         enemy_script.Initialize(stop_pos);
     }
 }

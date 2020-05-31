@@ -199,7 +199,7 @@ public class ChoiceGrid : MonoBehaviour {
     private void AddChoice(ShooterCharacter character, ChoiceStatus choice_status) {
         GameObject instance = Instantiate(choice_object);
         instance.transform.SetParent(gameObject.transform);
-        instance.transform.localScale = new Vector2(200, 100);
+        // instance.transform.localScale = new Vector2(200, 100);
 
         Choice choice = instance.GetComponent<Choice>();
         choice.SetShooterCharacter(character, choice_status);
