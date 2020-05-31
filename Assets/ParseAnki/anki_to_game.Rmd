@@ -19,7 +19,7 @@ https://github.com/pzhaonet/pinyin
 ## Preload data and dictionaries
 
 ```{r}
-anki_cards <- read_tsv("anki_char_notes.tsv", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)[, c(1,2)]
+anki_cards <- read_tsv("191013_story_notes.txt", locale = readr::locale(encoding="UTF-8"), col_names = FALSE)[, c(1,2)]
 colnames(anki_cards) <- c("raw_char", "descr")
 
 mypy_toneless = pydic(method = 'toneless')
@@ -35,22 +35,18 @@ py("我", dic=mypy_tone, sep="_")
 ## Generate parsed matrix
 
 ```{r}
-anki_cards_test <- anki_cards %>% filter(!grepl("\\(", raw_char)) %>% filter(!grepl("<br>", raw_char))
+target_anki_cards <- anki_cards %>% filter(!grepl("\\(", raw_char)) %>% filter(!grepl("<br>", raw_char))
 
-meaning <- lapply(strsplit(anki_cards_test$descr, " "), 
+meaning <- lapply(strsplit(target_anki_cards$descr, " "), 
        function(entry) {
            entry[3]
        }) %>% unlist() %>% 
     gsub("<br>.*", "", .) %>% 
     gsub("<div>.*", "", .) %>%
     gsub(",.*", "", .)
-anki_cards_test$char <- anki_cards_test$raw_char %>% gsub("[ (].*", "", .)
+target_anki_cards$char <- target_anki_cards$raw_char %>% gsub("[ (].*", "", .)
 
-# write_tsv(anki_cards_test, path = "C:/Users/jakob/Desktop/anki_check_2.tsv")
-# head(anki_cards_test, 100)
-
-all_chars_one_string <- paste(anki_cards_test$char, collapse="")
-
+all_chars_one_string <- paste(target_anki_cards$char, collapse="")
 real_pinyin_string <- py(all_chars_one_string, dic=mypy_normal, sep="_")
 real_pinyin <- strsplit(real_pinyin_string, "_") %>% unlist %>% unname()
 
@@ -70,12 +66,19 @@ base_pinyin_only <- vapply(all_chars_one_string_tone_split, function(pinyin_str)
     paste(full_split[1:length(full_split)-1], collapse="")
 }, "")
 
-anki_cards_test$meaning <- meaning
-anki_cards_test$pinyin <- real_pinyin
-anki_cards_test$base_pinyin <- base_pinyin_only
-anki_cards_test$tone <- tone_only
+write_tsv(target_anki_cards, path = "C:/Users/jakob/Desktop/test_out.tsv")
 
-write_tsv(anki_cards_test, path="../Resources/anki.txt")
+#real_pinyin/
+
+nrow(target_anki_cards)
+length(real_pinyin)
+
+target_anki_cards$meaning <- meaning
+target_anki_cards$pinyin <- real_pinyin
+target_anki_cards$base_pinyin <- base_pinyin_only
+target_anki_cards$tone <- tone_only
+
+write_tsv(target_anki_cards, path="../Resources/anki.txt")
 
 ```
 
@@ -96,10 +99,12 @@ vect <- c("我", "他", "你")
 
 vect <- c("wŏ", "tā", "nǐ")
 "wŏ" %in% vect
+"wo" %in% vect
 
 
 "wŏ" %in% pinyins[1]
 
+"xǚ" %in% pinyins
 
 # out <- pinyin::py("我")
 

@@ -40,9 +40,15 @@ public class ShooterCharacter
         }
     }
 
-    public string AsString {
+    public string AsStringWPinyin {
         get {
             return StrChar + " " + FlatPinying + Tone + " " + Meaning;
+        }
+    }
+
+    public string AsString {
+        get {
+            return StrChar + " " + FlatPinying + " " + Meaning;
         }
     }
 

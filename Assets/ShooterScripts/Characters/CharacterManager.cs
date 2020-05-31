@@ -38,46 +38,13 @@ public class CharacterManager : MonoBehaviour {
     private int curr_char_index;
 
     void Awake() {
-        // print("CharacterManager awakes");
-        // print("Created: " + created);
-        // DestroyIfLoaded();
-        // print("Surviving");
-
         curr_char_display = GameObject.FindObjectOfType<CurrentCharacterDisplay>();
         game_settings = FindObjectOfType<GameSettings>();
         chapter_selector = FindObjectOfType<ChaptersSelector>();
     }
 
-    // private void DestroyIfLoaded() {
-    //     if (!created) {
-    //         DontDestroyOnLoad(this.gameObject);
-    //         created = true;
-    //     }
-    //     else {
-    //         Destroy(this.gameObject);
-    //     }
-    // }
-
     void Start() {
-        // SyncCharacters();
     }
-
-    // public void SyncCharacters() {
-    //     if (load_mode == LoadMode.chapters) {
-    //         List<int> chapters = chapter_selector.GetChapters();
-    //         target_characters = SetupCharactersFromChapters(chapters);
-    //         print("Characters loaded");
-    //     }
-    //     else if (load_mode == LoadMode.anki) {
-    //         target_characters = SetupAnkiCharacters();
-    //         print("Anki characters loaded");
-    //     }
-    //     else {
-    //         throw new System.Exception("No loading assigned!");
-    //     }
-    // 
-    //     Debug.Log("Synced! Number of characters: " + LoadCharacters.TargetCharacters.Count);
-    // }
 
     private List<ShooterCharacter> SetupAnkiCharacters() {
         print("Anki characters triggered");

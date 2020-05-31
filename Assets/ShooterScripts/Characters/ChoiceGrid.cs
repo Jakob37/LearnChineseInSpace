@@ -16,6 +16,8 @@ public class ChoiceGrid : MonoBehaviour {
     public GameObject choice_object;
     private CharacterManager character_manager;
 
+    public bool with_tone;
+
     public int debug_count;
     private List<ActionButton> buttons;
 
@@ -103,7 +105,7 @@ public class ChoiceGrid : MonoBehaviour {
                 if ((choice_status != ChoiceStatus.Tone && Choices[i].Character.StrChar == character_manager.CurrChar) ||
                     (choice_status == ChoiceStatus.Tone && Choices[i].Character.Tone == character_manager.CurrTone)) {
                     Choices[i].TrigCorrect();
-                    choice_status = IterateChoiceStatus(choice_status);
+                    choice_status = IterateChoiceStatus(choice_status, with_tone);
 
                     TrigCorrectChoice(Choices[i].Character, choice_status);
                     if (choice_status == ChoiceStatus.Start) {
@@ -176,11 +178,11 @@ public class ChoiceGrid : MonoBehaviour {
         return score;
     }
 
-    private ChoiceStatus IterateChoiceStatus(ChoiceStatus choice_status) {
+    private ChoiceStatus IterateChoiceStatus(ChoiceStatus choice_status, bool with_tone=false) {
         if (choice_status == ChoiceStatus.Start) {
             return ChoiceStatus.Pinyin;
         }
-        else if (choice_status == ChoiceStatus.Pinyin) {
+        else if (choice_status == ChoiceStatus.Pinyin && with_tone) {
             return ChoiceStatus.Tone;
         }
         else {
