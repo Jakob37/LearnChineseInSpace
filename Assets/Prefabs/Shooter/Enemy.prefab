@@ -166,7 +166,7 @@ MonoBehaviour:
   x: 0
   y: -0.2
   speed: 1500
-  is_step: 0
+  is_step: 1
   use_bound: 0
   x_min_bound: 0
   x_max_bound: 0

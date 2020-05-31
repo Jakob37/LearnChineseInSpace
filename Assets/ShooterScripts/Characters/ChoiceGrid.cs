@@ -91,6 +91,28 @@ public class ChoiceGrid : MonoBehaviour {
         return button_list;
     }
 
+    public void TrigClick(int choice_i) {
+        if ((choice_status != ChoiceStatus.Tone && 
+            Choices[choice_i].Character.StrChar == character_manager.CurrChar) || 
+            (choice_status == ChoiceStatus.Tone && 
+            Choices[choice_i].Character.Tone == character_manager.CurrTone)) {
+
+            Choices[choice_i].TrigCorrect();
+            choice_status = IterateChoiceStatus(choice_status, with_tone);
+
+            TrigCorrectChoice(Choices[choice_i].Character, choice_status);
+            if (choice_status == ChoiceStatus.Start) {
+                SetupNewCharacter();
+            }
+        }
+        else {
+            incorrect_characters.Add(character_manager.CurrChar);
+            Choices[choice_i].TrigIncorrect();
+            //score_display.increment_score(-2);
+            DecreaseScore(choice_status);
+        }
+    }
+
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.Return)) {
@@ -99,25 +121,14 @@ public class ChoiceGrid : MonoBehaviour {
 
         for (var i = 0; i < NbrChoices; i++) {
 
+            var choice = Choices[i];
+            bool new_click = choice.GetNewClick();
+
             var button = buttons[i];
-            if (Input.GetKeyDown(button.KeyCode)) {
 
-                if ((choice_status != ChoiceStatus.Tone && Choices[i].Character.StrChar == character_manager.CurrChar) ||
-                    (choice_status == ChoiceStatus.Tone && Choices[i].Character.Tone == character_manager.CurrTone)) {
-                    Choices[i].TrigCorrect();
-                    choice_status = IterateChoiceStatus(choice_status, with_tone);
 
-                    TrigCorrectChoice(Choices[i].Character, choice_status);
-                    if (choice_status == ChoiceStatus.Start) {
-                        SetupNewCharacter();
-                    }
-                }
-                else {
-                    incorrect_characters.Add(character_manager.CurrChar);
-                    Choices[i].TrigIncorrect();
-                    //score_display.increment_score(-2);
-                    DecreaseScore(choice_status);
-                }
+            if (Input.GetKeyDown(button.KeyCode) || new_click) {
+                TrigClick(i);
             }
         }
     }

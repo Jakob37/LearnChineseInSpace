@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum XDir {
     Left = -1,
@@ -35,6 +36,17 @@ public class Movement : MonoBehaviour {
     public float x_max_bound;
     public float y_min_bound;
     public float y_max_bound;
+
+    private Vector2 waypoint;
+    private Coordinates coordinates;
+
+    void Awake() {
+        coordinates = FindObjectOfType<Coordinates>();
+    }
+
+    void Start() {
+        waypoint = Vector2.zero;
+    }
 
     public void Step() {
         float delta_x = (int)x * (int)speed;
@@ -73,24 +85,48 @@ public class Movement : MonoBehaviour {
     void Update() {
 
         if (!is_step) {
-            float delta_x = x * (float)speed * Time.deltaTime;
-            float delta_y = y * (float)speed * Time.deltaTime;
-            Vector3 pos = gameObject.transform.position;
-
-            Vector3 new_pos;
-            if (use_bound) {
-                print(pos);
-                new_pos = new Vector3(
-                    Mathf.Clamp(pos.x + delta_x, x_min_bound, x_max_bound),
-                    Mathf.Clamp(pos.y + delta_y, y_min_bound, y_max_bound),
-                    pos.z
-                );
-            }
-            else {
-                new_pos = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
-            }
-
-            gameObject.transform.position = new_pos;
+            UpdateWaypointMovement();
         }
+        else {
+            UpdateStepMovement();
+        }
+    }
+
+    private void UpdateWaypointMovement() {
+
+        if (Input.GetMouseButtonDown(0) && Input.mousePosition.y > coordinates.GetSeparator()) {
+            waypoint = Input.mousePosition;
+        }
+
+        if (waypoint != Vector2.zero) {
+
+            var new_pos = Vector3.MoveTowards(gameObject.transform.position, waypoint, (float)speed * Time.deltaTime * 5);
+            gameObject.transform.position = new_pos;
+
+            if (new_pos.x == waypoint.x && new_pos.y == waypoint.y) {
+                waypoint = Vector2.zero;
+            }
+        }
+    }
+
+    private void UpdateStepMovement() {
+        float delta_x = x * (float)speed * Time.deltaTime;
+        float delta_y = y * (float)speed * Time.deltaTime;
+        Vector3 pos = gameObject.transform.position;
+
+        Vector3 new_pos;
+        if (use_bound) {
+            print(pos);
+            new_pos = new Vector3(
+                Mathf.Clamp(pos.x + delta_x, x_min_bound, x_max_bound),
+                Mathf.Clamp(pos.y + delta_y, y_min_bound, y_max_bound),
+                pos.z
+            );
+        }
+        else {
+            new_pos = new Vector3(pos.x + delta_x, pos.y + delta_y, pos.z);
+        }
+
+        gameObject.transform.position = new_pos;
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8394263894785841799}
   - component: {fileID: 8394263894785841797}
   - component: {fileID: 8394263894785841796}
+  - component: {fileID: 4172941946581514062}
   m_Layer: 5
   m_Name: MenuEntryObject
   m_TagString: Untagged
@@ -111,6 +112,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color_sec: 1
   dev_placeholder: 0
+--- !u!61 &4172941946581514062
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394263894785841801}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.01, y: 1.98}
+    newSize: {x: 2.01, y: 1.98}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.95, y: 1.98}
+  m_EdgeRadius: 0
 --- !u!1 &8394263894944946490
 GameObject:
   m_ObjectHideFlags: 0

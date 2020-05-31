@@ -8,11 +8,25 @@ public class Choice : MonoBehaviour
     private ChoiceDescription choice_description;
     private ChoiceKey choice_key;
 
+    private Collider2D collider;
     private Color start_color;
 
     public float color_sec;
     private float correct_remain_time;
     private float incorrect_remain_time;
+
+    private bool has_new_click;
+    public bool GetNewClick() {
+        if (has_new_click) {
+            has_new_click = false;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private RuntimePlatform platform;
 
     public bool ReadyToSwitch {
         get {
@@ -35,6 +49,8 @@ public class Choice : MonoBehaviour
         choice_description = GetComponentInChildren<ChoiceDescription>();
         choice_key = GetComponentInChildren<ChoiceKey>();
         renderer = GetComponent<SpriteRenderer>();
+        platform = Application.platform;
+        collider = GetComponent<Collider2D>();
 
         start_color = renderer.color;
 
@@ -57,6 +73,34 @@ public class Choice : MonoBehaviour
 
         correct_remain_time -= Time.deltaTime;
         incorrect_remain_time -= Time.deltaTime;
+
+
+
+
+        if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer) {
+            if (Input.touchCount > 0) {
+                if (Input.GetTouch(0).phase == TouchPhase.Began) {
+                    checkTouch(Input.GetTouch(0).position);
+                }
+            }
+        }
+        else if (platform == RuntimePlatform.WindowsEditor) {
+            if (Input.GetMouseButtonDown(0)) {
+                checkTouch(Input.mousePosition);
+            }
+        }
+    }
+
+    private void checkTouch(Vector3 pos) {
+
+        Vector3 wp = Camera.main.ScreenToWorldPoint(pos);
+        Vector2 touchPos = new Vector2(wp.x, wp.y);
+        var hit = collider.bounds.Contains(touchPos);
+
+        if (hit) {
+            print(choice_key.MyText);
+            has_new_click = true;
+        }
     }
 
     private void DoTint(Color color) {
