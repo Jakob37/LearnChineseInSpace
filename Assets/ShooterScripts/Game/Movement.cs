@@ -39,9 +39,11 @@ public class Movement : MonoBehaviour {
 
     private Vector2 waypoint;
     private Coordinates coordinates;
+    private CameraUtils cam_utils;
 
     void Awake() {
         coordinates = FindObjectOfType<Coordinates>();
+        cam_utils = FindObjectOfType<CameraUtils>();
     }
 
     void Start() {
@@ -95,7 +97,8 @@ public class Movement : MonoBehaviour {
     private void UpdateWaypointMovement() {
 
         if (Input.GetMouseButtonDown(0) && Input.mousePosition.y > coordinates.GetSeparator()) {
-            waypoint = Input.mousePosition;
+            // waypoint = Input.mousePosition;
+            waypoint = cam_utils.CameraPosToWorld(Input.mousePosition);
         }
 
         if (waypoint != Vector2.zero) {

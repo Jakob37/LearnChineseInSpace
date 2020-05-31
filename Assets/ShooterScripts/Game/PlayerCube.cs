@@ -71,7 +71,13 @@ public class PlayerCube : MonoBehaviour {
             GameOver();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && energy > 0) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            TryFire();
+        }
+    }
+
+    public void TryFire() {
+        if (energy > 0) {
             FireBullet();
             energy--;
         }
